@@ -535,12 +535,12 @@ function HeaderComponent(props: Props): JSX.Element {
                     </Button>
                 ) : null}
             </div>
-            <div className='cvat-right-header'>
-                <CVATTooltip overlay='Click to open repository'>
+            <div className='cvat-right-header disabled'>
+                <CVATTooltip overlay='Click to open youtube'>
                     <Button
                         icon={<GithubOutlined />}
                         size='large'
-                        className='cvat-open-repository-button cvat-header-button'
+                        className='cvat-open-repository-button cvat-header-button disabled'
                         type='link'
                         href={GITHUB_URL}
                         onClick={(event: React.MouseEvent): void => {
