@@ -51,6 +51,11 @@
             line-height: 24px;
         }
     }
+    .disabled {
+        opacity: 0.5;  // Or any preferred visual effect for disabled elements
+        cursor: not-allowed;
+        pointer-events: none;  // Prevent interaction
+      }
 }
 
 .cvat-header-menu-user-dropdown {
