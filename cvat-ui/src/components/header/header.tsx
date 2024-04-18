@@ -1,7 +1,4 @@
-// Copyright (C) 2020-2022 Intel Corporation
-// Copyright (C) 2022-2024 CVAT.ai Corporation
-//
-// SPDX-License-Identifier: MIT
+
 
 import './styles.scss';
 import React, { useCallback, useEffect, useState } from 'react';
