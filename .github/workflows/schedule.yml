@@ -92,7 +92,10 @@ jobs:
           context: .
           file: Dockerfile
           push: true
-          tags: ${{ steps.meta-server.outputs.tags }}
+                    server_tag=${{ steps.meta-server.outputs.tags }}
+# Remove leading slash if it exists
+server_tag=${{ server_tag | replace('^/', '') }}
+          tags: ${{ server_tag }}
           labels: ${{ steps.meta-server.outputs.labels }}
 
       - name: CVAT UI. Build and push
