@@ -533,7 +533,7 @@ function HeaderComponent(props: Props): JSX.Element {
                 ) : null}
             </div>
             <div className='cvat-right-header disabled'>
-                <CVATTooltip overlay='Click to open google'>
+                <CVATTooltip overlay='Click to open youtube'>
                     <Button
                         icon={<GithubOutlined />}
                         size='large'
