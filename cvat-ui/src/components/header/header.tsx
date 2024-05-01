@@ -1,7 +1,4 @@
-// Copyright (C) 2020-2022 Intel Corporation
-// Copyright (C) 2022-2024 CVAT.ai Corporation
-//
-// SPDX-License-Identifier: MIT
+
 
 import './styles.scss';
 import React, { useCallback, useEffect, useState } from 'react';
@@ -536,7 +533,7 @@ function HeaderComponent(props: Props): JSX.Element {
                 ) : null}
             </div>
             <div className='cvat-right-header disabled'>
-                <CVATTooltip overlay='Click to open google'>
+                <CVATTooltip overlay='Click to open youtube'>
                     <Button
                         icon={<GithubOutlined />}
                         size='large'
