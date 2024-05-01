@@ -54,7 +54,7 @@ cvat-data/dist
 cvat-core/dist
 cvat-canvas/dist
 cvat-canvas3d/dist
-
+cvat-ui/dist
 
 # produced by npm run docs in cvat-core
 cvat-core/docs
