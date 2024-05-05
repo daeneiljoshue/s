@@ -11,7 +11,7 @@
     # pkgs.python311Packages.pip
     # pkgs.nodejs_20
     # pkgs.nodePackages.nodemon
-    # pkgs.docker
+     pkgs.docker
   ];
 
   # Sets environment variables in the workspace
