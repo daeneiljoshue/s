@@ -79,6 +79,7 @@ import IncorrectEmailConfirmationPage from './email-confirmation-pages/incorrect
 import CreateJobPage from './create-job-page/create-job-page';
 import AnalyticsPage from './analytics-page/analytics-page';
 import InvitationWatcher from './invitation-watcher/invitation-watcher';
+import billing from 'components/billing/billing';
 
 interface CVATAppProps {
     loadFormats: () => void;
@@ -485,6 +486,7 @@ class CVATApplication extends React.PureComponent<CVATAppProps & RouteComponentP
                                             component={LoginWithTokenComponent}
                                         />
                                         <Route exact path='/auth/logout' component={LogoutComponent} />
+                                        <Route exact path='/billing' component={billing} />
                                         <Route exact path='/projects' component={ProjectsPageComponent} />
                                         <Route exact path='/projects/create' component={CreateProjectPageComponent} />
                                         <Route exact path='/projects/:id' component={ProjectPageComponent} />

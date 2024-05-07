@@ -29,7 +29,7 @@ import Text from 'antd/lib/typography/Text';
 import notification from 'antd/lib/notification';
 
 import config from 'config';
-import subscriptionPlans from 'actions/billing'
+import PricinPlans from 'actions/billing'
 
 import { Organization, getCore } from 'cvat-core-wrapper';
 import { CVATLogo } from 'icons';
