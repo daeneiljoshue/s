@@ -205,6 +205,10 @@ function HeaderComponent(props: Props): JSX.Element {
         },
     };
 
+    const handleUpgradeClick = () => {
+        history.push('/billing'); // Navigate to the billing page
+    };
+
     const aboutPlugins = usePlugins((state: CombinedState) => state.plugins.components.about.links.items, props);
     const aboutLinks: [JSX.Element, number][] = [];
     aboutLinks.push([(
@@ -435,9 +439,7 @@ function HeaderComponent(props: Props): JSX.Element {
         <Menu.Item
             key='upgrade to solo plan'
             icon={logoutFetching ? <LoadingOutlined /> : <LogoutOutlined />}
-            onClick={() => {
-                history.push('/billing');
-            }}
+            onClick={handleUpgradeClick}
             disabled={logoutFetching}
         >
             Upgrade to solo plan
