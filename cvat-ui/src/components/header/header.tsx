@@ -430,6 +430,19 @@ function HeaderComponent(props: Props): JSX.Element {
         </Menu.Item>
     ), 50]);
 
+    menuItems.push([(
+        <Menu.Item
+            key='logout'
+            icon={logoutFetching ? <LoadingOutlined /> : <LogoutOutlined />}
+            onClick={() => {
+                history.push('/auth/logout');
+            }}
+            disabled={logoutFetching}
+        >
+            Upgrade to solo plan
+        </Menu.Item>
+    ), 50]);
+
     menuItems.push(
         ...plugins.map(({ component: Component, weight }, index) => (
             [<Component key={index} targetProps={props} />, weight] as [JSX.Element, number]
