@@ -435,7 +435,7 @@ function HeaderComponent(props: Props): JSX.Element {
             key='upgrade to solo plan'
             icon={logoutFetching ? <LoadingOutlined /> : <LogoutOutlined />}
             onClick={() => {
-                history.push('/auth/logout');
+                history.push('/billing');
             }}
             disabled={logoutFetching}
         >
