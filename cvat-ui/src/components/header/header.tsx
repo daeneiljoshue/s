@@ -432,7 +432,7 @@ function HeaderComponent(props: Props): JSX.Element {
 
     menuItems.push([(
         <Menu.Item
-            key='logout'
+            key='upgrade to solo plan'
             icon={logoutFetching ? <LoadingOutlined /> : <LogoutOutlined />}
             onClick={() => {
                 history.push('/auth/logout');
