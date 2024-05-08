@@ -430,6 +430,11 @@ g.cvat_canvas_shape_occluded {
 }
 
 .cvat_masks_canvas_wrapper {
+<<<<<<< HEAD
+=======
+    @extend .cvat_canvas_pixelized;
+
+>>>>>>> cvat/develop
     z-index: 3;
     display: none;
 }

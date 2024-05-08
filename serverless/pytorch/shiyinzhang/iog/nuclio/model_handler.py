@@ -1,5 +1,9 @@
 # Copyright (C) 2020-2022 Intel Corporation
+<<<<<<< HEAD
 # Copyright (C) 2022 CVAT.ai Corporation
+=======
+# Copyright (C) 2022-2024 CVAT.ai Corporation
+>>>>>>> cvat/develop
 #
 # SPDX-License-Identifier: MIT
 
@@ -10,6 +14,7 @@ import torch
 from networks.mainnetwork import Network
 from dataloaders import helpers
 
+<<<<<<< HEAD
 def convert_mask_to_polygon(mask):
     contours = None
     if int(cv2.__version__.split('.')[0]) > 3:
@@ -29,6 +34,8 @@ def convert_mask_to_polygon(mask):
 
     return polygon
 
+=======
+>>>>>>> cvat/develop
 class ModelHandler:
     def __init__(self):
         base_dir = os.environ.get("MODEL_PATH", "/opt/nuclio/iog")
@@ -117,6 +124,10 @@ class ModelHandler:
             y = int(crop_bbox[1])
             mask[y : y + crop_shape[1], x : x + crop_shape[0]] = pred
 
+<<<<<<< HEAD
             polygon = convert_mask_to_polygon(mask)
 
             return mask, polygon
+=======
+            return mask
+>>>>>>> cvat/develop

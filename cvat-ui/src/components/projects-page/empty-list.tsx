@@ -1,4 +1,8 @@
 // Copyright (C) 2020-2022 Intel Corporation
+<<<<<<< HEAD
+=======
+// Copyright (C) 2022-2024 CVAT.ai Corporation
+>>>>>>> cvat/develop
 //
 // SPDX-License-Identifier: MIT
 
@@ -14,6 +18,10 @@ interface Props {
 
 export default function EmptyListComponent(props: Props): JSX.Element {
     const { notFound } = props;
+<<<<<<< HEAD
+=======
+
+>>>>>>> cvat/develop
     return (
         <div className='cvat-empty-projects-list'>
             <Empty description={notFound ? (
@@ -22,7 +30,11 @@ export default function EmptyListComponent(props: Props): JSX.Element {
                 <>
                     <Row justify='center' align='middle'>
                         <Col>
+<<<<<<< HEAD
                             <Text strong>No projects created yet ...</Text>
+=======
+                            <Text strong>No projects created yet...</Text>
+>>>>>>> cvat/develop
                         </Col>
                     </Row>
                     <Row justify='center' align='middle'>

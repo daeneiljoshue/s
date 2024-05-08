@@ -204,24 +204,39 @@ of the corresponding task in `./vscode/launch.json`, for example:
 ### Generate tests
 
 ```bash
+<<<<<<< HEAD
 python cvat/apps/iam/rules/tests/generate_tests.py \
    --output-dir cvat/apps/iam/rules/
+=======
+python cvat/apps/iam/rules/tests/generate_tests.py
+>>>>>>> cvat/develop
 ```
 
 ### Run testing
 
 - In a Docker container
 ```bash
+<<<<<<< HEAD
 docker run --rm -v ${PWD}/cvat/apps/iam/rules:/rules \
    openpolicyagent/opa:0.45.0-rootless \
    test /rules -v
+=======
+docker compose run --rm -v "$PWD:/mnt/src:ro" -w /mnt/src \
+    cvat_opa test -v cvat/apps/*/rules
+>>>>>>> cvat/develop
 ```
 
 - or execute OPA directly
 ```bash
+<<<<<<< HEAD
 curl -L -o opa https://openpolicyagent.org/downloads/v0.45.0/opa_linux_amd64_static
 chmod +x ./opa
 ./opa test cvat/apps/iam/rules
+=======
+curl -L -o opa https://openpolicyagent.org/downloads/v0.63.0/opa_linux_amd64_static
+chmod +x ./opa
+./opa test cvat/apps/*/rules
+>>>>>>> cvat/develop
 ```
 
 ### Linting Rego
@@ -230,14 +245,24 @@ The Rego policies in this project are linted using [Regal](https://github.com/st
 
 - In a Docker container
 ```bash
+<<<<<<< HEAD
 docker run --rm -v ${PWD}/cvat/apps/iam/rules:/rules \
     ghcr.io/styrainc/regal:0.11.0 \
     lint /rules
+=======
+docker run --rm -v ${PWD}:/mnt/src:ro -w /mnt/src \
+    ghcr.io/styrainc/regal:0.11.0 \
+    lint cvat/apps/*/rules
+>>>>>>> cvat/develop
 ```
 
 - or execute Regal directly
 ```bash
 curl -L -o regal https://github.com/StyraInc/regal/releases/download/v0.11.0/regal_Linux_x86_64
 chmod +x ./regal
+<<<<<<< HEAD
 ./regal lint cvat/apps/iam/rules
+=======
+./regal lint cvat/apps/*/rules
+>>>>>>> cvat/develop
 ```

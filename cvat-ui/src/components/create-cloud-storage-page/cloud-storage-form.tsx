@@ -507,7 +507,11 @@ export default function CreateCloudStorageForm(props: Props): JSX.Element {
                     <Input disabled={!!cloudStorage} maxLength={63} />
                 </Form.Item>
                 <Form.Item
+<<<<<<< HEAD
                     label='Authorization type'
+=======
+                    label='Authentication type'
+>>>>>>> cvat/develop
                     name='credentials_type'
                     rules={[{ required: true, message: 'Please, specify credentials type' }]}
                     {...internalCommonProps}
@@ -555,7 +559,11 @@ export default function CreateCloudStorageForm(props: Props): JSX.Element {
                     <Input disabled={!!cloudStorage} maxLength={63} />
                 </Form.Item>
                 <Form.Item
+<<<<<<< HEAD
                     label='Authorization type'
+=======
+                    label='Authentication type'
+>>>>>>> cvat/develop
                     name='credentials_type'
                     rules={[{ required: true, message: 'Please, specify credentials type' }]}
                     {...internalCommonProps}
@@ -593,7 +601,11 @@ export default function CreateCloudStorageForm(props: Props): JSX.Element {
                     <Input disabled={!!cloudStorage} maxLength={222} />
                 </Form.Item>
                 <Form.Item
+<<<<<<< HEAD
                     label='Authorization type'
+=======
+                    label='Authentication type'
+>>>>>>> cvat/develop
                     name='credentials_type'
                     rules={[{ required: true, message: 'Please, specify credentials type' }]}
                     {...internalCommonProps}

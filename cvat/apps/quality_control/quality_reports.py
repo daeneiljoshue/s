@@ -157,8 +157,17 @@ class ComparisonParameters(_Serializable):
         dm.AnnotationType.polygon,
         dm.AnnotationType.polyline,
         dm.AnnotationType.skeleton,
+<<<<<<< HEAD
     ]
 
+=======
+        dm.AnnotationType.label,
+    ]
+
+    non_groupable_ann_type = dm.AnnotationType.label
+    "Annotation type that can't be grouped"
+
+>>>>>>> cvat/develop
     compare_attributes: bool = True
     "Enables or disables attribute checks"
 
@@ -1000,6 +1009,24 @@ class _DistanceComparator(dm.ops.DistanceComparator):
         else:
             return None
 
+<<<<<<< HEAD
+=======
+    def match_labels(self, item_a, item_b):
+        def label_distance(a, b):
+            if a is None or b is None:
+                return 0
+            return 0.5 + (a.label == b.label) / 2
+
+        return self._match_segments(
+            dm.AnnotationType.label,
+            item_a,
+            item_b,
+            distance=label_distance,
+            label_matcher=lambda a, b: a.label == b.label,
+            dist_thresh=0.5,
+        )
+
+>>>>>>> cvat/develop
     def _match_segments(
         self,
         t,
@@ -1010,6 +1037,10 @@ class _DistanceComparator(dm.ops.DistanceComparator):
         label_matcher: Callable = None,
         a_objs: Optional[Sequence[dm.Annotation]] = None,
         b_objs: Optional[Sequence[dm.Annotation]] = None,
+<<<<<<< HEAD
+=======
+        dist_thresh: Optional[float] = None,
+>>>>>>> cvat/develop
     ):
         if a_objs is None:
             a_objs = self._get_ann_type(t, item_a)
@@ -1028,7 +1059,15 @@ class _DistanceComparator(dm.ops.DistanceComparator):
                 extra_args["label_matcher"] = label_matcher
 
             returned_values = _match_segments(
+<<<<<<< HEAD
                 a_objs, b_objs, distance=distance, dist_thresh=self.iou_threshold, **extra_args
+=======
+                a_objs,
+                b_objs,
+                distance=distance,
+                dist_thresh=dist_thresh if dist_thresh is not None else self.iou_threshold,
+                **extra_args,
+>>>>>>> cvat/develop
             )
 
         if self.return_distances:
@@ -1482,6 +1521,10 @@ class _Comparator:
             "outside",  # handled by other means
         }
         self.included_ann_types = settings.included_annotation_types
+<<<<<<< HEAD
+=======
+        self.non_groupable_ann_type = settings.non_groupable_ann_type
+>>>>>>> cvat/develop
         self._annotation_comparator = _DistanceComparator(
             categories,
             included_ann_types=set(self.included_ann_types)
@@ -1528,7 +1571,15 @@ class _Comparator:
         self, item: dm.DatasetItem
     ) -> Tuple[Dict[int, List[dm.Annotation]], Dict[int, int]]:
         ann_groups = dm.ops.find_instances(
+<<<<<<< HEAD
             [ann for ann in item.annotations if ann.type in self.included_ann_types]
+=======
+            [
+                ann
+                for ann in item.annotations
+                if ann.type in self.included_ann_types and ann.type != self.non_groupable_ann_type
+            ]
+>>>>>>> cvat/develop
         )
 
         groups = {}
@@ -1603,6 +1654,10 @@ class _Comparator:
         per_type_results = self._annotation_comparator.match_annotations(item_a, item_b)
 
         merged_results = [[], [], [], [], {}]
+<<<<<<< HEAD
+=======
+        shape_merged_results = [[], [], [], [], {}]
+>>>>>>> cvat/develop
         for shape_type in self.included_ann_types:
             shape_type_results = per_type_results.get(shape_type, None)
             if shape_type_results is None:
@@ -1611,9 +1666,20 @@ class _Comparator:
             for merged_field, field in zip(merged_results, shape_type_results[:-1]):
                 merged_field.extend(field)
 
+<<<<<<< HEAD
             merged_results[-1].update(per_type_results[shape_type][-1])
 
         return merged_results
+=======
+            if shape_type != dm.AnnotationType.label:
+                for merged_field, field in zip(shape_merged_results, shape_type_results[:-1]):
+                    merged_field.extend(field)
+                shape_merged_results[-1].update(per_type_results[shape_type][-1])
+
+            merged_results[-1].update(per_type_results[shape_type][-1])
+
+        return {"all_ann_types": merged_results, "all_shape_ann_types": shape_merged_results}
+>>>>>>> cvat/develop
 
     def get_distance(
         self, pairwise_distances, gt_ann: dm.Annotation, ds_ann: dm.Annotation
@@ -1687,6 +1753,7 @@ class DatasetComparator:
     ) -> List[AnnotationConflict]:
         conflicts = []
 
+<<<<<<< HEAD
         matches, mismatches, gt_unmatched, ds_unmatched, pairwise_distances = frame_results
 
         def _get_similarity(gt_ann: dm.Annotation, ds_ann: dm.Annotation) -> Optional[float]:
@@ -1694,6 +1761,24 @@ class DatasetComparator:
 
         _matched_shapes = set(
             id(shape) for shape_pair in itertools.chain(matches, mismatches) for shape in shape_pair
+=======
+        matches, mismatches, gt_unmatched, ds_unmatched, _ = frame_results["all_ann_types"]
+        (
+            shape_matches,
+            shape_mismatches,
+            shape_gt_unmatched,
+            shape_ds_unmatched,
+            shape_pairwise_distances,
+        ) = frame_results["all_shape_ann_types"]
+
+        def _get_similarity(gt_ann: dm.Annotation, ds_ann: dm.Annotation) -> Optional[float]:
+            return self.comparator.get_distance(shape_pairwise_distances, gt_ann, ds_ann)
+
+        _matched_shapes = set(
+            id(shape)
+            for shape_pair in itertools.chain(shape_matches, shape_mismatches)
+            for shape in shape_pair
+>>>>>>> cvat/develop
         )
 
         def _find_closest_unmatched_shape(shape: dm.Annotation):
@@ -1701,7 +1786,11 @@ class DatasetComparator:
 
             this_shape_distances = []
 
+<<<<<<< HEAD
             for (gt_shape_id, ds_shape_id), dist in pairwise_distances.items():
+=======
+            for (gt_shape_id, ds_shape_id), dist in shape_pairwise_distances.items():
+>>>>>>> cvat/develop
                 if gt_shape_id == this_shape_id:
                     other_shape_id = ds_shape_id
                 elif ds_shape_id == this_shape_id:
@@ -1759,6 +1848,7 @@ class DatasetComparator:
             )
 
         resulting_distances = [
+<<<<<<< HEAD
             _get_similarity(gt_ann, ds_ann)
             for gt_ann, ds_ann in itertools.chain(matches, mismatches)
         ]
@@ -1767,6 +1857,16 @@ class DatasetComparator:
             matched_ann_id, similarity = _find_closest_unmatched_shape(unmatched_ann)
             if matched_ann_id is not None:
                 _matched_shapes.add(matched_ann_id)
+=======
+            _get_similarity(shape_gt_ann, shape_ds_ann)
+            for shape_gt_ann, shape_ds_ann in itertools.chain(shape_matches, shape_mismatches)
+        ]
+
+        for shape_unmatched_ann in itertools.chain(shape_gt_unmatched, shape_ds_unmatched):
+            shape_matched_ann_id, similarity = _find_closest_unmatched_shape(shape_unmatched_ann)
+            if shape_matched_ann_id is not None:
+                _matched_shapes.add(shape_matched_ann_id)
+>>>>>>> cvat/develop
             resulting_distances.append(similarity)
 
         resulting_distances = [
@@ -1842,10 +1942,19 @@ class DatasetComparator:
         if self.settings.compare_groups:
             gt_groups, gt_group_map = self.comparator.find_groups(gt_item)
             ds_groups, ds_group_map = self.comparator.find_groups(ds_item)
+<<<<<<< HEAD
             matched_objects = matches + mismatches
             ds_to_gt_groups = self.comparator.match_groups(gt_groups, ds_groups, matched_objects)
 
             for gt_ann, ds_ann in matched_objects:
+=======
+            shape_matched_objects = shape_matches + shape_mismatches
+            ds_to_gt_groups = self.comparator.match_groups(
+                gt_groups, ds_groups, shape_matched_objects
+            )
+
+            for gt_ann, ds_ann in shape_matched_objects:
+>>>>>>> cvat/develop
                 gt_group = gt_groups.get(gt_group_map[id(gt_ann)], [gt_ann])
                 ds_group = ds_groups.get(ds_group_map[id(ds_ann)], [ds_ann])
                 ds_gt_group = ds_to_gt_groups.get(ds_group_map[id(ds_ann)], None)
@@ -1868,12 +1977,26 @@ class DatasetComparator:
                         )
                     )
 
+<<<<<<< HEAD
         valid_shapes_count = len(matches) + len(mismatches)
         missing_shapes_count = len(gt_unmatched)
         extra_shapes_count = len(ds_unmatched)
         total_shapes_count = len(matches) + len(mismatches) + len(gt_unmatched) + len(ds_unmatched)
         ds_shapes_count = len(matches) + len(mismatches) + len(ds_unmatched)
         gt_shapes_count = len(matches) + len(mismatches) + len(gt_unmatched)
+=======
+        valid_shapes_count = len(shape_matches) + len(shape_mismatches)
+        missing_shapes_count = len(shape_gt_unmatched)
+        extra_shapes_count = len(shape_ds_unmatched)
+        total_shapes_count = (
+            len(shape_matches)
+            + len(shape_mismatches)
+            + len(shape_gt_unmatched)
+            + len(shape_ds_unmatched)
+        )
+        ds_shapes_count = len(shape_matches) + len(shape_mismatches) + len(shape_ds_unmatched)
+        gt_shapes_count = len(shape_matches) + len(shape_mismatches) + len(shape_gt_unmatched)
+>>>>>>> cvat/develop
 
         valid_labels_count = len(matches)
         invalid_labels_count = len(mismatches)

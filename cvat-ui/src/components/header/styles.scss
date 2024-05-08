@@ -51,11 +51,14 @@
             line-height: 24px;
         }
     }
+<<<<<<< HEAD
     .disabled {
         opacity: 0.5;  // Or any preferred visual effect for disabled elements
         cursor: not-allowed;
         pointer-events: none;  // Prevent interaction
       }
+=======
+>>>>>>> cvat/develop
 }
 
 .cvat-header-menu-user-dropdown {

@@ -1,7 +1,11 @@
 openapi: 3.0.3
 info:
   title: CVAT REST API
+<<<<<<< HEAD
   version: 2.12.0
+=======
+  version: 2.13.0
+>>>>>>> cvat/develop
   description: REST API for Computer Vision Annotation Tool (CVAT)
   termsOfService: https://www.google.com/policies/terms/
   contact:
@@ -5193,7 +5197,11 @@ paths:
         For archives (e.g. '.zip'), a manifest file ('*.jsonl') is required when using
         the 'predefined' file ordering. Such file must be provided next to the archive
         in the list of files. Read more about manifest files here:
+<<<<<<< HEAD
         https://opencv.github.io/cvat/docs/manual/advanced/dataset_manifest/
+=======
+        https://docs.cvat.ai/docs/manual/advanced/dataset_manifest/
+>>>>>>> cvat/develop
 
         After all data is sent, the operation status can be retrieved via
         the /status endpoint.
@@ -5684,7 +5692,11 @@ paths:
   /api/users/self:
     get:
       operationId: users_retrieve_self
+<<<<<<< HEAD
       description: Method returns an instance of a user who is currently authorized
+=======
+      description: Method returns an instance of a user who is currently authenticated
+>>>>>>> cvat/develop
       summary: Get details of the current user
       tags:
       - users
@@ -6315,7 +6327,10 @@ components:
       properties:
         id:
           type: integer
+<<<<<<< HEAD
           readOnly: true
+=======
+>>>>>>> cvat/develop
         name:
           type: string
           maxLength: 64
@@ -6339,6 +6354,11 @@ components:
     AttributeRequest:
       type: object
       properties:
+<<<<<<< HEAD
+=======
+        id:
+          type: integer
+>>>>>>> cvat/develop
         name:
           type: string
           minLength: 1
@@ -6730,7 +6750,11 @@ components:
       type: object
       description: |-
         Read more about parameters here:
+<<<<<<< HEAD
         https://opencv.github.io/cvat/docs/manual/basics/create_an_annotation_task/#advanced-configuration
+=======
+        https://docs.cvat.ai/docs/manual/basics/create_an_annotation_task/#advanced-configuration
+>>>>>>> cvat/develop
       properties:
         chunk_size:
           type: integer
@@ -6830,7 +6854,11 @@ components:
           default: false
           description: |
             Enable or disable task data chunk caching for the task.
+<<<<<<< HEAD
             Read more: https://opencv.github.io/cvat/docs/manual/advanced/data_on_fly/
+=======
+            Read more: https://docs.cvat.ai/docs/manual/advanced/data_on_fly/
+>>>>>>> cvat/develop
         copy_data:
           type: boolean
           default: false
@@ -9235,6 +9263,16 @@ components:
           type: string
         last_name:
           type: string
+<<<<<<< HEAD
+=======
+        email_verification_required:
+          type: boolean
+          readOnly: true
+        key:
+          type: string
+          nullable: true
+          readOnly: true
+>>>>>>> cvat/develop
       required:
       - username
     RegisterSerializerExRequest:
@@ -10148,4 +10186,8 @@ components:
       x-token-prefix: Token
 externalDocs:
   description: CVAT documentation
+<<<<<<< HEAD
   url: https://opencv.github.io/cvat/docs/
+=======
+  url: https://docs.cvat.ai/docs/
+>>>>>>> cvat/develop

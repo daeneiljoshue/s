@@ -1,4 +1,8 @@
 -r base.in
+<<<<<<< HEAD
+=======
+--no-binary lxml,xmlsec
+>>>>>>> cvat/develop
 
 # To collect the coverage for REST API tests.
 # It will be enabled only if COVERAGE_PROCESS_START env is defined.

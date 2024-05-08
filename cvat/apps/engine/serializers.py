@@ -22,8 +22,13 @@ from cvat.apps.dataset_manager.formats.utils import get_label_color
 from cvat.apps.engine import models
 from cvat.apps.engine.cloud_provider import get_cloud_storage_instance, Credentials, Status
 from cvat.apps.engine.log import ServerLogManager
+<<<<<<< HEAD
 from cvat.apps.engine.utils import parse_specific_attributes, build_field_filter_params, get_list_view_name, reverse
 from cvat.apps.iam.permissions import TaskPermission
+=======
+from cvat.apps.engine.permissions import TaskPermission
+from cvat.apps.engine.utils import parse_specific_attributes, build_field_filter_params, get_list_view_name, reverse
+>>>>>>> cvat/develop
 
 from drf_spectacular.utils import OpenApiExample, extend_schema_field, extend_schema_serializer
 
@@ -231,6 +236,10 @@ class DelimitedStringListField(serializers.ListField):
         return '\n'.join(super().to_internal_value(data))
 
 class AttributeSerializer(serializers.ModelSerializer):
+<<<<<<< HEAD
+=======
+    id = serializers.IntegerField(required=False)
+>>>>>>> cvat/develop
     values = DelimitedStringListField(allow_empty=True,
         child=serializers.CharField(allow_blank=True, max_length=200),
     )
@@ -405,9 +414,25 @@ class LabelSerializer(SublabelSerializer):
             raise exceptions.ValidationError(str(exc)) from exc
 
         for attr in attributes:
+<<<<<<< HEAD
             (db_attr, created) = models.AttributeSpec.objects.get_or_create(
                 label=db_label, name=attr['name'], defaults=attr
             )
+=======
+            attr_id = attr.get('id', None)
+            if attr_id is not None:
+                try:
+                    db_attr = models.AttributeSpec.objects.get(id=attr_id, label=db_label)
+                except models.AttributeSpec.DoesNotExist as ex:
+                    raise exceptions.NotFound(
+                        f'Attribute with id #{attr_id} does not exist'
+                    ) from ex
+                created = False
+            else:
+                (db_attr, created) = models.AttributeSpec.objects.get_or_create(
+                    label=db_label, name=attr['name'], defaults=attr
+                )
+>>>>>>> cvat/develop
             if created:
                 logger.info("New {} attribute for {} label was created"
                     .format(db_attr.name, db_label.name))
@@ -416,6 +441,10 @@ class LabelSerializer(SublabelSerializer):
                     .format(db_attr.name, db_label.name))
 
                 # FIXME: need to update only "safe" fields
+<<<<<<< HEAD
+=======
+                db_attr.name = attr.get('name', db_attr.name)
+>>>>>>> cvat/develop
                 db_attr.default_value = attr.get('default_value', db_attr.default_value)
                 db_attr.mutable = attr.get('mutable', db_attr.mutable)
                 db_attr.input_type = attr.get('input_type', db_attr.input_type)
@@ -673,7 +702,11 @@ class JobWriteSerializer(WriteOnceMixin, serializers.ModelSerializer):
 
                 if seed is not None and frame_count < size:
                     # Reproduce the old (a little bit incorrect) behavior that existed before
+<<<<<<< HEAD
                     # https://github.com/opencv/cvat/pull/7126
+=======
+                    # https://github.com/cvat-ai/cvat/pull/7126
+>>>>>>> cvat/develop
                     # to make the old seed-based sequences reproducible
                     valid_frame_ids = [v for v in valid_frame_ids if v != task.data.stop_frame]
 
@@ -855,7 +888,11 @@ class JobFileMapping(serializers.ListField):
 class DataSerializer(serializers.ModelSerializer):
     """
     Read more about parameters here:
+<<<<<<< HEAD
     https://opencv.github.io/cvat/docs/manual/basics/create_an_annotation_task/#advanced-configuration
+=======
+    https://docs.cvat.ai/docs/manual/basics/create_an_annotation_task/#advanced-configuration
+>>>>>>> cvat/develop
     """
 
     image_quality = serializers.IntegerField(min_value=0, max_value=100,
@@ -900,7 +937,11 @@ class DataSerializer(serializers.ModelSerializer):
     use_cache = serializers.BooleanField(default=False,
         help_text=textwrap.dedent("""\
             Enable or disable task data chunk caching for the task.
+<<<<<<< HEAD
             Read more: https://opencv.github.io/cvat/docs/manual/advanced/data_on_fly/
+=======
+            Read more: https://docs.cvat.ai/docs/manual/advanced/data_on_fly/
+>>>>>>> cvat/develop
         """))
     copy_data = serializers.BooleanField(default=False, help_text=textwrap.dedent("""\
             Copy data from the server file share to CVAT during the task creation.
@@ -1196,7 +1237,12 @@ class TaskWriteSerializer(WriteOnceMixin, serializers.ModelSerializer):
                     for (model, model_name) in (
                         (models.LabeledTrackAttributeVal, 'track'),
                         (models.LabeledShapeAttributeVal, 'shape'),
+<<<<<<< HEAD
                         (models.LabeledImageAttributeVal, 'image')
+=======
+                        (models.LabeledImageAttributeVal, 'image'),
+                        (models.TrackedShapeAttributeVal, 'shape__track')
+>>>>>>> cvat/develop
                     ):
                         model.objects.filter(**{
                             f'{model_name}__job__segment__task': instance,

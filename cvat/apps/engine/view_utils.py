@@ -20,7 +20,11 @@ from drf_spectacular.utils import extend_schema
 from cvat.apps.engine.mixins import UploadMixin
 from cvat.apps.engine.models import CloudStorage as CloudStorageModel
 from cvat.apps.engine.parsers import TusUploadParser
+<<<<<<< HEAD
 from cvat.apps.iam.permissions import CloudStoragePermission
+=======
+from cvat.apps.engine.permissions import CloudStoragePermission
+>>>>>>> cvat/develop
 
 
 def make_paginated_response(

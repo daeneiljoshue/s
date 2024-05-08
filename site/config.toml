@@ -52,7 +52,11 @@ anchor = "smart"
 [[menu.main]]
     name = "GitHub"
     weight = 60
+<<<<<<< HEAD
     url = "https://github.com/opencv/cvat"
+=======
+    url = "https://github.com/cvat-ai/cvat"
+>>>>>>> cvat/develop
     pre = "<i class='fab fa-github'></i>"
 
 [services]
@@ -112,9 +116,15 @@ version = "0.0"
 url_latest_version = "https://example.com"
 
 # Repository configuration (URLs for in-page links to opening issues and suggesting changes)
+<<<<<<< HEAD
 github_repo = "https://github.com/opencv/cvat"
 # An optional link to a related project repo. For example, the sibling repository where your product code lives.
 github_project_repo = "https://github.com/opencv/cvat"
+=======
+github_repo = "https://github.com/cvat-ai/cvat"
+# An optional link to a related project repo. For example, the sibling repository where your product code lives.
+github_project_repo = "https://github.com/cvat-ai/cvat"
+>>>>>>> cvat/develop
 
 # Specify a value here if your content directory is not in your repo's root directory
 github_subdir = "site"
@@ -186,7 +196,11 @@ enable = false
 # Developer relevant links. These will show up on right side of footer and in the community page if you have one.
 [[params.links.developer]]
 	name = "GitHub"
+<<<<<<< HEAD
 	url = "https://github.com/opencv/cvat"
+=======
+	url = "https://github.com/cvat-ai/cvat"
+>>>>>>> cvat/develop
 	icon = "fab fa-github"
 	desc = "Development takes place here!"
 [[params.links.developer]]

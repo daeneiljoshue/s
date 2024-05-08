@@ -17,6 +17,12 @@ RUN apt-get update && \
         pkg-config \
         python3-dev \
         python3-pip \
+<<<<<<< HEAD
+=======
+        libxml2-dev \
+        libxmlsec1-dev \
+        libxmlsec1-openssl \
+>>>>>>> cvat/develop
     && rm -rf /var/lib/apt/lists/*
 
 ARG PIP_VERSION
@@ -119,6 +125,12 @@ RUN apt-get update && \
         libldap-2.5-0 \
         libpython3.10 \
         libsasl2-2 \
+<<<<<<< HEAD
+=======
+        libxml2 \
+        libxmlsec1 \
+        libxmlsec1-openssl \
+>>>>>>> cvat/develop
         nginx \
         p7zip-full \
         poppler-utils \
@@ -126,6 +138,10 @@ RUN apt-get update && \
         python3-venv \
         supervisor \
         tzdata \
+<<<<<<< HEAD
+=======
+        unrar \
+>>>>>>> cvat/develop
     && ln -fs /usr/share/zoneinfo/${TZ} /etc/localtime && \
     dpkg-reconfigure -f noninteractive tzdata && \
     rm -rf /var/lib/apt/lists/* && \

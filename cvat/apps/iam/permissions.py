@@ -1,10 +1,15 @@
 # Copyright (C) 2022 Intel Corporation
+<<<<<<< HEAD
 # Copyright (C) 2022-2023 CVAT.ai Corporation
+=======
+# Copyright (C) 2022-2024 CVAT.ai Corporation
+>>>>>>> cvat/develop
 #
 # SPDX-License-Identifier: MIT
 
 from __future__ import annotations
 
+<<<<<<< HEAD
 import operator
 from abc import ABCMeta, abstractmethod
 from collections import namedtuple
@@ -23,11 +28,31 @@ from cvat.apps.quality_control.models import AnnotationConflict, QualityReport, 
 from cvat.apps.webhooks.models import WebhookTypeChoice
 from cvat.utils.http import make_requests_session
 
+=======
+import importlib
+import operator
+from abc import ABCMeta, abstractmethod
+from enum import Enum
+from pathlib import Path
+from typing import Any, Dict, List, Optional, Sequence, TypeVar
+
+from attrs import define, field
+from django.apps import AppConfig
+from django.conf import settings
+from django.db.models import Q, Model
+from rest_framework.permissions import BasePermission
+
+from cvat.apps.organizations.models import Membership, Organization
+from cvat.utils.http import make_requests_session
+
+from .utils import add_opa_rules_path
+>>>>>>> cvat/develop
 
 class StrEnum(str, Enum):
     def __str__(self) -> str:
         return self.value
 
+<<<<<<< HEAD
 def _get_key(d: Dict[str, Any], key_path: Union[str, Sequence[str]]) -> Optional[Any]:
     """
     Like dict.get(), but supports nested fields. If the field is missing, returns None.
@@ -46,6 +71,8 @@ def _get_key(d: Dict[str, Any], key_path: Union[str, Sequence[str]]) -> Optional
     return d
 
 
+=======
+>>>>>>> cvat/develop
 @define
 class PermissionResult:
     allow: bool
@@ -216,6 +243,7 @@ class OpenPolicyAgentPermission(metaclass=ABCMeta):
         # That’s when you’d use distinct().
         return queryset.filter(q_objects[0]).distinct()
 
+<<<<<<< HEAD
 class OrganizationPermission(OpenPolicyAgentPermission):
     class Scopes(StrEnum):
         LIST = 'list'
@@ -1999,6 +2027,8 @@ class QualitySettingPermission(OpenPolicyAgentPermission):
 
         return data
 
+=======
+>>>>>>> cvat/develop
 T = TypeVar('T', bound=Model)
 
 def is_public_obj(obj: T) -> bool:
@@ -2015,6 +2045,7 @@ class PolicyEnforcer(BasePermission):
         if self.is_metadata_request(request, view) or obj and is_public_obj(obj):
             return True
 
+<<<<<<< HEAD
         permissions: List[OpenPolicyAgentPermission] = []
         iam_context = get_iam_context(request, obj)
 
@@ -2027,6 +2058,16 @@ class PolicyEnforcer(BasePermission):
             allow &= result.allow
 
         return allow
+=======
+        iam_context = get_iam_context(request, obj)
+        for perm_class in OpenPolicyAgentPermission.__subclasses__():
+            for perm in perm_class.create(request, view, obj, iam_context):
+                result = perm.check_access()
+                if not result.allow:
+                    return False
+
+        return True
+>>>>>>> cvat/develop
 
     def has_permission(self, request, view):
         if not view.detail:
@@ -2049,6 +2090,7 @@ class IsAuthenticatedOrReadPublicResource(BasePermission):
             request.method == 'GET' and is_public_obj(obj)
         )
 
+<<<<<<< HEAD
 
 class AnalyticsReportPermission(OpenPolicyAgentPermission):
     class Scopes(StrEnum):
@@ -2120,3 +2162,20 @@ class AnalyticsReportPermission(OpenPolicyAgentPermission):
 
     def get_resource(self):
         return None
+=======
+def load_app_permissions(config: AppConfig) -> None:
+    """
+    Ensures that permissions and OPA rules from the given app are loaded.
+
+    This function should be called from the AppConfig.ready() method of every
+    app that defines a permissions module.
+    """
+    permissions_module = importlib.import_module(config.name + ".permissions")
+
+    assert any(
+        isinstance(attr, type) and issubclass(attr, OpenPolicyAgentPermission)
+        for attr in vars(permissions_module).values()
+    )
+
+    add_opa_rules_path(Path(config.path, "rules"))
+>>>>>>> cvat/develop

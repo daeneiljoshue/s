@@ -1,8 +1,13 @@
+<<<<<<< HEAD
 # Copyright (C) 2023 CVAT.ai Corporation
+=======
+# Copyright (C) 2023-2024 CVAT.ai Corporation
+>>>>>>> cvat/develop
 #
 # SPDX-License-Identifier: MIT
 
 import numpy as np
+<<<<<<< HEAD
 import cv2
 import torch
 from segment_anything import sam_model_registry, SamPredictor
@@ -26,6 +31,11 @@ def convert_mask_to_polygon(mask):
 
     return polygon
 
+=======
+import torch
+from segment_anything import sam_model_registry, SamPredictor
+
+>>>>>>> cvat/develop
 class ModelHandler:
     def __init__(self):
         self.device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')

@@ -2,7 +2,11 @@ const { defineConfig } = require('cypress');
 const plugins = require('./cypress/plugins/index');
 
 module.exports = defineConfig({
+<<<<<<< HEAD
     video: false,
+=======
+    video: true,
+>>>>>>> cvat/develop
     viewportWidth: 1300,
     viewportHeight: 960,
     defaultCommandTimeout: 25000,

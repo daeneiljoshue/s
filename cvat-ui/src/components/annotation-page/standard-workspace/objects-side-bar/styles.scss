@@ -1,5 +1,9 @@
 // Copyright (C) 2020-2022 Intel Corporation
+<<<<<<< HEAD
 // Copyright (C) 2022-2023 CVAT.ai Corporation
+=======
+// Copyright (C) 2022-2024 CVAT.ai Corporation
+>>>>>>> cvat/develop
 //
 // SPDX-License-Identifier: MIT
 
@@ -60,6 +64,7 @@
 
         border: none;
         margin-bottom: 0;
+<<<<<<< HEAD
         padding-top: 25px;
 
         .ant-tabs-tab {
@@ -82,6 +87,35 @@
     padding: $grid-unit-size;
     height: $grid-unit-size * 4;
     box-sizing: border-box;
+=======
+
+        .ant-tabs-tab.ant-tabs-tab-active {
+            opacity: 1;
+            background: $objects-bar-tabs-color;
+        }
+
+        .ant-tabs-tab {
+            padding: $grid-unit-size $grid-unit-size * 2 $grid-unit-size $grid-unit-size * 2;
+            background: none;
+            border: none;
+            user-select: none;
+            border-radius: $grid-unit-size $grid-unit-size 0 0;
+        }
+    }
+}
+
+.cvat-objects-sidebar-labels-list-header {
+    background: $objects-bar-tabs-color;
+    padding: $grid-unit-size;
+    border-bottom: 1px solid $border-color-1;
+}
+
+.cvat-objects-sidebar-issues-list-header {
+    background: $objects-bar-tabs-color;
+    padding: $grid-unit-size;
+    box-sizing: border-box;
+    border-bottom: 1px solid $border-color-1;
+>>>>>>> cvat/develop
 
     > div > div {
         > span[role='img'] {
@@ -103,9 +137,14 @@
 
 .cvat-objects-sidebar-issues-list {
     background-color: $background-color-2;
+<<<<<<< HEAD
     height: calc(100% - 32px);
     overflow-y: auto;
     overflow-x: hidden;
+=======
+    height: calc(100% - $grid-unit-size * 5);
+    overflow: hidden auto;
+>>>>>>> cvat/develop
 }
 
 .cvat-objects-sidebar-issue-item {
@@ -164,6 +203,7 @@
 
 .cvat-objects-sidebar-states-header {
     background: $objects-bar-tabs-color;
+<<<<<<< HEAD
     padding: 5px;
 
     > div:nth-child(1) {
@@ -184,6 +224,34 @@
                     margin-left: $grid-unit-size;
                     width: 60%;
                 }
+=======
+    padding: $grid-unit-size $grid-unit-size * 2 $grid-unit-size $grid-unit-size * 2;
+    line-height: $grid-unit-size * 3;
+    border-bottom: 1px solid $border-color-1;
+
+    > div {
+        > div:nth-child(1) {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+
+            .cvat-objects-sidebar-ordering-selector {
+                margin-left: $grid-unit-size;
+                width: $grid-unit-size * 16;
+            }
+        }
+
+        > div:nth-child(2) {
+            width: 100%;
+            margin-top: $grid-unit-size;
+
+            span[role='img'] {
+                &:not(:first-child) {
+                    margin-left: $grid-unit-size;
+                }
+
+                @extend .cvat-object-sidebar-icon;
+>>>>>>> cvat/develop
             }
         }
     }
@@ -195,7 +263,11 @@
 
 .cvat-objects-sidebar-states-list {
     background-color: $background-color-2;
+<<<<<<< HEAD
     height: calc(100% - 50px);
+=======
+    height: calc(100% - $grid-unit-size * 9);
+>>>>>>> cvat/develop
     overflow-y: auto;
 }
 
@@ -232,8 +304,11 @@
         }
 
         > div:nth-child(3) > span {
+<<<<<<< HEAD
             @extend .cvat-object-sidebar-icon;
 
+=======
+>>>>>>> cvat/develop
             font-size: 25px;
         }
 

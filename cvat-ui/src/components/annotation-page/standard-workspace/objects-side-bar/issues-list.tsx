@@ -39,7 +39,15 @@ export default function LabelsListComponent(): JSX.Element {
     const ready = useSelector((state: CombinedState) => state.annotation.canvas.ready);
     const activeControl = useSelector((state: CombinedState) => state.annotation.canvas.activeControl);
 
+<<<<<<< HEAD
     let frames = issues.map((issue: Issue): number => issue.frame).sort((a: number, b: number) => +a - +b);
+=======
+    let frames = issues
+        .filter((issue: Issue) => !issuesResolvedHidden || !issue.resolved)
+        .map((issue: Issue) => issue.frame)
+        .sort((a: number, b: number) => +a - +b);
+
+>>>>>>> cvat/develop
     if (showGroundTruth) {
         const conflictFrames = conflicts
             .map((conflict): number => conflict.frame).sort((a: number, b: number) => +a - +b);
@@ -74,6 +82,12 @@ export default function LabelsListComponent(): JSX.Element {
             <div className='cvat-objects-sidebar-issues-list-header'>
                 <Row justify='start' align='middle'>
                     <Col>
+<<<<<<< HEAD
+=======
+                        <Text>{`Items: ${frameIssues.length}`}</Text>
+                    </Col>
+                    <Col offset={1}>
+>>>>>>> cvat/develop
                         <CVATTooltip title='Find the previous frame with issues'>
                             <LeftOutlined className='cvat-issues-sidebar-previous-frame' {...dynamicLeftProps} />
                         </CVATTooltip>

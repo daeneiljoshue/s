@@ -104,6 +104,10 @@ const defaultState: AnnotationState = {
         states: [],
         filters: [],
         resetGroupFlag: false,
+<<<<<<< HEAD
+=======
+        initialized: false,
+>>>>>>> cvat/develop
         history: {
             undo: [],
             redo: [],
@@ -144,13 +148,23 @@ export default (state = defaultState, action: AnyAction): AnnotationState => {
                     requestedId: action.payload.requestedId,
                     fetching: true,
                 },
+<<<<<<< HEAD
+=======
+                annotations: {
+                    ...state.annotations,
+                    initialized: false,
+                },
+>>>>>>> cvat/develop
             };
         }
         case BoundariesActionTypes.RESET_AFTER_ERROR:
         case AnnotationActionTypes.GET_JOB_SUCCESS: {
             const {
                 job,
+<<<<<<< HEAD
                 states,
+=======
+>>>>>>> cvat/develop
                 openTime,
                 frameNumber: number,
                 frameFilename: filename,
@@ -158,8 +172,11 @@ export default (state = defaultState, action: AnyAction): AnnotationState => {
                 colors,
                 filters,
                 frameData: data,
+<<<<<<< HEAD
                 minZ,
                 maxZ,
+=======
+>>>>>>> cvat/develop
                 queryParameters,
                 groundTruthInstance,
                 groundTruthJobFramesMeta,
@@ -207,6 +224,7 @@ export default (state = defaultState, action: AnyAction): AnnotationState => {
                 },
                 annotations: {
                     ...state.annotations,
+<<<<<<< HEAD
                     states,
                     filters,
                     zLayer: {
@@ -214,6 +232,9 @@ export default (state = defaultState, action: AnyAction): AnnotationState => {
                         max: maxZ,
                         cur: maxZ,
                     },
+=======
+                    filters,
+>>>>>>> cvat/develop
                 },
                 player: {
                     ...state.player,
@@ -449,6 +470,13 @@ export default (state = defaultState, action: AnyAction): AnnotationState => {
                 player: {
                     ...state.player,
                     ranges: ranges || state.player.ranges,
+<<<<<<< HEAD
+=======
+                    frame: {
+                        ...state.player.frame,
+                        changeFrameEvent: null,
+                    },
+>>>>>>> cvat/develop
                 },
                 canvas: {
                     ...state.canvas,
@@ -779,15 +807,27 @@ export default (state = defaultState, action: AnyAction): AnnotationState => {
             };
         }
         case AnnotationActionTypes.UPLOAD_JOB_ANNOTATIONS_SUCCESS: {
+<<<<<<< HEAD
             const { states, history } = action.payload;
 
+=======
+>>>>>>> cvat/develop
             return {
                 ...state,
                 annotations: {
                     ...state.annotations,
+<<<<<<< HEAD
                     history,
                     states,
                     activatedStateID: null,
+=======
+                    history: { undo: [], redo: [] },
+                    states: [],
+                    activatedStateID: null,
+                    activatedElementID: null,
+                    activatedAttributeID: null,
+                    highlightedConflict: null,
+>>>>>>> cvat/develop
                     collapsed: {},
                 },
             };
@@ -851,6 +891,10 @@ export default (state = defaultState, action: AnyAction): AnnotationState => {
                     activatedStateID: updateActivatedStateID(states, activatedStateID),
                     states,
                     history,
+<<<<<<< HEAD
+=======
+                    initialized: true,
+>>>>>>> cvat/develop
                     zLayer: {
                         min: minZ,
                         max: maxZ,
@@ -859,6 +903,18 @@ export default (state = defaultState, action: AnyAction): AnnotationState => {
                 },
             };
         }
+<<<<<<< HEAD
+=======
+        case AnnotationActionTypes.FETCH_ANNOTATIONS_FAILED: {
+            return {
+                ...state,
+                annotations: {
+                    ...state.annotations,
+                    initialized: true,
+                },
+            };
+        }
+>>>>>>> cvat/develop
         case AnnotationActionTypes.CHANGE_ANNOTATIONS_FILTERS: {
             const { filters } = action.payload;
             return {
@@ -1073,10 +1129,14 @@ export default (state = defaultState, action: AnyAction): AnnotationState => {
         }
         case AnnotationActionTypes.CLOSE_JOB:
         case AuthActionTypes.LOGOUT_SUCCESS: {
+<<<<<<< HEAD
             if (state.canvas.instance) {
                 state.canvas.instance.destroy();
             }
             return { ...defaultState };
+=======
+            return defaultState;
+>>>>>>> cvat/develop
         }
         default: {
             return state;

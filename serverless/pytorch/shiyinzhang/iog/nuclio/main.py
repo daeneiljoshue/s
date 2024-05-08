@@ -1,5 +1,9 @@
 # Copyright (C) 2020-2022 Intel Corporation
+<<<<<<< HEAD
 # Copyright (C) 2022 CVAT.ai Corporation
+=======
+# Copyright (C) 2022-2024 CVAT.ai Corporation
+>>>>>>> cvat/develop
 #
 # SPDX-License-Identifier: MIT
 
@@ -33,12 +37,18 @@ def handler(context, event):
         obj_bbox = [np.min(x), np.min(y), np.max(x), np.max(y)]
         neg_points = []
 
+<<<<<<< HEAD
     mask, polygon = context.user_data.model.handle(image, obj_bbox,
         pos_points, neg_points, threshold)
     return context.Response(body=json.dumps({
             'points': polygon,
             'mask': mask.tolist(),
         }),
+=======
+    mask = context.user_data.model.handle(image, obj_bbox, pos_points, neg_points, threshold)
+    return context.Response(
+        body=json.dumps({ 'mask': mask.tolist() }),
+>>>>>>> cvat/develop
         headers={},
         content_type='application/json',
         status_code=200

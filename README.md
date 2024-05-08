@@ -28,7 +28,11 @@ or [subscribe](https://www.cvat.ai/pricing/cloud) to get unlimited data,
 organizations, autoannotations, and [Roboflow and HuggingFace integration](https://www.cvat.ai/post/integrating-hugging-face-and-roboflow-models).
 
 Or set CVAT up as a self-hosted solution:
+<<<<<<< HEAD
 [Self-hosted Installation Guide](https://opencv.github.io/cvat/docs/administration/basics/installation/).
+=======
+[Self-hosted Installation Guide](https://docs.cvat.ai/docs/administration/basics/installation/).
+>>>>>>> cvat/develop
 We provide [Enterprise support](https://www.cvat.ai/pricing/on-prem) for
 self-hosted installations with premium features: SSO, LDAP, Roboflow and
 HuggingFace integrations, and advanced analytics (coming soon). We also
@@ -36,16 +40,28 @@ do trainings and a dedicated support with 24 hour SLA.
 
 ## Quick start ⚡
 
+<<<<<<< HEAD
 - [Installation guide](https://opencv.github.io/cvat/docs/administration/basics/installation/)
 - [Manual](https://opencv.github.io/cvat/docs/manual/)
 - [Contributing](https://opencv.github.io/cvat/docs/contributing/)
+=======
+- [Installation guide](https://docs.cvat.ai/docs/administration/basics/installation/)
+- [Manual](https://docs.cvat.ai/docs/manual/)
+- [Contributing](https://docs.cvat.ai/docs/contributing/)
+>>>>>>> cvat/develop
 - [Datumaro dataset framework](https://github.com/cvat-ai/datumaro/blob/develop/README.md)
 - [Server API](#api)
 - [Python SDK](#sdk)
 - [Command line tool](#cli)
+<<<<<<< HEAD
 - [XML annotation format](https://opencv.github.io/cvat/docs/manual/advanced/xml_format/)
 - [AWS Deployment Guide](https://opencv.github.io/cvat/docs/administration/basics/aws-deployment-guide/)
 - [Frequently asked questions](https://opencv.github.io/cvat/docs/faq/)
+=======
+- [XML annotation format](https://docs.cvat.ai/docs/manual/advanced/xml_format/)
+- [AWS Deployment Guide](https://docs.cvat.ai/docs/administration/basics/aws-deployment-guide/)
+- [Frequently asked questions](https://docs.cvat.ai/docs/faq/)
+>>>>>>> cvat/develop
 - [Where to ask questions](#where-to-ask-questions)
 
 ## Partners ❤️
@@ -80,7 +96,11 @@ This is an online version of CVAT. It's free, efficient, and easy to use.
 to 10 tasks there and upload up to 500Mb of data to annotate. It will only be
 visible to you or the people you assign to it.
 
+<<<<<<< HEAD
 For now, it does not have [analytics features](https://opencv.github.io/cvat/docs/administration/advanced/analytics/)
+=======
+For now, it does not have [analytics features](https://docs.cvat.ai/docs/administration/advanced/analytics/)
+>>>>>>> cvat/develop
 like management and monitoring the data annotation team. It also does not allow exporting images, just the annotations.
 
 We plan to enhance [cvat.ai](https://cvat.ai) with new powerful features. Stay tuned!
@@ -124,19 +144,31 @@ For feedback, please see [Contact us](#contact-us)
 
 ## API
 
+<<<<<<< HEAD
 - [Documentation](https://opencv.github.io/cvat/docs/api_sdk/api/)
+=======
+- [Documentation](https://docs.cvat.ai/docs/api_sdk/api/)
+>>>>>>> cvat/develop
 
 ## SDK
 
 - Install with `pip install cvat-sdk`
 - [PyPI package homepage](https://pypi.org/project/cvat-sdk/)
+<<<<<<< HEAD
 - [Documentation](https://opencv.github.io/cvat/docs/api_sdk/sdk/)
+=======
+- [Documentation](https://docs.cvat.ai/docs/api_sdk/sdk/)
+>>>>>>> cvat/develop
 
 ## CLI
 
 - Install with `pip install cvat-cli`
 - [PyPI package homepage](https://pypi.org/project/cvat-cli/)
+<<<<<<< HEAD
 - [Documentation](https://opencv.github.io/cvat/docs/api_sdk/cli/)
+=======
+- [Documentation](https://docs.cvat.ai/docs/api_sdk/cli/)
+>>>>>>> cvat/develop
 
 ## Supported annotation formats
 
@@ -146,14 +178,23 @@ after clicking the **Upload annotation** and **Dump annotation** buttons.
 additional dataset transformations with its command line tool and Python library.
 
 For more information about the supported formats, see:
+<<<<<<< HEAD
 [Annotation Formats](https://opencv.github.io/cvat/docs/manual/advanced/formats/).
+=======
+[Annotation Formats](https://docs.cvat.ai/docs/manual/advanced/formats/).
+>>>>>>> cvat/develop
 
 <!--lint disable maximum-line-length-->
 
 | Annotation format                                                                                | Import | Export |
 | ------------------------------------------------------------------------------------------------ | ------ | ------ |
+<<<<<<< HEAD
 | [CVAT for images](https://opencv.github.io/cvat/docs/manual/advanced/xml_format/#annotation)     | ✔️     | ✔️     |
 | [CVAT for a video](https://opencv.github.io/cvat/docs/manual/advanced/xml_format/#interpolation) | ✔️     | ✔️     |
+=======
+| [CVAT for images](https://docs.cvat.ai/docs/manual/advanced/xml_format/#annotation)     | ✔️     | ✔️     |
+| [CVAT for a video](https://docs.cvat.ai/docs/manual/advanced/xml_format/#interpolation) | ✔️     | ✔️     |
+>>>>>>> cvat/develop
 | [Datumaro](https://github.com/cvat-ai/datumaro)                                                  | ✔️     | ✔️     |
 | [PASCAL VOC](http://host.robots.ox.ac.uk/pascal/VOC/)                                            | ✔️     | ✔️     |
 | Segmentation masks from [PASCAL VOC](http://host.robots.ox.ac.uk/pascal/VOC/)                    | ✔️     | ✔️     |
@@ -256,8 +297,13 @@ questions and get our support.
 [docker-server-image-url]: https://hub.docker.com/r/cvat/server
 [docker-ui-pulls-img]: https://img.shields.io/docker/pulls/cvat/ui.svg?style=flat-square&label=UI%20pulls
 [docker-ui-image-url]: https://hub.docker.com/r/cvat/ui
+<<<<<<< HEAD
 [ci-img]: https://github.com/opencv/cvat/actions/workflows/main.yml/badge.svg?branch=develop
 [ci-url]: https://github.com/opencv/cvat/actions
+=======
+[ci-img]: https://github.com/cvat-ai/cvat/actions/workflows/main.yml/badge.svg?branch=develop
+[ci-url]: https://github.com/cvat-ai/cvat/actions
+>>>>>>> cvat/develop
 [gitter-img]: https://img.shields.io/gitter/room/opencv-cvat/public?style=flat
 [gitter-url]: https://gitter.im/opencv-cvat/public
 [coverage-img]: https://codecov.io/github/opencv/cvat/branch/develop/graph/badge.svg

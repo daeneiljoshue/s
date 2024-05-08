@@ -41,5 +41,14 @@ module.exports = (on, config) => {
         }
         return launchOptions;
     });
+<<<<<<< HEAD
+=======
+
+    on('after:spec', (spec, results) => {
+        if (results && results.stats.failures === 0 && results.video) {
+            fs.unlinkSync(results.video);
+        }
+    });
+>>>>>>> cvat/develop
     return config;
 };

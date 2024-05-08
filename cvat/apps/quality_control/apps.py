@@ -1,4 +1,8 @@
 # Copyright (C) 2023 Intel Corporation
+<<<<<<< HEAD
+=======
+# Copyright (C) 2024 CVAT.ai Corporation
+>>>>>>> cvat/develop
 #
 # SPDX-License-Identifier: MIT
 
@@ -17,5 +21,12 @@ class QualityControlConfig(AppConfig):
             if key.isupper() and not hasattr(settings, key):
                 setattr(settings, key, getattr(default_settings, key))
 
+<<<<<<< HEAD
+=======
+        from cvat.apps.iam.permissions import load_app_permissions
+
+        load_app_permissions(self)
+
+>>>>>>> cvat/develop
         # Required to define signals in the application
         from . import signals  # pylint: disable=unused-import

@@ -13,7 +13,11 @@ authors:
 identifiers:
   - type: doi
     value: 10.5281/zenodo.4009388
+<<<<<<< HEAD
 repository-code: 'https://github.com/opencv/cvat'
+=======
+repository-code: 'https://github.com/cvat-ai/cvat'
+>>>>>>> cvat/develop
 url: 'https://cvat.ai/'
 abstract: >-
   Annotate better with CVAT, the industry-leading

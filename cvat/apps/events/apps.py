@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 # Copyright (C) 2023 CVAT.ai Corporation
+=======
+# Copyright (C) 2023-2024 CVAT.ai Corporation
+>>>>>>> cvat/develop
 #
 # SPDX-License-Identifier: MIT
 
@@ -10,3 +14,9 @@ class EventsConfig(AppConfig):
 
     def ready(self):
         from . import signals  # pylint: disable=unused-import
+<<<<<<< HEAD
+=======
+
+        from cvat.apps.iam.permissions import load_app_permissions
+        load_app_permissions(self)
+>>>>>>> cvat/develop

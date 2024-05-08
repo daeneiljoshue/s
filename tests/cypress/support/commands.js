@@ -36,6 +36,10 @@ Cypress.Commands.add('logout', () => {
     cy.get('.cvat-header-menu-user-dropdown-user').click();
     cy.get('span[aria-label="logout"]').click();
     cy.url().should('include', '/auth/login');
+<<<<<<< HEAD
+=======
+    cy.clearAllCookies();
+>>>>>>> cvat/develop
     cy.visit('/auth/login');
     cy.url().should('not.include', '?next=');
     cy.contains('Sign in').should('exist');
@@ -299,6 +303,16 @@ Cypress.Commands.add('headlessCreateProject', (projectSpec) => {
     });
 });
 
+<<<<<<< HEAD
+=======
+Cypress.Commands.add('headlessDeleteProject', (projectID) => {
+    cy.window().then(async ($win) => {
+        const [project] = await $win.cvat.projects.get({ id: projectID });
+        await project.delete();
+    });
+});
+
+>>>>>>> cvat/develop
 Cypress.Commands.add('headlessCreateUser', (userSpec) => {
     cy.request({
         method: 'POST',
@@ -1528,6 +1542,11 @@ Cypress.Commands.add('interactAnnotationObjectMenu', (parentSelector, button) =>
 });
 
 Cypress.Commands.add('hideTooltips', () => {
+<<<<<<< HEAD
+=======
+    cy.wait(500); // wait while tooltips are opened
+
+>>>>>>> cvat/develop
     cy.document().then((doc) => {
         const tooltips = Array.from(doc.querySelectorAll('.ant-tooltip'));
         if (tooltips.length > 0) {

@@ -103,12 +103,16 @@ context('Lock/hide features.', () => {
     });
 
     beforeEach(() => {
+<<<<<<< HEAD
         cy.document().then((doc) => {
             const tooltips = Array.from(doc.querySelectorAll('.ant-tooltip'));
             if (tooltips.length > 0) {
                 cy.get('.ant-tooltip').invoke('hide');
             }
         });
+=======
+        cy.hideTooltips();
+>>>>>>> cvat/develop
     });
 
     describe(`Testing case "${caseId}"`, () => {

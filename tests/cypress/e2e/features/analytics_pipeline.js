@@ -16,9 +16,17 @@ context('Analytics pipeline', () => {
 
     const taskName = 'Annotation task for testing performance analytics';
 
+<<<<<<< HEAD
     let projectID = null;
     let jobID = null;
     let taskID = null;
+=======
+    const data = {
+        projectID: null,
+        taskID: null,
+        jobID: null,
+    };
+>>>>>>> cvat/develop
 
     const rectangles = [
         {
@@ -51,7 +59,11 @@ context('Analytics pipeline', () => {
     ];
 
     const cardEntryNames = ['annotation_time', 'total_object_count', 'total_annotation_speed'];
+<<<<<<< HEAD
     function checkCards(notNull) {
+=======
+    function checkCards() {
+>>>>>>> cvat/develop
         cy.get('.cvat-analytics-card')
             .should('have.length', 3)
             .each((card) => {
@@ -59,7 +71,11 @@ context('Analytics pipeline', () => {
                     .invoke('data', 'entry-name')
                     .then((val) => {
                         expect(cardEntryNames.includes(val)).to.eq(true);
+<<<<<<< HEAD
                         if (notNull && ['total_object_count', 'total_annotation_speed'].includes(val)) {
+=======
+                        if (['total_object_count', 'total_annotation_speed'].includes(val)) {
+>>>>>>> cvat/develop
                             cy.wrap(card).within(() => {
                                 cy.get('.cvat-analytics-card-value').should('not.have.text', '0.0');
                             });
@@ -78,6 +94,7 @@ context('Analytics pipeline', () => {
             });
     }
 
+<<<<<<< HEAD
     function waitForReport(authKey, rqID) {
         cy.request({
             method: 'POST',
@@ -96,6 +113,8 @@ context('Analytics pipeline', () => {
         });
     }
 
+=======
+>>>>>>> cvat/develop
     function openAnalytics(type) {
         if (['task', 'project'].includes(type)) {
             const actionsMenu = type === 'project' ? '.cvat-project-actions-menu' : '.cvat-actions-menu';
@@ -113,17 +132,32 @@ context('Analytics pipeline', () => {
     before(() => {
         cy.visit('auth/login');
         cy.login();
+<<<<<<< HEAD
 
+=======
+        cy.get('.cvat-tasks-page').should('exist').and('be.visible');
+    });
+
+    beforeEach(() => {
+>>>>>>> cvat/develop
         cy.headlessCreateProject({
             labels: projectLabels,
             name: projectName,
         }).then((response) => {
+<<<<<<< HEAD
             projectID = response.projectID;
+=======
+            data.projectID = response.projectID;
+>>>>>>> cvat/develop
 
             cy.headlessCreateTask({
                 labels: [],
                 name: taskName,
+<<<<<<< HEAD
                 project_id: projectID,
+=======
+                project_id: data.projectID,
+>>>>>>> cvat/develop
                 source_storage: { location: 'local' },
                 target_storage: { location: 'local' },
             }, {
@@ -133,17 +167,36 @@ context('Analytics pipeline', () => {
                 use_cache: true,
                 sorting_method: 'lexicographical',
             }).then((taskResponse) => {
+<<<<<<< HEAD
                 taskID = taskResponse.taskID;
                 [jobID] = taskResponse.jobIDs;
 
                 cy.visit(`/tasks/${taskID}`);
+=======
+                data.taskID = taskResponse.taskID;
+                [data.jobID] = taskResponse.jobIDs;
+
+                cy.visit(`/tasks/${data.taskID}`);
+>>>>>>> cvat/develop
                 cy.get('.cvat-task-details').should('exist').and('be.visible');
             });
         });
     });
 
+<<<<<<< HEAD
     describe('Analytics pipeline', () => {
         it('Check empty performance pages', () => {
+=======
+    afterEach(() => {
+        if (data.projectID) {
+            cy.headlessDeleteProject(data.projectID);
+        }
+    });
+
+    describe('Analytics pipeline', () => {
+        it('Check all performance page to be empty', () => {
+            const { jobID, projectID, taskID } = data;
+>>>>>>> cvat/develop
             cy.get('.cvat-job-item').contains('a', `Job #${jobID}`)
                 .parents('.cvat-job-item')
                 .find('.cvat-job-item-more-button')
@@ -153,6 +206,7 @@ context('Analytics pipeline', () => {
                 .within(() => {
                     cy.contains('[role="menuitem"]', 'View analytics').click();
                 });
+<<<<<<< HEAD
             checkCards();
             checkHistograms();
 
@@ -169,6 +223,22 @@ context('Analytics pipeline', () => {
 
         it('Make some actions with objects, create analytics report, check performance pages', () => {
             cy.visit(`/tasks/${taskID}`);
+=======
+
+            cy.get('.cvat-empty-performance-analytics-item').should('exist').and('be.visible');
+
+            cy.visit(`/projects/${projectID}`);
+            openAnalytics('project');
+            cy.get('.cvat-empty-performance-analytics-item').should('exist').and('be.visible');
+
+            cy.visit(`/tasks/${taskID}`);
+            openAnalytics('task');
+            cy.get('.cvat-empty-performance-analytics-item').should('exist').and('be.visible');
+        });
+
+        it('Make some actions with objects, create analytics report, check performance pages', () => {
+            const { jobID, projectID, taskID } = data;
+>>>>>>> cvat/develop
             cy.get('.cvat-job-item').contains('a', `Job #${jobID}`).click();
             cy.get('.cvat-spinner').should('not.exist');
 
@@ -194,6 +264,7 @@ context('Analytics pipeline', () => {
             cy.get('#cvat_canvas_shape_2').should('not.exist');
             cy.saveJob();
 
+<<<<<<< HEAD
             cy.logout();
             cy.getAuthKey().then((res) => {
                 const authKey = res.body.key;
@@ -218,12 +289,25 @@ context('Analytics pipeline', () => {
             openAnalytics('project');
             cy.wait('@getReport');
             checkCards(true);
+=======
+            cy.visit(`/projects/${projectID}`);
+            openAnalytics('project');
+            cy.get('.cvat-empty-performance-analytics-item').should('exist').and('be.visible').within(() => {
+                cy.get('button').contains('Request').click();
+            });
+
+            checkCards();
+>>>>>>> cvat/develop
             checkHistograms();
 
             cy.visit(`/tasks/${taskID}`);
             openAnalytics('task');
+<<<<<<< HEAD
             cy.wait('@getReport');
             checkCards(true);
+=======
+            checkCards();
+>>>>>>> cvat/develop
             checkHistograms();
 
             cy.visit(`/tasks/${taskID}`);
@@ -239,8 +323,12 @@ context('Analytics pipeline', () => {
                 .find('[role="menuitem"]')
                 .filter(':contains("View analytics")')
                 .click();
+<<<<<<< HEAD
             cy.wait('@getReport');
             checkCards(true);
+=======
+            checkCards();
+>>>>>>> cvat/develop
             checkHistograms();
         });
     });

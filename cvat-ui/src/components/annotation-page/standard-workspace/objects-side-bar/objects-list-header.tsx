@@ -13,6 +13,10 @@ import Icon, {
     UnlockOutlined,
 } from '@ant-design/icons';
 import { Col, Row } from 'antd/lib/grid';
+<<<<<<< HEAD
+=======
+import Text from 'antd/lib/typography/Text';
+>>>>>>> cvat/develop
 
 import StatesOrderingSelector from 'components/annotation-page/standard-workspace/objects-side-bar/states-ordering-selector';
 import CVATTooltip from 'components/common/cvat-tooltip';
@@ -29,6 +33,10 @@ interface Props {
     switchLockAllShortcut: string;
     switchHiddenAllShortcut: string;
     showGroundTruth: boolean;
+<<<<<<< HEAD
+=======
+    count: number;
+>>>>>>> cvat/develop
     changeStatesOrdering(value: StatesOrdering): void;
     lockAllStates(): void;
     unlockAllStates(): void;
@@ -44,7 +52,11 @@ function LockAllSwitcher(props: Props): JSX.Element {
         statesLocked, switchLockAllShortcut, unlockAllStates, lockAllStates,
     } = props;
     return (
+<<<<<<< HEAD
         <Col span={2}>
+=======
+        <Col span={3}>
+>>>>>>> cvat/develop
             <CVATTooltip title={`Switch lock property for all ${switchLockAllShortcut}`}>
                 {statesLocked ? <LockFilled onClick={unlockAllStates} /> : <UnlockOutlined onClick={lockAllStates} />}
             </CVATTooltip>
@@ -57,7 +69,11 @@ function HideAllSwitcher(props: Props): JSX.Element {
         statesHidden, switchHiddenAllShortcut, showAllStates, hideAllStates,
     } = props;
     return (
+<<<<<<< HEAD
         <Col span={2}>
+=======
+        <Col span={3}>
+>>>>>>> cvat/develop
             <CVATTooltip title={`Switch hidden property for all ${switchHiddenAllShortcut}`}>
                 {statesHidden ? (
                     <EyeInvisibleFilled onClick={showAllStates} />
@@ -74,7 +90,11 @@ function GTSwitcher(props: Props): JSX.Element {
         showGroundTruth, changeShowGroundTruth,
     } = props;
     return (
+<<<<<<< HEAD
         <Col>
+=======
+        <Col span={3}>
+>>>>>>> cvat/develop
             <CVATTooltip title='Show Ground truth annotations and conflicts'>
                 <Icon
                     className={
@@ -91,7 +111,11 @@ function GTSwitcher(props: Props): JSX.Element {
 function CollapseAllSwitcher(props: Props): JSX.Element {
     const { statesCollapsed, expandAllStates, collapseAllStates } = props;
     return (
+<<<<<<< HEAD
         <Col>
+=======
+        <Col span={3}>
+>>>>>>> cvat/develop
             <CVATTooltip title='Expand/collapse all'>
                 {statesCollapsed ? (
                     <CaretDownOutlined onClick={expandAllStates} />
@@ -105,12 +129,17 @@ function CollapseAllSwitcher(props: Props): JSX.Element {
 
 function ObjectListHeader(props: Props): JSX.Element {
     const {
+<<<<<<< HEAD
         workspace, readonly, statesOrdering, changeStatesOrdering,
+=======
+        workspace, readonly, statesOrdering, count, changeStatesOrdering,
+>>>>>>> cvat/develop
     } = props;
 
     return (
         <div className='cvat-objects-sidebar-states-header'>
             <Row justify='space-between' align='middle'>
+<<<<<<< HEAD
                 {!readonly && <LockAllSwitcher {...props} />}
                 <HideAllSwitcher {...props} />
                 { workspace === Workspace.REVIEW && (
@@ -118,6 +147,25 @@ function ObjectListHeader(props: Props): JSX.Element {
                 )}
                 <CollapseAllSwitcher {...props} />
                 <StatesOrderingSelector statesOrdering={statesOrdering} changeStatesOrdering={changeStatesOrdering} />
+=======
+                <Col span={24}>
+                    <Text>{`Items: ${count}`}</Text>
+                    <StatesOrderingSelector
+                        statesOrdering={statesOrdering}
+                        changeStatesOrdering={changeStatesOrdering}
+                    />
+                </Col>
+                <Col span={24}>
+                    <Row justify='space-around' align='middle'>
+                        {!readonly && <LockAllSwitcher {...props} />}
+                        <HideAllSwitcher {...props} />
+                        { workspace === Workspace.REVIEW && (
+                            <GTSwitcher {...props} />
+                        )}
+                        <CollapseAllSwitcher {...props} />
+                    </Row>
+                </Col>
+>>>>>>> cvat/develop
             </Row>
         </div>
     );

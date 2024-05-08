@@ -1,5 +1,9 @@
 // Copyright (C) 2020-2022 Intel Corporation
+<<<<<<< HEAD
 // Copyright (C) 2022-2023 CVAT.ai Corporation
+=======
+// Copyright (C) 2022-2024 CVAT.ai Corporation
+>>>>>>> cvat/develop
 //
 // SPDX-License-Identifier: MIT
 
@@ -8,7 +12,10 @@ import { BoundariesActionTypes } from 'actions/boundaries-actions';
 import { TasksActionTypes } from 'actions/tasks-actions';
 import { AuthActionTypes } from 'actions/auth-actions';
 
+<<<<<<< HEAD
 import { AnnotationActionTypes } from 'actions/annotation-actions';
+=======
+>>>>>>> cvat/develop
 import { TasksState } from '.';
 
 const defaultState: TasksState = {
@@ -136,11 +143,14 @@ export default (state: TasksState = defaultState, action: AnyAction): TasksState
                 },
             };
         }
+<<<<<<< HEAD
         case AnnotationActionTypes.CLOSE_JOB: {
             return {
                 ...state,
             };
         }
+=======
+>>>>>>> cvat/develop
         case BoundariesActionTypes.RESET_AFTER_ERROR:
         case AuthActionTypes.LOGOUT_SUCCESS: {
             return { ...defaultState };

@@ -8,9 +8,16 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 import Spin from 'antd/lib/spin';
+<<<<<<< HEAD
 import { CombinedState, Indexable } from 'reducers';
 import { getProjectsAsync } from 'actions/projects-actions';
 import { updateHistoryFromQuery } from 'components/resource-sorting-filtering';
+=======
+import { CombinedState, Indexable, ProjectsQuery } from 'reducers';
+import { getProjectsAsync } from 'actions/projects-actions';
+import { updateHistoryFromQuery } from 'components/resource-sorting-filtering';
+import { anySearch } from 'utils/any-search';
+>>>>>>> cvat/develop
 import EmptyListComponent from './empty-list';
 import TopBarComponent from './top-bar';
 import ProjectListComponent from './project-list';
@@ -24,7 +31,11 @@ export default function ProjectsPageComponent(): JSX.Element {
     const tasksQuery = useSelector((state: CombinedState) => state.projects.tasksGettingQuery);
     const importing = useSelector((state: CombinedState) => state.import.projects.backup.importing);
     const [isMounted, setIsMounted] = useState(false);
+<<<<<<< HEAD
     const anySearch = Object.keys(query).some((value: string) => value !== 'page' && (query as any)[value] !== null);
+=======
+    const isAnySearch = anySearch<ProjectsQuery>(query);
+>>>>>>> cvat/develop
 
     const queryParams = new URLSearchParams(history.location.search);
     const updatedQuery = { ...query };
@@ -48,7 +59,11 @@ export default function ProjectsPageComponent(): JSX.Element {
         }
     }, [query]);
 
+<<<<<<< HEAD
     const content = count ? <ProjectListComponent /> : <EmptyListComponent notFound={anySearch} />;
+=======
+    const content = count ? <ProjectListComponent /> : <EmptyListComponent notFound={isAnySearch} />;
+>>>>>>> cvat/develop
 
     return (
         <div className='cvat-projects-page'>

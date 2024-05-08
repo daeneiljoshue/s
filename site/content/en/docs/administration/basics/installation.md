@@ -64,12 +64,20 @@ For access from China, read [sources for users from China](#sources-for-users-fr
   that and check if `docker` group is in its output.
 
 - Clone _CVAT_ source code from the
+<<<<<<< HEAD
   [GitHub repository](https://github.com/opencv/cvat) with Git.
+=======
+  [GitHub repository](https://github.com/cvat-ai/cvat) with Git.
+>>>>>>> cvat/develop
 
   Following command will clone the latest develop branch:
 
   ```shell
+<<<<<<< HEAD
   git clone https://github.com/opencv/cvat
+=======
+  git clone https://github.com/cvat-ai/cvat
+>>>>>>> cvat/develop
   cd cvat
   ```
 
@@ -154,12 +162,20 @@ For access from China, read [sources for users from China](#sources-for-users-fr
 - Go to windows menu, find the Linux distribution you installed and run it. You should see a terminal window.
 
 - Clone _CVAT_ source code from the
+<<<<<<< HEAD
   [GitHub repository](https://github.com/opencv/cvat).
+=======
+  [GitHub repository](https://github.com/cvat-ai/cvat).
+>>>>>>> cvat/develop
 
   The following command will clone the latest develop branch:
 
   ```shell
+<<<<<<< HEAD
   git clone https://github.com/opencv/cvat
+=======
+  git clone https://github.com/cvat-ai/cvat
+>>>>>>> cvat/develop
   cd cvat
   ```
 
@@ -239,12 +255,20 @@ For access from China, read [sources for users from China](#sources-for-users-fr
   launch Spotlight and type "Terminal," then double-click the search result.
 
 - Clone _CVAT_ source code from the
+<<<<<<< HEAD
   [GitHub repository](https://github.com/opencv/cvat) with Git.
+=======
+  [GitHub repository](https://github.com/cvat-ai/cvat) with Git.
+>>>>>>> cvat/develop
 
   The following command will clone the latest develop branch:
 
   ```shell
+<<<<<<< HEAD
   git clone https://github.com/opencv/cvat
+=======
+  git clone https://github.com/cvat-ai/cvat
+>>>>>>> cvat/develop
   cd cvat
   ```
 
@@ -305,19 +329,31 @@ For access from China, read [sources for users from China](#sources-for-users-fr
      Follow instructions from [https://git-scm.com/download/win](https://git-scm.com/download/win)
 
 2. Clone _CVAT_ source code from the
+<<<<<<< HEAD
    [GitHub repository](https://github.com/opencv/cvat).
+=======
+   [GitHub repository](https://github.com/cvat-ai/cvat).
+>>>>>>> cvat/develop
 
    The command below will clone the default branch (develop):
 
    ```shell
+<<<<<<< HEAD
    git clone https://github.com/opencv/cvat
+=======
+   git clone https://github.com/cvat-ai/cvat
+>>>>>>> cvat/develop
    cd cvat
    ```
 
    To clone specific tag, e.g. v2.1.0:
 
    ```shell
+<<<<<<< HEAD
    git clone -b v2.1.0 https://github.com/opencv/cvat
+=======
+   git clone -b v2.1.0 https://github.com/cvat-ai/cvat
+>>>>>>> cvat/develop
    cd cvat
    ```
 
@@ -326,7 +362,11 @@ For access from China, read [sources for users from China](#sources-for-users-fr
 To download latest develop branch:
 
 ```shell
+<<<<<<< HEAD
 wget https://github.com/opencv/cvat/archive/refs/heads/develop.zip
+=======
+wget https://github.com/cvat-ai/cvat/archive/refs/heads/develop.zip
+>>>>>>> cvat/develop
 unzip develop.zip && mv cvat-develop cvat
 cd cvat
 ```
@@ -334,7 +374,11 @@ cd cvat
 To download specific tag:
 
 ```shell
+<<<<<<< HEAD
 wget https://github.com/opencv/cvat/archive/refs/tags/v1.7.0.zip
+=======
+wget https://github.com/cvat-ai/cvat/archive/refs/tags/v1.7.0.zip
+>>>>>>> cvat/develop
 unzip v1.7.0.zip && mv cvat-1.7.0 cvat
 cd cvat
 ```
@@ -344,7 +388,11 @@ cd cvat
 To download the latest develop branch:
 
 ```shell
+<<<<<<< HEAD
 curl -LO https://github.com/opencv/cvat/archive/refs/heads/develop.zip
+=======
+curl -LO https://github.com/cvat-ai/cvat/archive/refs/heads/develop.zip
+>>>>>>> cvat/develop
 unzip develop.zip && mv cvat-develop cvat
 cd cvat
 ```
@@ -352,7 +400,11 @@ cd cvat
 To download specific tag:
 
 ```shell
+<<<<<<< HEAD
 curl -LO https://github.com/opencv/cvat/archive/refs/tags/v1.7.0.zip
+=======
+curl -LO https://github.com/cvat-ai/cvat/archive/refs/tags/v1.7.0.zip
+>>>>>>> cvat/develop
 unzip v1.7.0.zip && mv cvat-1.7.0 cvat
 cd cvat
 ```

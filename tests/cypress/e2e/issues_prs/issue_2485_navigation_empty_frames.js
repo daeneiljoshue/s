@@ -38,7 +38,10 @@ context('Navigation to empty frames', () => {
     });
 
     beforeEach(() => {
+<<<<<<< HEAD
         cy.wait(500); // wait while tooltips are opened
+=======
+>>>>>>> cvat/develop
         cy.hideTooltips();
     });
 

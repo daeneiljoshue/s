@@ -90,12 +90,21 @@ export class MasksHandlerImpl implements MasksHandler {
                 opacity: 0.75,
                 left: this.latestMousePos.x - this.tool.size / 2,
                 top: this.latestMousePos.y - this.tool.size / 2,
+<<<<<<< HEAD
                 stroke: 'white',
                 strokeWidth: 1,
             };
             this.brushMarker = this.tool.form === 'circle' ? new fabric.Circle({
                 ...common,
                 radius: this.tool.size / 2,
+=======
+                strokeWidth: 1,
+                stroke: 'white',
+            };
+            this.brushMarker = this.tool.form === 'circle' ? new fabric.Circle({
+                ...common,
+                radius: Math.round(this.tool.size / 2),
+>>>>>>> cvat/develop
             }) : new fabric.Rect({
                 ...common,
                 width: this.tool.size,
@@ -473,7 +482,11 @@ export class MasksHandlerImpl implements MasksHandler {
                 if (tool.form === 'circle') {
                     shape = new fabric.Circle({
                         ...shapeProperties,
+<<<<<<< HEAD
                         radius: tool.size / 2,
+=======
+                        radius: Math.round(tool.size / 2),
+>>>>>>> cvat/develop
                     });
                 } else if (tool.form === 'square') {
                     shape = new fabric.Rect({

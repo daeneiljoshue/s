@@ -16,8 +16,13 @@ description: 'Installing a development environment for different operating syste
   ```
 
   ```bash
+<<<<<<< HEAD
   # Install Node.js 16 and yarn
   curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+=======
+  # Install Node.js 20 and yarn
+  curl -fsSL https://deb.nodesource.com/setup_20.x | sudo bash -
+>>>>>>> cvat/develop
   sudo apt-get install -y nodejs
   sudo npm install --global yarn
   ```
@@ -47,7 +52,11 @@ description: 'Installing a development environment for different operating syste
   ```
 
   ```bash
+<<<<<<< HEAD
   # Install Node.js 16, yarn and npm
+=======
+  # Install Node.js, yarn and npm
+>>>>>>> cvat/develop
   sudo pacman -S nodejs-lts-gallium yarn npm
   ```
 
@@ -268,7 +277,11 @@ cvat_vector:
 ```
 
 In addition, you can completely disable analytics if you don't need it by deleting the following data from
+<<<<<<< HEAD
 [launch.json](https://github.com/opencv/cvat/blob/develop/.vscode/launch.json):
+=======
+[launch.json](https://github.com/cvat-ai/cvat/blob/develop/.vscode/launch.json):
+>>>>>>> cvat/develop
 
 ```json
   "DJANGO_LOG_SERVER_HOST": "localhost",
@@ -276,5 +289,9 @@ In addition, you can completely disable analytics if you don't need it by deleti
 ```
 
 Analytics on GitHub:
+<<<<<<< HEAD
 [Analytics Components](https://github.com/opencv/cvat/tree/develop/components/analytics)
+=======
+[Analytics Components](https://github.com/cvat-ai/cvat/tree/develop/components/analytics)
+>>>>>>> cvat/develop
 

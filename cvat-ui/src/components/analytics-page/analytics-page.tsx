@@ -13,7 +13,13 @@ import Title from 'antd/lib/typography/Title';
 import notification from 'antd/lib/notification';
 import { useIsMounted } from 'utils/hooks';
 import { Project, Task } from 'reducers';
+<<<<<<< HEAD
 import { AnalyticsReport, Job, getCore } from 'cvat-core-wrapper';
+=======
+import {
+    AnalyticsReport, Job, RQStatus, getCore,
+} from 'cvat-core-wrapper';
+>>>>>>> cvat/develop
 import moment from 'moment';
 import CVATLoadingSpinner from 'components/common/loading-spinner';
 import GoBackButton from 'components/common/go-back-button';
@@ -53,11 +59,35 @@ function handleTimePeriod(interval: DateIntervals): [string, string] {
     }
 }
 
+<<<<<<< HEAD
+=======
+function readInstanceType(location: ReturnType<typeof useLocation>): InstanceType {
+    if (location.pathname.includes('projects')) {
+        return 'project';
+    }
+    if (location.pathname.includes('jobs')) {
+        return 'job';
+    }
+    return 'task';
+}
+
+function readInstanceId(type: InstanceType): number {
+    if (type === 'project') {
+        return +useParams<{ pid: string }>().pid;
+    }
+    if (type === 'job') {
+        return +useParams<{ jid: string }>().jid;
+    }
+    return +useParams<{ tid: string }>().tid;
+}
+
+>>>>>>> cvat/develop
 type InstanceType = 'project' | 'task' | 'job';
 
 function AnalyticsPage(): JSX.Element {
     const location = useLocation();
 
+<<<<<<< HEAD
     const requestedInstanceType: InstanceType = (() => {
         if (location.pathname.includes('projects')) {
             return 'project';
@@ -80,10 +110,17 @@ function AnalyticsPage(): JSX.Element {
 
     const [activeTab, setTab] = useState(getTabFromHash());
 
+=======
+    const requestedInstanceType: InstanceType = readInstanceType(location);
+    const requestedInstanceID = readInstanceId(requestedInstanceType);
+
+    const [activeTab, setTab] = useState(getTabFromHash());
+>>>>>>> cvat/develop
     const [instanceType, setInstanceType] = useState<InstanceType | null>(null);
     const [instance, setInstance] = useState<Project | Task | Job | null>(null);
     const [analyticsReport, setAnalyticsReport] = useState<AnalyticsReport | null>(null);
     const [timePeriod, setTimePeriod] = useState<DateIntervals>(DateIntervals.LAST_WEEK);
+<<<<<<< HEAD
     const [fetching, setFetching] = useState(true);
     const isMounted = useIsMounted();
 
@@ -153,6 +190,90 @@ function AnalyticsPage(): JSX.Element {
                         setFetching(false);
                     }
                 });
+=======
+    const [reportRefreshingStatus, setReportRefreshingStatus] = useState<string | null>(null);
+    const [fetching, setFetching] = useState(true);
+    const isMounted = useIsMounted();
+
+    const receiveInstance = async (type: InstanceType, id: number): Promise<void> => {
+        let receivedInstance: Task | Project | Job | null = null;
+
+        try {
+            switch (type) {
+                case 'project': {
+                    [receivedInstance] = await core.projects.get({ id });
+                    break;
+                }
+                case 'task': {
+                    [receivedInstance] = await core.tasks.get({ id });
+                    break;
+                }
+                case 'job': {
+                    [receivedInstance] = await core.jobs.get({ jobID: id });
+                    break;
+                }
+                default:
+                    return;
+            }
+
+            if (isMounted()) {
+                setInstance(receivedInstance);
+                setInstanceType(type);
+            }
+        } catch (error: unknown) {
+            notification.error({
+                message: `Could not receive requested ${type}`,
+                description: `${error instanceof Error ? error.message : ''}`,
+            });
+        }
+    };
+
+    const receiveReport = async (timeInterval: DateIntervals, type: InstanceType, id: number): Promise<void> => {
+        const [endDate, startDate] = handleTimePeriod(timeInterval);
+        let report: AnalyticsReport | null = null;
+
+        try {
+            const body = { endDate, startDate };
+            switch (type) {
+                case 'project': {
+                    report = await core.analytics.performance.reports({ ...body, projectID: id });
+                    break;
+                }
+                case 'task': {
+                    report = await core.analytics.performance.reports({ ...body, taskID: id });
+                    break;
+                }
+                case 'job': {
+                    report = await core.analytics.performance.reports({ ...body, jobID: id });
+                    break;
+                }
+                default:
+                    return;
+            }
+
+            if (isMounted()) {
+                setAnalyticsReport(report);
+            }
+        } catch (error: unknown) {
+            notification.error({
+                message: 'Could not receive requested report',
+                description: `${error instanceof Error ? error.message : ''}`,
+            });
+        }
+    };
+
+    useEffect(() => {
+        if (Number.isInteger(requestedInstanceID) && ['project', 'task', 'job'].includes(requestedInstanceType)) {
+            setFetching(true);
+            Promise.all([
+                receiveInstance(requestedInstanceType, requestedInstanceID),
+                receiveReport(timePeriod, requestedInstanceType, requestedInstanceID),
+            ]).finally(() => {
+                if (isMounted()) {
+                    setFetching(false);
+                }
+            });
+>>>>>>> cvat/develop
         } else {
             notification.error({
                 message: 'Could not load this page',
@@ -168,6 +289,45 @@ function AnalyticsPage(): JSX.Element {
         };
     }, [requestedInstanceType, requestedInstanceID, timePeriod]);
 
+<<<<<<< HEAD
+=======
+    useEffect(() => {
+        window.addEventListener('hashchange', () => {
+            const hash = getTabFromHash();
+            setTab(hash);
+        });
+    }, []);
+
+    useEffect(() => {
+        window.location.hash = activeTab;
+    }, [activeTab]);
+
+    const onCreateReport = useCallback(() => {
+        const onUpdate = (status: RQStatus, progress: number, message: string): void => {
+            setReportRefreshingStatus(message);
+        };
+
+        const body = {
+            ...(requestedInstanceType === 'project' ? { projectID: requestedInstanceID } : {}),
+            ...(requestedInstanceType === 'task' ? { taskID: requestedInstanceID } : {}),
+            ...(requestedInstanceType === 'job' ? { jobID: requestedInstanceID } : {}),
+        };
+
+        core.analytics.performance.calculate(body, onUpdate).then(() => {
+            receiveReport(timePeriod, requestedInstanceType, requestedInstanceID);
+        }).finally(() => {
+            setReportRefreshingStatus(null);
+        }).catch((error: unknown) => {
+            if (isMounted()) {
+                notification.error({
+                    message: 'Error occurred during requesting performance report',
+                    description: error instanceof Error ? error.message : '',
+                });
+            }
+        });
+    }, [requestedInstanceType, requestedInstanceID, timePeriod]);
+
+>>>>>>> cvat/develop
     const onJobUpdate = useCallback((job: Job): void => {
         setFetching(true);
 
@@ -185,6 +345,7 @@ function AnalyticsPage(): JSX.Element {
             });
     }, []);
 
+<<<<<<< HEAD
     useEffect(() => {
         window.addEventListener('hashchange', () => {
             const hash = getTabFromHash();
@@ -199,6 +360,11 @@ function AnalyticsPage(): JSX.Element {
     useEffect(() => {
         window.location.hash = activeTab;
     }, [activeTab]);
+=======
+    const onTabKeyChange = useCallback((key: string): void => {
+        setTab(key as AnalyticsTabs);
+    }, []);
+>>>>>>> cvat/develop
 
     let backNavigation: JSX.Element | null = null;
     let title: JSX.Element | null = null;
@@ -238,7 +404,13 @@ function AnalyticsPage(): JSX.Element {
                     <AnalyticsOverview
                         report={analyticsReport}
                         timePeriod={timePeriod}
+<<<<<<< HEAD
                         onTimePeriodChange={setTimePeriod}
+=======
+                        reportRefreshingStatus={reportRefreshingStatus}
+                        onTimePeriodChange={setTimePeriod}
+                        onCreateReport={onCreateReport}
+>>>>>>> cvat/develop
                     />
                 </Tabs.TabPane>
                 {instanceType === 'task' && (

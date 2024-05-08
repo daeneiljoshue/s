@@ -1,4 +1,8 @@
 // Copyright (C) 2021-2022 Intel Corporation
+<<<<<<< HEAD
+=======
+// Copyright (C) 2022-2024 CVAT.ai Corporation
+>>>>>>> cvat/develop
 //
 // SPDX-License-Identifier: MIT
 
@@ -6,6 +10,7 @@ import './styles.scss';
 import React, { useCallback, useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
+<<<<<<< HEAD
 import { Row, Col } from 'antd/lib/grid';
 import Spin from 'antd/lib/spin';
 
@@ -14,6 +19,17 @@ import { getCloudStoragesAsync } from 'actions/cloud-storage-actions';
 import { updateHistoryFromQuery } from 'components/resource-sorting-filtering';
 import CloudStoragesListComponent from './cloud-storages-list';
 import EmptyCloudStorageListComponent from './empty-cloud-storages-list';
+=======
+import { Row } from 'antd/lib/grid';
+import Spin from 'antd/lib/spin';
+
+import { CloudStoragesQuery, CombinedState, Indexable } from 'reducers';
+import { getCloudStoragesAsync } from 'actions/cloud-storage-actions';
+import { updateHistoryFromQuery } from 'components/resource-sorting-filtering';
+import { anySearch } from 'utils/any-search';
+import CloudStoragesListComponent from './cloud-storages-list';
+import EmptyListComponent from './empty-list';
+>>>>>>> cvat/develop
 import TopBarComponent from './top-bar';
 
 export default function StoragesPageComponent(): JSX.Element {
@@ -57,6 +73,7 @@ export default function StoragesPageComponent(): JSX.Element {
         [query],
     );
 
+<<<<<<< HEAD
     const dimensions = {
         md: 22,
         lg: 18,
@@ -66,6 +83,10 @@ export default function StoragesPageComponent(): JSX.Element {
 
     const anySearch = Object.keys(query)
         .some((value: string) => value !== 'page' && (query as any)[value] !== null);
+=======
+    const isAnySearch = anySearch<CloudStoragesQuery>(query);
+
+>>>>>>> cvat/develop
     const content = current.length ? (
         <CloudStoragesListComponent
             totalCount={totalCount}
@@ -74,6 +95,7 @@ export default function StoragesPageComponent(): JSX.Element {
             onChangePage={onChangePage}
         />
     ) : (
+<<<<<<< HEAD
         <EmptyCloudStorageListComponent notFound={anySearch} />
     );
 
@@ -117,5 +139,48 @@ export default function StoragesPageComponent(): JSX.Element {
                 ) : content }
             </Col>
         </Row>
+=======
+        <EmptyListComponent notFound={isAnySearch} />
+    );
+
+    return (
+        <div className='cvat-cloud-storages-page'>
+            <TopBarComponent
+                onApplySearch={(_search: string | null) => {
+                    dispatch(
+                        getCloudStoragesAsync({
+                            ...query,
+                            search: _search,
+                            page: 1,
+                        }),
+                    );
+                }}
+                onApplyFilter={(filter: string | null) => {
+                    dispatch(
+                        getCloudStoragesAsync({
+                            ...query,
+                            filter,
+                            page: 1,
+                        }),
+                    );
+                }}
+                onApplySorting={(sorting: string | null) => {
+                    dispatch(
+                        getCloudStoragesAsync({
+                            ...query,
+                            sort: sorting,
+                            page: 1,
+                        }),
+                    );
+                }}
+                query={updatedQuery}
+            />
+            { fetching ? (
+                <Row className='cvat-cloud-storages-page' justify='center' align='middle'>
+                    <Spin size='large' />
+                </Row>
+            ) : content }
+        </div>
+>>>>>>> cvat/develop
     );
 }

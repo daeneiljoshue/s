@@ -1,5 +1,10 @@
 package utils
 
+<<<<<<< HEAD
+=======
+import rego.v1
+
+>>>>>>> cvat/develop
 # Groups
 ADMIN := "admin"
 BUSINESS := "business"
@@ -65,6 +70,7 @@ get_priority(privilege) := {
     null: 1000
 }[privilege]
 
+<<<<<<< HEAD
 has_perm(group) {
     get_priority(input.auth.user.privilege) <= get_priority(group)
 }
@@ -98,5 +104,40 @@ is_sandbox {
 }
 
 is_organization {
+=======
+has_perm(group) if {
+    get_priority(input.auth.user.privilege) <= get_priority(group)
+}
+
+is_admin if {
+    input.auth.user.privilege == ADMIN
+}
+
+is_business if {
+    input.auth.user.privilege == BUSINESS
+}
+
+is_user if {
+    input.auth.user.privilege == USER
+}
+
+is_worker if {
+    input.auth.user.privilege == WORKER
+}
+
+is_resource_owner if {
+    input.resource.owner.id == input.auth.user.id
+}
+
+is_resource_assignee if {
+    input.resource.assignee.id == input.auth.user.id
+}
+
+is_sandbox if {
+    input.auth.organization == null
+}
+
+is_organization if {
+>>>>>>> cvat/develop
     input.auth.organization != null
 }

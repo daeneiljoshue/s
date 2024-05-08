@@ -60,6 +60,10 @@ class TestCreateFromRemote:
 
     def test_can_create(self, find_users):
         user = find_users(privilege="admin")[0]["username"]
+<<<<<<< HEAD
         remote_resources = ["https://opencv.github.io/cvat/favicons/favicon-32x32.png"]
+=======
+        remote_resources = ["https://docs.cvat.ai/favicons/favicon-32x32.png"]
+>>>>>>> cvat/develop
 
         self._test_can_create(user, self.task_id, remote_resources)

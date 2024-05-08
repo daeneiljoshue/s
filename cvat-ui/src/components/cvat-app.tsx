@@ -79,12 +79,19 @@ import IncorrectEmailConfirmationPage from './email-confirmation-pages/incorrect
 import CreateJobPage from './create-job-page/create-job-page';
 import AnalyticsPage from './analytics-page/analytics-page';
 import InvitationWatcher from './invitation-watcher/invitation-watcher';
+<<<<<<< HEAD
 import billing from 'components/billing/billing';
+=======
+>>>>>>> cvat/develop
 
 interface CVATAppProps {
     loadFormats: () => void;
     loadAbout: () => void;
+<<<<<<< HEAD
     verifyAuthorized: () => void;
+=======
+    verifyAuthenticated: () => void;
+>>>>>>> cvat/develop
     loadUserAgreements: () => void;
     initPlugins: () => void;
     initModels: () => void;
@@ -256,7 +263,11 @@ class CVATApplication extends React.PureComponent<CVATAppProps & RouteComponentP
 
     public componentDidUpdate(prevProps: CVATAppProps): void {
         const {
+<<<<<<< HEAD
             verifyAuthorized,
+=======
+            verifyAuthenticated,
+>>>>>>> cvat/develop
             loadFormats,
             loadAbout,
             loadUserAgreements,
@@ -298,7 +309,11 @@ class CVATApplication extends React.PureComponent<CVATAppProps & RouteComponentP
         this.showMessages();
 
         if (!userInitialized && !userFetching) {
+<<<<<<< HEAD
             verifyAuthorized();
+=======
+            verifyAuthenticated();
+>>>>>>> cvat/develop
             return;
         }
 
@@ -486,7 +501,10 @@ class CVATApplication extends React.PureComponent<CVATAppProps & RouteComponentP
                                             component={LoginWithTokenComponent}
                                         />
                                         <Route exact path='/auth/logout' component={LogoutComponent} />
+<<<<<<< HEAD
                                         <Route exact path='/billing' component={billing} />
+=======
+>>>>>>> cvat/develop
                                         <Route exact path='/projects' component={ProjectsPageComponent} />
                                         <Route exact path='/projects/create' component={CreateProjectPageComponent} />
                                         <Route exact path='/projects/:id' component={ProjectPageComponent} />

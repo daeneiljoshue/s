@@ -65,6 +65,9 @@ SILKY_MAX_RECORDED_REQUESTS = 10**4
 DATABASES['default']['HOST'] = os.getenv('CVAT_POSTGRES_HOST', 'localhost')
 
 QUALITY_CHECK_JOB_DELAY = 5
+<<<<<<< HEAD
 ANALYTICS_CHECK_JOB_DELAY = 15
+=======
+>>>>>>> cvat/develop
 
 SMOKESCREEN_ENABLED = False

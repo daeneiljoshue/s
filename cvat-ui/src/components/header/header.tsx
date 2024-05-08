@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 
+=======
+// Copyright (C) 2020-2022 Intel Corporation
+// Copyright (C) 2022-2024 CVAT.ai Corporation
+//
+// SPDX-License-Identifier: MIT
+>>>>>>> cvat/develop
 
 import './styles.scss';
 import React, { useCallback, useEffect, useState } from 'react';
@@ -29,7 +36,10 @@ import Text from 'antd/lib/typography/Text';
 import notification from 'antd/lib/notification';
 
 import config from 'config';
+<<<<<<< HEAD
 import PricinPlans from 'actions/billing'
+=======
+>>>>>>> cvat/develop
 
 import { Organization, getCore } from 'cvat-core-wrapper';
 import { CVATLogo } from 'icons';
@@ -205,10 +215,13 @@ function HeaderComponent(props: Props): JSX.Element {
         },
     };
 
+<<<<<<< HEAD
     const handleUpgradeClick = () => {
         history.push('/billing'); // Navigate to the billing page
     };
 
+=======
+>>>>>>> cvat/develop
     const aboutPlugins = usePlugins((state: CombinedState) => state.plugins.components.about.links.items, props);
     const aboutLinks: [JSX.Element, number][] = [];
     aboutLinks.push([(
@@ -435,6 +448,7 @@ function HeaderComponent(props: Props): JSX.Element {
         </Menu.Item>
     ), 50]);
 
+<<<<<<< HEAD
     menuItems.push([(
         <Menu.Item
             key='upgrade to solo plan'
@@ -446,6 +460,8 @@ function HeaderComponent(props: Props): JSX.Element {
         </Menu.Item>
     ), 50]);
 
+=======
+>>>>>>> cvat/develop
     menuItems.push(
         ...plugins.map(({ component: Component, weight }, index) => (
             [<Component key={index} targetProps={props} />, weight] as [JSX.Element, number]
@@ -548,12 +564,21 @@ function HeaderComponent(props: Props): JSX.Element {
                     </Button>
                 ) : null}
             </div>
+<<<<<<< HEAD
             <div className='cvat-right-header disabled'>
                 <CVATTooltip overlay='Click to open youtube'>
                     <Button
                         icon={<GithubOutlined />}
                         size='large'
                         className='cvat-open-repository-button cvat-header-button disabled'
+=======
+            <div className='cvat-right-header'>
+                <CVATTooltip overlay='Click to open repository'>
+                    <Button
+                        icon={<GithubOutlined />}
+                        size='large'
+                        className='cvat-open-repository-button cvat-header-button'
+>>>>>>> cvat/develop
                         type='link'
                         href={GITHUB_URL}
                         onClick={(event: React.MouseEvent): void => {

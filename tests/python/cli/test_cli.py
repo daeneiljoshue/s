@@ -124,7 +124,11 @@ class TestCLI:
         assert self.client.tasks.retrieve(task_id).size == 5
 
     def test_can_create_task_from_local_images_with_parameters(self):
+<<<<<<< HEAD
         # Checks for regressions of <https://github.com/opencv/cvat/issues/4962>
+=======
+        # Checks for regressions of <https://github.com/cvat-ai/cvat/issues/4962>
+>>>>>>> cvat/develop
 
         files = generate_images(self.tmp_path, 7)
         files.sort(reverse=True)

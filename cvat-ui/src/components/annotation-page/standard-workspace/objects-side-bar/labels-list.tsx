@@ -1,5 +1,9 @@
 // Copyright (C) 2020-2022 Intel Corporation
+<<<<<<< HEAD
 // Copyright (C) 2022 CVAT.ai Corporation
+=======
+// Copyright (C) 2022-2024 CVAT.ai Corporation
+>>>>>>> cvat/develop
 //
 // SPDX-License-Identifier: MIT
 
@@ -12,6 +16,10 @@ import { CombinedState, ObjectType } from 'reducers';
 import { rememberObject, updateAnnotationsAsync } from 'actions/annotation-actions';
 import LabelItemContainer from 'containers/annotation-page/standard-workspace/objects-side-bar/label-item';
 import GlobalHotKeys from 'utils/mousetrap-react';
+<<<<<<< HEAD
+=======
+import Text from 'antd/lib/typography/Text';
+>>>>>>> cvat/develop
 
 function LabelsListComponent(): JSX.Element {
     const dispatch = useDispatch();
@@ -21,7 +29,10 @@ function LabelsListComponent(): JSX.Element {
     const activeObjectType = useSelector((state: CombinedState) => state.annotation.drawing.activeObjectType);
     const states = useSelector((state: CombinedState) => state.annotation.annotations.states);
     const keyMap = useSelector((state: CombinedState) => state.shortcuts.keyMap);
+<<<<<<< HEAD
 
+=======
+>>>>>>> cvat/develop
     const labelIDs = labels.map((label: any): number => label.id);
 
     const [keyToLabelMapping, setKeyToLabelMapping] = useState<Record<string, number>>(
@@ -100,6 +111,12 @@ function LabelsListComponent(): JSX.Element {
     return (
         <div className='cvat-objects-sidebar-labels-list'>
             <GlobalHotKeys keyMap={subKeyMap} handlers={handlers} />
+<<<<<<< HEAD
+=======
+            <div className='cvat-objects-sidebar-labels-list-header'>
+                <Text>{`Items: ${labels.length}`}</Text>
+            </div>
+>>>>>>> cvat/develop
             {labelIDs.map(
                 (labelID: number): JSX.Element => (
                     <LabelItemContainer

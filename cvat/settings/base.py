@@ -1,5 +1,9 @@
 # Copyright (C) 2018-2022 Intel Corporation
+<<<<<<< HEAD
 # Copyright (C) 2022-2023 CVAT.ai Corporation
+=======
+# Copyright (C) 2022-2024 CVAT.ai Corporation
+>>>>>>> cvat/develop
 #
 # SPDX-License-Identifier: MIT
 
@@ -170,6 +174,7 @@ REST_FRAMEWORK = {
 }
 
 
+<<<<<<< HEAD
 REST_AUTH_REGISTER_SERIALIZERS = {
     'REGISTER_SERIALIZER': 'cvat.apps.iam.serializers.RegisterSerializerEx',
 }
@@ -177,6 +182,13 @@ REST_AUTH_REGISTER_SERIALIZERS = {
 REST_AUTH_SERIALIZERS = {
     'LOGIN_SERIALIZER': 'cvat.apps.iam.serializers.LoginSerializerEx',
     'PASSWORD_RESET_SERIALIZER': 'cvat.apps.iam.serializers.PasswordResetSerializerEx',
+=======
+REST_AUTH = {
+    'REGISTER_SERIALIZER': 'cvat.apps.iam.serializers.RegisterSerializerEx',
+    'LOGIN_SERIALIZER': 'cvat.apps.iam.serializers.LoginSerializerEx',
+    'PASSWORD_RESET_SERIALIZER': 'cvat.apps.iam.serializers.PasswordResetSerializerEx',
+    'OLD_PASSWORD_FIELD_ENABLED': True,
+>>>>>>> cvat/develop
 }
 
 if to_bool(os.getenv('CVAT_ANALYTICS', False)):
@@ -198,6 +210,10 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'dj_pagination.middleware.PaginationMiddleware',
     'cvat.apps.iam.middleware.ContextMiddleware',
+<<<<<<< HEAD
+=======
+    'allauth.account.middleware.AccountMiddleware',
+>>>>>>> cvat/develop
 ]
 
 UI_URL = ''
@@ -237,7 +253,10 @@ IAM_ADMIN_ROLE = 'admin'
 IAM_ROLES = [IAM_ADMIN_ROLE, 'business', 'user', 'worker']
 IAM_OPA_HOST = 'http://opa:8181'
 IAM_OPA_DATA_URL = f'{IAM_OPA_HOST}/v1/data'
+<<<<<<< HEAD
 IAM_OPA_RULES_PATH = 'cvat/apps/iam/rules:'
+=======
+>>>>>>> cvat/develop
 LOGIN_URL = 'rest_login'
 LOGIN_REDIRECT_URL = '/'
 
@@ -254,6 +273,7 @@ AUTHENTICATION_BACKENDS = [
 ]
 
 # https://github.com/pennersr/django-allauth
+<<<<<<< HEAD
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
 ACCOUNT_CONFIRM_EMAIL_ON_GET = True
 ACCOUNT_EMAIL_REQUIRED = True
@@ -262,14 +282,22 @@ ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 # Email backend settings for Django
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 
+=======
+ACCOUNT_EMAIL_VERIFICATION = 'none'
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
+
+>>>>>>> cvat/develop
 # set UI url to redirect after a successful e-mail confirmation
 #changed from '/auth/login' to '/auth/email-confirmation' for email confirmation message
 ACCOUNT_EMAIL_CONFIRMATION_ANONYMOUS_REDIRECT_URL = '/auth/email-confirmation'
 ACCOUNT_EMAIL_VERIFICATION_SENT_REDIRECT_URL = '/auth/email-verification-sent'
 INCORRECT_EMAIL_CONFIRMATION_URL = '/auth/incorrect-email-confirmation'
 
+<<<<<<< HEAD
 OLD_PASSWORD_FIELD_ENABLED = True
 
+=======
+>>>>>>> cvat/develop
 # Django-RQ
 # https://github.com/rq/django-rq
 
@@ -444,9 +472,12 @@ os.makedirs(CLOUD_STORAGE_ROOT, exist_ok=True)
 TMP_FILES_ROOT = os.path.join(DATA_ROOT, 'tmp')
 os.makedirs(TMP_FILES_ROOT, exist_ok=True)
 
+<<<<<<< HEAD
 IAM_OPA_BUNDLE_PATH = os.path.join(STATIC_ROOT, 'opa', 'bundle.tar.gz')
 os.makedirs(Path(IAM_OPA_BUNDLE_PATH).parent, exist_ok=True)
 
+=======
+>>>>>>> cvat/develop
 # logging is known to be unreliable with RQ when using async transports
 vector_log_handler = os.getenv('VECTOR_EVENT_HANDLER', 'AsynchronousLogstashHandler')
 
@@ -476,6 +507,17 @@ LOGGING = {
             'maxBytes': 1024*1024*50, # 50 MB
             'backupCount': 5,
         },
+<<<<<<< HEAD
+=======
+        'dataset_handler': {
+            'class': 'logging.handlers.RotatingFileHandler',
+            'level': 'DEBUG',
+            'filename': os.path.join(BASE_DIR, 'logs', 'cvat_server_dataset.log'),
+            'formatter': 'standard',
+            'maxBytes': 1024*1024*50, # 50 MB
+            'backupCount': 3,
+        },
+>>>>>>> cvat/develop
         'vector': {
             'level': 'INFO',
             'class': f'logstash_async.handler.{vector_log_handler}',
@@ -498,6 +540,13 @@ LOGGING = {
             'level': os.getenv('DJANGO_LOG_LEVEL', 'DEBUG'),
         },
 
+<<<<<<< HEAD
+=======
+        'dataset_logger': {
+            'handlers': ['dataset_handler']
+        },
+
+>>>>>>> cvat/develop
         'django': {
             'level': 'INFO',
         },
@@ -511,6 +560,11 @@ LOGGING = {
     },
 }
 
+<<<<<<< HEAD
+=======
+CVAT_LOG_IMPORT_ERRORS = to_bool(os.getenv('CVAT_LOG_IMPORT_ERRORS', True))
+
+>>>>>>> cvat/develop
 if os.getenv('DJANGO_LOG_SERVER_HOST'):
     LOGGING['loggers']['vector']['handlers'] += ['vector']
 
@@ -605,7 +659,11 @@ SPECTACULAR_SETTINGS = {
     'TOS': 'https://www.google.com/policies/terms/',
     'EXTERNAL_DOCS': {
         'description': 'CVAT documentation',
+<<<<<<< HEAD
         'url': 'https://opencv.github.io/cvat/docs/',
+=======
+        'url': 'https://docs.cvat.ai/docs/',
+>>>>>>> cvat/develop
     },
     # OTHER SETTINGS
     # https://drf-spectacular.readthedocs.io/en/latest/settings.html
@@ -644,7 +702,11 @@ SPECTACULAR_SETTINGS = {
 }
 
 # set similar UI restrictions
+<<<<<<< HEAD
 # https://github.com/opencv/cvat/blob/bad1dc2799afbb22222faaecc7336d999f4cc3fe/cvat-ui/src/utils/validation-patterns.ts#L26
+=======
+# https://github.com/cvat-ai/cvat/blob/bad1dc2799afbb22222faaecc7336d999f4cc3fe/cvat-ui/src/utils/validation-patterns.ts#L26
+>>>>>>> cvat/develop
 ACCOUNT_USERNAME_MIN_LENGTH = 5
 ACCOUNT_LOGOUT_ON_PASSWORD_CHANGE = True
 

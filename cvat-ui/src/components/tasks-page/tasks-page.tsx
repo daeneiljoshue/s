@@ -1,5 +1,9 @@
 // Copyright (C) 2020-2022 Intel Corporation
+<<<<<<< HEAD
 // Copyright (C) 2022 CVAT.ai Corporation
+=======
+// Copyright (C) 2022-2024 CVAT.ai Corporation
+>>>>>>> cvat/develop
 //
 // SPDX-License-Identifier: MIT
 
@@ -15,6 +19,10 @@ import { TasksQuery, Indexable } from 'reducers';
 import { updateHistoryFromQuery } from 'components/resource-sorting-filtering';
 import TaskListContainer from 'containers/tasks-page/tasks-list';
 import { getTasksAsync } from 'actions/tasks-actions';
+<<<<<<< HEAD
+=======
+import { anySearch } from 'utils/any-search';
+>>>>>>> cvat/develop
 
 import TopBar from './top-bar';
 import EmptyListComponent from './empty-list';
@@ -57,6 +65,11 @@ function TasksPageComponent(props: Props): JSX.Element {
         }
     }, [query]);
 
+<<<<<<< HEAD
+=======
+    const isAnySearch = anySearch<TasksQuery>(query);
+
+>>>>>>> cvat/develop
     const content = count ? (
         <>
             <TaskListContainer />
@@ -80,7 +93,11 @@ function TasksPageComponent(props: Props): JSX.Element {
             </Row>
         </>
     ) : (
+<<<<<<< HEAD
         <EmptyListComponent query={query} />
+=======
+        <EmptyListComponent notFound={isAnySearch} />
+>>>>>>> cvat/develop
     );
 
     return (

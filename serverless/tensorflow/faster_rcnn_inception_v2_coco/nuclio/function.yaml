@@ -91,13 +91,21 @@ metadata:
 
 spec:
   description: Faster RCNN from Tensorflow Object Detection API
+<<<<<<< HEAD
   runtime: 'python:3.6'
+=======
+  runtime: 'python:3.9'
+>>>>>>> cvat/develop
   handler: main:handler
   eventTimeout: 30s
 
   build:
     image: cvat.tf.faster_rcnn_inception_v2_coco
+<<<<<<< HEAD
     baseImage: tensorflow/tensorflow:2.1.1
+=======
+    baseImage: tensorflow/tensorflow:2.16.1
+>>>>>>> cvat/develop
 
     directives:
       preCopy:

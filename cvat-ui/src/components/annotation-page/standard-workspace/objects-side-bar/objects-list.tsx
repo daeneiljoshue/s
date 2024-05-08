@@ -1,5 +1,9 @@
 // Copyright (C) 2020-2022 Intel Corporation
+<<<<<<< HEAD
 // Copyright (C) 2022 CVAT.ai Corporation
+=======
+// Copyright (C) 2022-2024 CVAT.ai Corporation
+>>>>>>> cvat/develop
 //
 // SPDX-License-Identifier: MIT
 
@@ -70,6 +74,10 @@ function ObjectListComponent(props: Props): JSX.Element {
                 switchLockAllShortcut={switchLockAllShortcut}
                 switchHiddenAllShortcut={switchHiddenAllShortcut}
                 showGroundTruth={showGroundTruth}
+<<<<<<< HEAD
+=======
+                count={objectStates.length}
+>>>>>>> cvat/develop
                 changeStatesOrdering={changeStatesOrdering}
                 lockAllStates={lockAllStates}
                 unlockAllStates={unlockAllStates}

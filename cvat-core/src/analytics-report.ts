@@ -1,9 +1,18 @@
+<<<<<<< HEAD
 // Copyright (C) 2023 CVAT.ai Corporation
+=======
+// Copyright (C) 2023-2024 CVAT.ai Corporation
+>>>>>>> cvat/develop
 //
 // SPDX-License-Identifier: MIT
 
 import {
+<<<<<<< HEAD
     SerializedAnalyticsEntry, SerializedAnalyticsReport, SerializedDataEntry, SerializedTransformationEntry,
+=======
+    SerializedAnalyticsEntry, SerializedAnalyticsReport,
+    SerializedDataEntry, SerializedTransformationEntry,
+>>>>>>> cvat/develop
 } from './server-response-types';
 import { ArgumentError } from './exceptions';
 
@@ -126,7 +135,11 @@ export default class AnalyticsReport {
     #statistics: AnalyticsEntry[];
 
     constructor(initialData: SerializedAnalyticsReport) {
+<<<<<<< HEAD
         this.#id = initialData.id;
+=======
+        this.#id = initialData.job_id || initialData.task_id || initialData.project_id;
+>>>>>>> cvat/develop
         this.#target = initialData.target as AnalyticsReportTarget;
         this.#createdDate = initialData.created_date;
         this.#statistics = [];

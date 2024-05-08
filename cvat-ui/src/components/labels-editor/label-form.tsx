@@ -174,7 +174,11 @@ export default class LabelForm extends React.Component<Props> {
                     },
                 ]}
             >
+<<<<<<< HEAD
                 <Input disabled={attr.id >= 0} className='cvat-attribute-name-input' placeholder='Name' />
+=======
+                <Input className='cvat-attribute-name-input' placeholder='Name' />
+>>>>>>> cvat/develop
             </Form.Item>
         );
     }

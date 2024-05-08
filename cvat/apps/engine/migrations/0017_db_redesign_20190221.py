@@ -4,7 +4,11 @@ import cvat.apps.engine.models
 from django.db import migrations, models
 import django.db.models.deletion
 from django.conf import settings
+<<<<<<< HEAD
 from cvat.apps.dataset_manager.task import _merge_table_rows
+=======
+from cvat.apps.dataset_manager.task import merge_table_rows as _merge_table_rows
+>>>>>>> cvat/develop
 
 # some modified functions to transfer annotation
 def _bulk_create(db_model, db_alias, objects, flt_param):

@@ -24,6 +24,10 @@ interface StateToProps {
     job: any | null | undefined;
     frameNumber: number;
     fetching: boolean;
+<<<<<<< HEAD
+=======
+    annotationsInitialized: boolean;
+>>>>>>> cvat/develop
     workspace: Workspace;
 }
 
@@ -46,6 +50,12 @@ function mapStateToProps(state: CombinedState, own: OwnProps): StateToProps {
                     number: frameNumber,
                 },
             },
+<<<<<<< HEAD
+=======
+            annotations: {
+                initialized: annotationsInitialized,
+            },
+>>>>>>> cvat/develop
         },
     } = state;
 
@@ -54,6 +64,10 @@ function mapStateToProps(state: CombinedState, own: OwnProps): StateToProps {
         fetching,
         workspace,
         frameNumber,
+<<<<<<< HEAD
+=======
+        annotationsInitialized,
+>>>>>>> cvat/develop
     };
 }
 

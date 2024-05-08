@@ -22,11 +22,14 @@ from cvat.apps.engine.mixins import PartialUpdateModelMixin
 from cvat.apps.engine.models import Task
 from cvat.apps.engine.serializers import RqIdSerializer
 from cvat.apps.engine.utils import get_server_url
+<<<<<<< HEAD
 from cvat.apps.iam.permissions import (
     AnnotationConflictPermission,
     QualityReportPermission,
     QualitySettingPermission,
 )
+=======
+>>>>>>> cvat/develop
 from cvat.apps.quality_control import quality_reports as qc
 from cvat.apps.quality_control.models import (
     AnnotationConflict,
@@ -34,6 +37,14 @@ from cvat.apps.quality_control.models import (
     QualityReportTarget,
     QualitySettings,
 )
+<<<<<<< HEAD
+=======
+from cvat.apps.quality_control.permissions import (
+    AnnotationConflictPermission,
+    QualityReportPermission,
+    QualitySettingPermission,
+)
+>>>>>>> cvat/develop
 from cvat.apps.quality_control.serializers import (
     AnnotationConflictSerializer,
     QualityReportCreateSerializer,

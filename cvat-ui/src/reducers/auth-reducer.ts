@@ -17,20 +17,32 @@ const defaultState: AuthState = {
 
 export default function (state = defaultState, action: AuthActions | BoundariesActions): AuthState {
     switch (action.type) {
+<<<<<<< HEAD
         case AuthActionTypes.AUTHORIZED_REQUEST:
+=======
+        case AuthActionTypes.AUTHENTICATED_REQUEST:
+>>>>>>> cvat/develop
             return {
                 ...state,
                 fetching: true,
                 initialized: false,
             };
+<<<<<<< HEAD
         case AuthActionTypes.AUTHORIZED_SUCCESS:
+=======
+        case AuthActionTypes.AUTHENTICATED_SUCCESS:
+>>>>>>> cvat/develop
             return {
                 ...state,
                 initialized: true,
                 fetching: false,
                 user: action.payload.user,
             };
+<<<<<<< HEAD
         case AuthActionTypes.AUTHORIZED_FAILED:
+=======
+        case AuthActionTypes.AUTHENTICATED_FAILED:
+>>>>>>> cvat/develop
             return {
                 ...state,
                 fetching: false,

@@ -200,7 +200,11 @@ image/x-quicktime	qif
 
 # possible archive mimetypes (limited set)
 application/gzip gz
+<<<<<<< HEAD
 application/rar rar
+=======
+application/x-rar-compressed rar
+>>>>>>> cvat/develop
 application/x-7z-compressed 7z
 application/x-bzip bz bz2
 application/x-bzip-compressed-tar tar.bz tar.bz2 tb2 tbz tbz2

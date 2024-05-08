@@ -180,7 +180,11 @@ cvat:
   opa:
     replicas: 1
     image: openpolicyagent/opa
+<<<<<<< HEAD
     tag: 0.45.0-rootless
+=======
+    tag: 0.63.0
+>>>>>>> cvat/develop
     imagePullPolicy: IfNotPresent
     labels: {}
     #  test: test

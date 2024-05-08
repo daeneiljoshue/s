@@ -8,8 +8,19 @@ import RGL, { WidthProvider } from 'react-grid-layout';
 import Text from 'antd/lib/typography/Text';
 import Select from 'antd/lib/select';
 import Notification from 'antd/lib/notification';
+<<<<<<< HEAD
 import { AnalyticsReport, AnalyticsEntryViewType } from 'cvat-core-wrapper';
 import { Col, Row } from 'antd/lib/grid';
+=======
+import { Col, Row } from 'antd/lib/grid';
+import Button from 'antd/lib/button';
+import Card from 'antd/lib/card';
+import Title from 'antd/lib/typography/Title';
+import { ReloadOutlined, LoadingOutlined } from '@ant-design/icons';
+
+import { AnalyticsReport, AnalyticsEntryViewType } from 'cvat-core-wrapper';
+import CVATTooltip from 'components/common/cvat-tooltip';
+>>>>>>> cvat/develop
 import HistogramView from './views/histogram-view';
 import AnalyticsCard from './views/analytics-card';
 
@@ -25,7 +36,13 @@ export enum DateIntervals {
 interface Props {
     report: AnalyticsReport | null;
     timePeriod: DateIntervals;
+<<<<<<< HEAD
     onTimePeriodChange: (val: DateIntervals) => void;
+=======
+    reportRefreshingStatus: string | null;
+    onTimePeriodChange: (val: DateIntervals) => void;
+    onCreateReport: () => void;
+>>>>>>> cvat/develop
 }
 
 const colors = [
@@ -37,12 +54,53 @@ const colors = [
 ];
 
 function AnalyticsOverview(props: Props): JSX.Element | null {
+<<<<<<< HEAD
     const { report, timePeriod, onTimePeriodChange } = props;
 
     if (!report) return null;
     const layout: any = [];
     let histogramCount = 0;
     let numericCount = 0;
+=======
+    const {
+        report, timePeriod, reportRefreshingStatus,
+        onTimePeriodChange, onCreateReport,
+    } = props;
+
+    const layout: any = [];
+    let histogramCount = 0;
+    let numericCount = 0;
+
+    if (report === null) {
+        return null;
+    }
+
+    if (!report.id) {
+        return (
+            <div className='cvat-analytics-overview'>
+                <Row>
+                    <Col span={24}>
+                        <Card>
+                            <div className='cvat-empty-performance-analytics-item'>
+                                {reportRefreshingStatus ? <Text>{reportRefreshingStatus}</Text> :
+                                    <Title level={5}> Performance report was not calculated yet... </Title>}
+                                <Button
+                                    onClick={onCreateReport}
+                                    loading={reportRefreshingStatus !== null}
+                                    disabled={reportRefreshingStatus !== null}
+                                    type='primary'
+                                >
+                                    Request
+                                </Button>
+                            </div>
+                        </Card>
+                    </Col>
+                </Row>
+            </div>
+        );
+    }
+
+>>>>>>> cvat/develop
     const views: { view: React.JSX.Element, key: string }[] = [];
     report.statistics.forEach((entry) => {
         const tooltip = (
@@ -138,12 +196,29 @@ function AnalyticsOverview(props: Props): JSX.Element | null {
             }
         }
     });
+<<<<<<< HEAD
+=======
+
+>>>>>>> cvat/develop
     return (
         <div className='cvat-analytics-overview'>
             <Row justify='space-between'>
                 <Col>
+<<<<<<< HEAD
                     <Text type='secondary'>
                         {`Created ${report?.createdDate ? moment(report?.createdDate).fromNow() : ''}`}
+=======
+                    <CVATTooltip title='Request calculating a new report'>
+                        <Button
+                            className='cvat-analytics-refresh-button'
+                            onClick={onCreateReport}
+                            icon={reportRefreshingStatus !== null ? <LoadingOutlined /> : <ReloadOutlined />}
+                            disabled={reportRefreshingStatus !== null}
+                        />
+                    </CVATTooltip>
+                    <Text type='secondary'>
+                        { reportRefreshingStatus || `Created ${report?.id ? moment(report.createdDate).fromNow() : ''}`}
+>>>>>>> cvat/develop
                     </Text>
                 </Col>
                 <Col>
@@ -151,6 +226,7 @@ function AnalyticsOverview(props: Props): JSX.Element | null {
                         placeholder='Select time period'
                         value={timePeriod}
                         onChange={onTimePeriodChange}
+<<<<<<< HEAD
                         options={[
                             {
                                 value: DateIntervals.LAST_WEEK,
@@ -169,6 +245,21 @@ function AnalyticsOverview(props: Props): JSX.Element | null {
                                 label: DateIntervals.LAST_YEAR,
                             },
                         ]}
+=======
+                        options={[{
+                            value: DateIntervals.LAST_WEEK,
+                            label: DateIntervals.LAST_WEEK,
+                        }, {
+                            value: DateIntervals.LAST_MONTH,
+                            label: DateIntervals.LAST_MONTH,
+                        }, {
+                            value: DateIntervals.LAST_QUARTER,
+                            label: DateIntervals.LAST_QUARTER,
+                        }, {
+                            value: DateIntervals.LAST_YEAR,
+                            label: DateIntervals.LAST_YEAR,
+                        }]}
+>>>>>>> cvat/develop
                     />
                 </Col>
             </Row>

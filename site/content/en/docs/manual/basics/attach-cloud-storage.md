@@ -15,7 +15,11 @@ See:
   - [Create a bucket](#create-a-bucket)
   - [Upload data](#upload-data)
   - [Access permissions](#access-permissions)
+<<<<<<< HEAD
     - [Authorized access](#authorized-access)
+=======
+    - [Authenticated access](#authenticated-access)
+>>>>>>> cvat/develop
     - [Anonymous access](#anonymous-access)
   - [Attach AWS S3 storage](#attach-aws-s3-storage)
   - [AWS S3 manifest file](#aws-s3-manifest-file)
@@ -24,7 +28,11 @@ See:
   - [Create a bucket](#create-a-bucket-1)
   - [Upload data](#upload-data-1)
   - [Access permissions](#access-permissions-1)
+<<<<<<< HEAD
     - [Authorized access](#authorized-access-1)
+=======
+    - [Authenticated access](#authenticated-access-1)
+>>>>>>> cvat/develop
     - [Anonymous access](#anonymous-access-1)
   - [Attach Google Cloud Storage](#attach-google-cloud-storage)
   - [Video tutorial: Add Google Cloud Storage as Cloud Storage in CVAT](#video-tutorial-add-google-cloud-storage-as-cloud-storage-in-cvat)
@@ -75,7 +83,11 @@ You need to upload data for annotation and the `manifest.jsonl` file.
 
 ### Access permissions
 
+<<<<<<< HEAD
 #### Authorized access
+=======
+#### Authenticated access
+>>>>>>> cvat/develop
 
 To add access permissions, do the following:
 
@@ -119,6 +131,7 @@ Fill in the following fields:
 
 <!--lint disable maximum-line-length-->
 
+<<<<<<< HEAD
 | CVAT                   | AWS S3                                                                                                                                                                                                                                              |
 | ---------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Display name**       | Preferred display name for your storage.                                                                                                                                                                                                            |
@@ -129,6 +142,18 @@ Fill in the following fields:
 | **Region**             | (Optional) Choose a region from the list or add a new one. For more information, see [**Available locations**](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions).               |
 | **Prefix**             | (Optional) Prefix is used to filter bucket content. By setting a default prefix, you ensure that only data from a specific folder in the cloud is used in CVAT. This will affect which files you see when creating a task with cloud data.          |
 | **Manifests**          | (Optional) Click **+ Add manifest** and enter the name of the manifest file with an extension. For example: `manifest.jsonl`.                                                                                                                       |
+=======
+| CVAT                    | AWS S3                                                                                                                                                                                                                                              |
+| ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Display name**        | Preferred display name for your storage.                                                                                                                                                                                                            |
+| **Description**         | (Optional) Add description of storage.                                                                                                                                                                                                              |
+| **Provider**            | From drop-down list select **AWS S3**.                                                                                                                                                                                                              |
+| **Bucket name**         | Name of the [Bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/UsingBucket).                                                                                                                                                            |
+| **Authentication type** | Depends on the bucket setup: <br><li>**Key id and secret access key pair**: available on [IAM](https://console.aws.amazon.com/iamv2/home?#/users). <br><li>**Anonymous access**: for anonymous access. Public access to the bucket must be enabled. |
+| **Region**              | (Optional) Choose a region from the list or add a new one. For more information, see [**Available locations**](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-regions-availability-zones.html#concepts-available-regions).               |
+| **Prefix**              | (Optional) Prefix is used to filter bucket content. By setting a default prefix, you ensure that only data from a specific folder in the cloud is used in CVAT. This will affect which files you see when creating a task with cloud data.          |
+| **Manifests**           | (Optional) Click **+ Add manifest** and enter the name of the manifest file with an extension. For example: `manifest.jsonl`.                                                                                                                       |
+>>>>>>> cvat/develop
 
 <!--lint enable maximum-line-length-->
 
@@ -229,9 +254,15 @@ from [cloud resource manager page](https://console.cloud.google.com/cloud-resour
 
 And follow instructions below based on the preferable type of access.
 
+<<<<<<< HEAD
 #### Authorized access
 
 For authorized access you need to create a service account and key file.
+=======
+#### Authenticated access
+
+For authenticated access you need to create a service account and key file.
+>>>>>>> cvat/develop
 
 To create a service account:
 
@@ -281,6 +312,7 @@ Fill in the following fields:
 
 <!--lint disable maximum-line-length-->
 
+<<<<<<< HEAD
 | CVAT                   | Google Cloud Storage                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | ---------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Display name**       | Preferred display name for your storage.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
@@ -292,6 +324,19 @@ Fill in the following fields:
 | **Project ID**         | [Project ID](#authorized-access). <br>For more information, see [projects page](https://cloud.google.com/resource-manager/docs/creating-managing-projects) and [cloud resource manager page](https://console.cloud.google.com/cloud-resource-manager). <br>**Note:** Project name does not match the project ID.                                                                                                                                                                                                                                                                                                 |
 | **Location**           | (Optional) Choose a region from the list or add a new one. For more information, see [**Available locations**](https://cloud.google.com/storage/docs/locations#available-locations).                                                                                                                                                                                                                                                                                                                                                                                                                             |
 | **Manifests**          | (Optional) Click **+ Add manifest** and enter the name of the manifest file with an extension. For example: `manifest.jsonl`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+=======
+| CVAT                    | Google Cloud Storage                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Display name**        | Preferred display name for your storage.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         |
+| **Description**         | (Optional) Add description of storage.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           |
+| **Provider**            | From drop-down list select **Google Cloud Storage**.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| **Bucket name**         | Name of the bucket. You can find it on the [storage browser page](https://console.cloud.google.com/storage/browser).                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| **Authentication type** | Depends on the bucket setup: <br><li>**Authenticated access**: Click on the **Key file** field and upload key file from computer. <br> **Advanced**: For self-hosted solution, if the key file was not attached, then environment variable `GOOGLE_APPLICATION_CREDENTIALS` that was specified for an environment will be used. For more information, see [Authenticate to Cloud services using client libraries](https://cloud.google.com/docs/authentication/client-libraries#setting_the_environment_variable).<br><li> **Anonymous access**: for anonymous access. Public access to the bucket must be enabled. |
+| **Prefix**              | (Optional) Used to filter data from the bucket. By setting a default prefix, you ensure that only data from a specific folder in the cloud is used in CVAT. This will affect which files you see when creating a task with cloud data.                                                                                                                                                                                                                                                                                                                                                                           |
+| **Project ID**          | [Project ID](#authenticated-access). <br>For more information, see [projects page](https://cloud.google.com/resource-manager/docs/creating-managing-projects) and [cloud resource manager page](https://console.cloud.google.com/cloud-resource-manager). <br>**Note:** Project name does not match the project ID.                                                                                                                                                                                                                                                                                                 |
+| **Location**            | (Optional) Choose a region from the list or add a new one. For more information, see [**Available locations**](https://cloud.google.com/storage/docs/locations#available-locations).                                                                                                                                                                                                                                                                                                                                                                                                                             |
+| **Manifests**           | (Optional) Click **+ Add manifest** and enter the name of the manifest file with an extension. For example: `manifest.jsonl`.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |
+>>>>>>> cvat/develop
 
 <!--lint enable maximum-line-length-->
 
@@ -424,6 +469,7 @@ Fill in the following fields:
 
 <!--lint disable maximum-line-length-->
 
+<<<<<<< HEAD
 | CVAT                   | Azure                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
 | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Display name**       | Preferred display name for your storage.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
@@ -433,6 +479,17 @@ Fill in the following fields:
 | **Authorization type** | Depends on the container setup. <br>**[Account name and SAS token](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/document-translation/create-sas-tokens?tabs=blobs)**: <ul><li>**Account name** enter storage account name. <li>**SAS token** is located in the **Shared access signature** section of your [Storage account](#sas-token).</ul>. **[Anonymous access](https://docs.microsoft.com/en-us/azure/storage/blobs/anonymous-read-access-configure?tabs=portal)**: for anonymous access **Allow enabling public access on containers** must be enabled. |
 | **Prefix**             | (Optional) Used to filter data from the bucket. By setting a default prefix, you ensure that only data from a specific folder in the cloud is used in CVAT. This will affect which files you see when creating a task with cloud data.                                                                                                                                                                                                                                                                                                                                                 |
 | **Manifests**          | (Optional) Click **+ Add manifest** and enter the name of the manifest file with an extension. For example: `manifest.jsonl`.                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+=======
+| CVAT                    | Azure                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  |
+| ----------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Display name**        | Preferred display name for your storage.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+| **Description**         | (Optional) Add description of storage.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| **Provider**            | From drop-down list select **Azure Blob Container**.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| **Container name`**     | Name of the cloud storage container.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   |
+| **Authentication type** | Depends on the container setup. <br>**[Account name and SAS token](https://docs.microsoft.com/en-us/azure/cognitive-services/translator/document-translation/create-sas-tokens?tabs=blobs)**: <ul><li>**Account name** enter storage account name. <li>**SAS token** is located in the **Shared access signature** section of your [Storage account](#sas-token).</ul>. **[Anonymous access](https://docs.microsoft.com/en-us/azure/storage/blobs/anonymous-read-access-configure?tabs=portal)**: for anonymous access **Allow enabling public access on containers** must be enabled. |
+| **Prefix**              | (Optional) Used to filter data from the bucket. By setting a default prefix, you ensure that only data from a specific folder in the cloud is used in CVAT. This will affect which files you see when creating a task with cloud data.                                                                                                                                                                                                                                                                                                                                                 |
+| **Manifests**           | (Optional) Click **+ Add manifest** and enter the name of the manifest file with an extension. For example: `manifest.jsonl`.                                                                                                                                                                                                                                                                                                                                                                                                                                                          |
+>>>>>>> cvat/develop
 
 <!--lint enable maximum-line-length-->
 

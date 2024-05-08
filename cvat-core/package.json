@@ -1,6 +1,10 @@
 {
   "name": "cvat-core",
+<<<<<<< HEAD
   "version": "15.0.2",
+=======
+  "version": "15.0.5",
+>>>>>>> cvat/develop
   "type": "module",
   "description": "Part of Computer Vision Tool which presents an interface for client-side integration",
   "main": "src/api.ts",
