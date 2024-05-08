@@ -28,11 +28,7 @@ or [subscribe](https://www.cvat.ai/pricing/cloud) to get unlimited data,
 organizations, autoannotations, and [Roboflow and HuggingFace integration](https://www.cvat.ai/post/integrating-hugging-face-and-roboflow-models).
 
 Or set CVAT up as a self-hosted solution:
-<<<<<<< HEAD
-[Self-hosted Installation Guide](https://opencv.github.io/cvat/docs/administration/basics/installation/).
-=======
 [Self-hosted Installation Guide](https://docs.cvat.ai/docs/administration/basics/installation/).
->>>>>>> cvat/develop
 We provide [Enterprise support](https://www.cvat.ai/pricing/on-prem) for
 self-hosted installations with premium features: SSO, LDAP, Roboflow and
 HuggingFace integrations, and advanced analytics (coming soon). We also
@@ -40,15 +36,9 @@ do trainings and a dedicated support with 24 hour SLA.
 
 ## Quick start ⚡
 
-<<<<<<< HEAD
-- [Installation guide](https://opencv.github.io/cvat/docs/administration/basics/installation/)
-- [Manual](https://opencv.github.io/cvat/docs/manual/)
-- [Contributing](https://opencv.github.io/cvat/docs/contributing/)
-=======
 - [Installation guide](https://docs.cvat.ai/docs/administration/basics/installation/)
 - [Manual](https://docs.cvat.ai/docs/manual/)
 - [Contributing](https://docs.cvat.ai/docs/contributing/)
->>>>>>> cvat/develop
 - [Datumaro dataset framework](https://github.com/cvat-ai/datumaro/blob/develop/README.md)
 - [Server API](#api)
 - [Python SDK](#sdk)
