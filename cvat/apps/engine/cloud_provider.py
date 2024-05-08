@@ -389,11 +389,7 @@ class AWS_S3(_CloudStorage):
             )
             == 1
         ):
-<<<<<<< HEAD
-            raise Exception("Insufficient data for authorization")
-=======
             raise Exception("Insufficient data for authentication")
->>>>>>> cvat/develop
 
         kwargs = dict()
         for key, arg_v in zip(

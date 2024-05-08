@@ -1,31 +1,19 @@
 
-<<<<<<< HEAD
-# Copyright (C) 2018-2022 Intel Corporation
-=======
 # Copyright (C) 2018-2024 Intel Corporation
->>>>>>> cvat/develop
 #
 # SPDX-License-Identifier: MIT
 
 from django.contrib import admin
-<<<<<<< HEAD
-from .models import Task, Segment, Job, Label, AttributeSpec, Project, CloudStorage
-=======
 from .models import Task, Segment, Job, Label, AttributeSpec, Project, \
     CloudStorage, Storage, Data, AnnotationGuide, Asset
->>>>>>> cvat/develop
 
 class JobInline(admin.TabularInline):
     model = Job
     can_delete = False
 
-<<<<<<< HEAD
-    # Don't show extra lines to add an object
-=======
     autocomplete_fields = ('assignee', )
     readonly_fields = ('type', )
 
->>>>>>> cvat/develop
     def has_add_permission(self, request, obj):
         return False
 
@@ -35,43 +23,25 @@ class SegmentInline(admin.TabularInline):
     readonly_fields = ('start_frame', 'stop_frame')
     can_delete = False
 
-<<<<<<< HEAD
-    # Don't show extra lines to add an object
     def has_add_permission(self, request, obj):
         return False
 
-
-=======
-    def has_add_permission(self, request, obj):
-        return False
-
->>>>>>> cvat/develop
 class AttributeSpecInline(admin.TabularInline):
     model = AttributeSpec
     extra = 0
     max_num = None
 
-<<<<<<< HEAD
-=======
     readonly_fields = ('mutable', 'input_type', 'default_value', 'values')
 
     def has_add_permission(self, _request, obj):
         return False
 
->>>>>>> cvat/develop
 class LabelInline(admin.TabularInline):
     model = Label
     show_change_link = True
     extra = 0
     max_num = None
 
-<<<<<<< HEAD
-class LabelAdmin(admin.ModelAdmin):
-    # Don't show on admin index page
-    def has_module_permission(self, request):
-        return False
-
-=======
     readonly_fields = ('task', 'project', 'parent', 'type')
 
 class AssetInline(admin.TabularInline):
@@ -124,15 +94,11 @@ class LabelAdmin(admin.ModelAdmin):
     def has_add_permission(self, _request):
         return False
 
->>>>>>> cvat/develop
     inlines = [
         AttributeSpecInline
     ]
 
 class SegmentAdmin(admin.ModelAdmin):
-<<<<<<< HEAD
-    # Don't show on admin index page
-=======
     list_display = ('__str__', 'task', 'start_frame', 'stop_frame', 'type')
     search_fields = ('task__name', )
     readonly_fields = ('task', 'start_frame', 'stop_frame', 'type', 'frames')
@@ -140,7 +106,6 @@ class SegmentAdmin(admin.ModelAdmin):
     def has_delete_permission(self, request, obj=None):
         return False
 
->>>>>>> cvat/develop
     def has_module_permission(self, request):
         return False
 
@@ -149,14 +114,6 @@ class SegmentAdmin(admin.ModelAdmin):
     ]
 
 class ProjectAdmin(admin.ModelAdmin):
-<<<<<<< HEAD
-    date_hierarchy = 'updated_date'
-    readonly_fields = ('created_date', 'updated_date', 'status')
-    fields = ('name', 'owner', 'created_date', 'updated_date', 'status')
-    search_fields = ('name', 'owner__username', 'owner__first_name',
-        'owner__last_name', 'owner__email', 'assignee__username', 'assignee__first_name',
-        'assignee__last_name')
-=======
     date_hierarchy = 'created_date'
     list_display = ('name', 'organization', 'owner', 'created_date', 'updated_date', 'status')
     search_fields = ('name', 'owner__username', 'owner__first_name',
@@ -171,7 +128,6 @@ class ProjectAdmin(admin.ModelAdmin):
     autocomplete_fields = ('owner', 'assignee', 'organization')
     raw_id_fields = ('source_storage', 'target_storage')
 
->>>>>>> cvat/develop
     inlines = [
         LabelInline
     ]
@@ -180,14 +136,6 @@ class ProjectAdmin(admin.ModelAdmin):
         return False
 
 class TaskAdmin(admin.ModelAdmin):
-<<<<<<< HEAD
-    date_hierarchy = 'updated_date'
-    readonly_fields = ('created_date', 'updated_date', 'overlap')
-    list_display = ('name', 'mode', 'owner', 'assignee', 'created_date', 'updated_date')
-    search_fields = ('name', 'mode', 'owner__username', 'owner__first_name',
-        'owner__last_name', 'owner__email', 'assignee__username', 'assignee__first_name',
-        'assignee__last_name')
-=======
     date_hierarchy = 'created_date'
     list_display = ('name', 'dimension', 'mode', 'organization', 'owner', 'assignee', 'created_date', 'updated_date')
     search_fields = ('name', 'mode', 'owner__username', 'owner__first_name',
@@ -202,29 +150,15 @@ class TaskAdmin(admin.ModelAdmin):
     autocomplete_fields = ('project', 'owner', 'assignee', 'organization')
     raw_id_fields = ('source_storage', 'target_storage', 'data')
 
->>>>>>> cvat/develop
     inlines = [
         SegmentInline,
         LabelInline
     ]
 
-<<<<<<< HEAD
-    # Don't allow to add a task because it isn't trivial operation
-=======
->>>>>>> cvat/develop
     def has_add_permission(self, request):
         return False
 
 class CloudStorageAdmin(admin.ModelAdmin):
-<<<<<<< HEAD
-    date_hierarchy = 'updated_date'
-    readonly_fields = ('created_date', 'updated_date', 'provider_type')
-    list_display = ('__str__', 'resource', 'owner', 'created_date', 'updated_date')
-    search_fields = ('provider_type', 'display_name', 'resource', 'owner__username', 'owner__first_name',
-        'owner__last_name', 'owner__email',)
-
-    empty_value_display = 'unknown'
-=======
     date_hierarchy = 'created_date'
     list_display = ('__str__', 'resource', 'owner', 'created_date', 'updated_date')
     search_fields = ('provider_type', 'display_name', 'resource', 'owner__username', 'owner__first_name',
@@ -236,13 +170,10 @@ class CloudStorageAdmin(admin.ModelAdmin):
 
     readonly_fields = ('created_date', 'updated_date', 'provider_type')
     autocomplete_fields = ('owner', 'organization')
->>>>>>> cvat/develop
 
     def has_add_permission(self, request):
         return False
 
-<<<<<<< HEAD
-=======
 class AnnotationGuideAdmin(admin.ModelAdmin):
     list_display = ('__str__', 'task', 'project', 'is_public')
     search_fields = ('task__name', 'project__name')
@@ -256,16 +187,11 @@ class AnnotationGuideAdmin(admin.ModelAdmin):
         AssetInline
     ]
 
->>>>>>> cvat/develop
 admin.site.register(Task, TaskAdmin)
 admin.site.register(Segment, SegmentAdmin)
 admin.site.register(Label, LabelAdmin)
 admin.site.register(Project, ProjectAdmin)
-<<<<<<< HEAD
-admin.site.register(CloudStorage, CloudStorageAdmin)
-=======
 admin.site.register(Storage, StorageAdmin)
 admin.site.register(CloudStorage, CloudStorageAdmin)
 admin.site.register(Data, DataAdmin)
 admin.site.register(AnnotationGuide, AnnotationGuideAdmin)
->>>>>>> cvat/develop

@@ -10,13 +10,8 @@ from drf_spectacular.types import OpenApiTypes
 from rest_framework.renderers import JSONRenderer
 
 
-<<<<<<< HEAD
-from cvat.apps.iam.permissions import EventsPermission
-from cvat.apps.iam.filters import ORGANIZATION_OPEN_API_PARAMETERS
-=======
 from cvat.apps.iam.filters import ORGANIZATION_OPEN_API_PARAMETERS
 from cvat.apps.events.permissions import EventsPermission
->>>>>>> cvat/develop
 from cvat.apps.events.serializers import ClientEventsSerializer
 from cvat.apps.engine.log import vlogger
 from .export import export

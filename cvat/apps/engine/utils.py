@@ -1,8 +1,5 @@
 # Copyright (C) 2020-2022 Intel Corporation
-<<<<<<< HEAD
-=======
 # Copyright (C) 2024 CVAT.ai Corporation
->>>>>>> cvat/develop
 #
 # SPDX-License-Identifier: MIT
 
@@ -22,10 +19,7 @@ import re
 import logging
 import platform
 
-<<<<<<< HEAD
-=======
 from datumaro.util.os_util import walk
->>>>>>> cvat/develop
 from rq.job import Job, Dependency
 from django_rq.queues import DjangoRQ
 from pathlib import Path
@@ -403,8 +397,6 @@ def build_annotations_file_name(
         class_name, identifier, 'annotations' if is_annotation_file else 'dataset',
         timestamp, format_name, extension,
     ).lower()
-<<<<<<< HEAD
-=======
 
 
 def directory_tree(path, max_depth=None) -> str:
@@ -421,4 +413,3 @@ def directory_tree(path, max_depth=None) -> str:
         for file in files:
             tree += f"{indent}-{file}\n"
     return tree
->>>>>>> cvat/develop

@@ -4,10 +4,6 @@
 # SPDX-License-Identifier: MIT
 
 import functools
-<<<<<<< HEAD
-import hashlib
-=======
->>>>>>> cvat/develop
 
 from django.http import Http404, HttpResponseBadRequest, HttpResponseRedirect
 from rest_framework import views, serializers
@@ -17,13 +13,6 @@ from django.conf import settings
 from django.http import HttpResponse
 from django.views.decorators.http import etag as django_etag
 from rest_framework.response import Response
-<<<<<<< HEAD
-from dj_rest_auth.registration.views import RegisterView
-from dj_rest_auth.views import LoginView
-from allauth.account import app_settings as allauth_settings
-from allauth.account.views import ConfirmEmailView
-from allauth.account.utils import has_verified_email, send_email_confirmation
-=======
 from dj_rest_auth.app_settings import api_settings as dj_rest_auth_settings
 from dj_rest_auth.registration.views import RegisterView
 from dj_rest_auth.utils import jwt_encode
@@ -31,7 +20,6 @@ from dj_rest_auth.views import LoginView
 from allauth.account import app_settings as allauth_settings
 from allauth.account.views import ConfirmEmailView
 from allauth.account.utils import complete_signup, has_verified_email, send_email_confirmation
->>>>>>> cvat/develop
 
 from furl import furl
 
@@ -40,10 +28,7 @@ from drf_spectacular.utils import OpenApiResponse, extend_schema, inline_seriali
 from drf_spectacular.contrib.rest_auth import get_token_serializer_class
 
 from .authentication import Signer
-<<<<<<< HEAD
-=======
 from .utils import get_opa_bundle
->>>>>>> cvat/develop
 
 @extend_schema(tags=['auth'])
 @extend_schema_view(post=extend_schema(
@@ -114,16 +99,6 @@ class LoginViewEx(LoginView):
 
 class RegisterViewEx(RegisterView):
     def get_response_data(self, user):
-<<<<<<< HEAD
-        data = self.get_serializer(user).data
-        data['email_verification_required'] = True
-        data['key'] = None
-        if allauth_settings.EMAIL_VERIFICATION != \
-            allauth_settings.EmailVerificationMethod.MANDATORY:
-            data['email_verification_required'] = False
-            data['key'] = user.auth_token.key
-        return data
-=======
         serializer = self.get_serializer(user)
         return serializer.data
 
@@ -155,7 +130,6 @@ class RegisterViewEx(RegisterView):
             None,
         )
         return user
->>>>>>> cvat/develop
 
 def _etag(etag_func):
     """
@@ -185,25 +159,9 @@ class RulesView(views.APIView):
     authentication_classes = []
     iam_organization_field = None
 
-<<<<<<< HEAD
-    @staticmethod
-    def _get_bundle_path():
-        return settings.IAM_OPA_BUNDLE_PATH
-
-    @staticmethod
-    def _etag_func(file_path):
-        with open(file_path, 'rb') as f:
-            return hashlib.blake2b(f.read()).hexdigest()
-
-    @_etag(lambda _: RulesView._etag_func(RulesView._get_bundle_path()))
-    def get(self, request):
-        file_obj = open(self._get_bundle_path() ,"rb")
-        return HttpResponse(file_obj, content_type='application/x-tar')
-=======
     @_etag(lambda request: get_opa_bundle()[1])
     def get(self, request):
         return HttpResponse(get_opa_bundle()[0], content_type='application/x-tar')
->>>>>>> cvat/develop
 
 class ConfirmEmailViewEx(ConfirmEmailView):
     template_name = 'account/email/email_confirmation_signup_message.html'

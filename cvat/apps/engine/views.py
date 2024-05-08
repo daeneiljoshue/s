@@ -81,20 +81,12 @@ from cvat.apps.engine.location import get_location_configuration, StorageType
 
 from . import models, task
 from .log import ServerLogManager
-<<<<<<< HEAD
-from cvat.apps.iam.permissions import (CloudStoragePermission,
-    CommentPermission, IssuePermission, JobPermission, LabelPermission, ProjectPermission,
-    TaskPermission, UserPermission, PolicyEnforcer, IsAuthenticatedOrReadPublicResource)
-from cvat.apps.iam.filters import ORGANIZATION_OPEN_API_PARAMETERS
-from cvat.apps.engine.cache import MediaCache
-=======
 from cvat.apps.iam.filters import ORGANIZATION_OPEN_API_PARAMETERS
 from cvat.apps.iam.permissions import PolicyEnforcer, IsAuthenticatedOrReadPublicResource
 from cvat.apps.engine.cache import MediaCache
 from cvat.apps.engine.permissions import (CloudStoragePermission,
     CommentPermission, IssuePermission, JobPermission, LabelPermission, ProjectPermission,
     TaskPermission, UserPermission)
->>>>>>> cvat/develop
 from cvat.apps.engine.view_utils import tus_chunk_action
 
 slogger = ServerLogManager(__name__)
@@ -960,11 +952,7 @@ class TaskViewSet(viewsets.GenericViewSet, mixins.ListModelMixin,
         """
         Applies file ordering for the "predefined" file sorting method of the task creation.
 
-<<<<<<< HEAD
-        Read more: https://github.com/opencv/cvat/issues/5061
-=======
         Read more: https://github.com/cvat-ai/cvat/issues/5061
->>>>>>> cvat/develop
         """
 
         expected_files = ordering
@@ -996,11 +984,7 @@ class TaskViewSet(viewsets.GenericViewSet, mixins.ListModelMixin,
         response = super().init_tus_upload(request)
 
         if self._is_data_uploading() and response.status_code == status.HTTP_201_CREATED:
-<<<<<<< HEAD
-            self._maybe_append_upload_info_entry(response['Upload-Filename'])
-=======
             self._maybe_append_upload_info_entry(self._get_metadata(request)['filename'])
->>>>>>> cvat/develop
 
         return response
 
@@ -1171,11 +1155,7 @@ class TaskViewSet(viewsets.GenericViewSet, mixins.ListModelMixin,
             For archives (e.g. '.zip'), a manifest file ('*.jsonl') is required when using
             the 'predefined' file ordering. Such file must be provided next to the archive
             in the list of files. Read more about manifest files here:
-<<<<<<< HEAD
-            https://opencv.github.io/cvat/docs/manual/advanced/dataset_manifest/
-=======
             https://docs.cvat.ai/docs/manual/advanced/dataset_manifest/
->>>>>>> cvat/develop
 
             After all data is sent, the operation status can be retrieved via
             the /status endpoint.
@@ -1450,11 +1430,7 @@ class TaskViewSet(viewsets.GenericViewSet, mixins.ListModelMixin,
             # FIXME: It seems that in some cases exc_info can be None.
             # It's not really clear how it is possible, but it can
             # lead to an error in serializing the response
-<<<<<<< HEAD
-            # https://github.com/opencv/cvat/issues/5215
-=======
             # https://github.com/cvat-ai/cvat/issues/5215
->>>>>>> cvat/develop
             response = { "state": "Failed", "message": parse_exception_message(job.exc_info or "Unknown error") }
         else:
             response = { "state": "Started" }
@@ -2418,11 +2394,7 @@ class UserViewSet(viewsets.GenericViewSet, mixins.ListModelMixin,
     @action(detail=False, methods=['GET'])
     def self(self, request):
         """
-<<<<<<< HEAD
-        Method returns an instance of a user who is currently authorized
-=======
         Method returns an instance of a user who is currently authenticated
->>>>>>> cvat/develop
         """
         serializer_class = self.get_serializer_class()
         serializer = serializer_class(request.user, context={ "request": request })

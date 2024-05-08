@@ -1,17 +1,3 @@
-<<<<<<< HEAD
-# Copyright (C) 2023 CVAT.ai Corporation
-#
-# SPDX-License-Identifier: MIT
-
-from .models import Organization
-from django.contrib import admin
-
-class OrganizationAdmin(admin.ModelAdmin):
-    model = Organization
-    search_fields = ('slug', 'type')
-    list_display = ('id', 'slug', 'name')
-
-=======
 # Copyright (C) 2023-2024 CVAT.ai Corporation
 #
 # SPDX-License-Identifier: MIT
@@ -39,5 +25,4 @@ class OrganizationAdmin(admin.ModelAdmin):
         MembershipInline
     ]
 
->>>>>>> cvat/develop
 admin.site.register(Organization, OrganizationAdmin)

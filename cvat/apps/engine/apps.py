@@ -1,8 +1,5 @@
 # Copyright (C) 2018-2022 Intel Corporation
-<<<<<<< HEAD
-=======
 # Copyright (C) 2024 CVAT.ai Corporation
->>>>>>> cvat/develop
 #
 # SPDX-License-Identifier: MIT
 
@@ -17,9 +14,6 @@ class EngineConfig(AppConfig):
         import cvat.apps.engine.signals
         # Required in order to silent "unused-import" in pyflake
         assert cvat.apps.engine.signals
-<<<<<<< HEAD
-=======
 
         from cvat.apps.iam.permissions import load_app_permissions
         load_app_permissions(self)
->>>>>>> cvat/develop

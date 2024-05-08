@@ -1,20 +1,3 @@
-<<<<<<< HEAD
-# Copyright (C) 2023 CVAT.ai Corporation
-#
-# SPDX-License-Identifier: MIT
-
-from cvat.apps.analytics_report.models import GranularityChoice, ViewChoice
-from cvat.apps.analytics_report.report.primary_metrics.base import PrimaryMetricBase
-
-
-class JobObjects(PrimaryMetricBase):
-    _title = "Objects"
-    _description = "Metric shows number of added/changed/deleted objects for the Job."
-    _default_view = ViewChoice.HISTOGRAM
-    _key = "objects"
-    # Raw SQL queries are used to execute ClickHouse queries, as there is no ORM available here
-    _query = "SELECT toStartOfDay(timestamp) as day, scope, sum(count) FROM events WHERE scope IN ({scopes:Array(String)}) AND job_id = {job_id:UInt64} GROUP BY scope, day ORDER BY day ASC"
-=======
 # Copyright (C) 2023-2024 CVAT.ai Corporation
 #
 # SPDX-License-Identifier: MIT
@@ -65,7 +48,6 @@ class JobObjects(PrimaryMetricBase):
     _title = "Objects"
     _description = "Metric shows number of added/changed/deleted objects for the Job."
     _default_view = ViewChoice.HISTOGRAM
->>>>>>> cvat/develop
     _granularity = GranularityChoice.DAY
 
     def calculate(self):
@@ -78,24 +60,10 @@ class JobObjects(PrimaryMetricBase):
             for obj_type in obj_types:
                 statistics[action][obj_type] = {}
 
-<<<<<<< HEAD
-        result = self._make_clickhouse_query(
-            {
-                "scopes": scopes,
-                "job_id": self._db_obj.id,
-            }
-        )
-
-        for day, scope, count in result.result_rows:
-            action, obj_type = scope.split(":")
-            statistics[action][obj_type][day] = count
-
-=======
         rows = self._data_extractor.extract_for_job(self._db_obj.id, {"scopes": scopes})
         for day, scope, count in rows:
             action, obj_type = scope.split(":")
             statistics[action][obj_type][day] = count
->>>>>>> cvat/develop
         objects_statistics = self.get_empty()
 
         dates = set()

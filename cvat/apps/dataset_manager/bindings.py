@@ -15,10 +15,7 @@ from types import SimpleNamespace
 from typing import (Any, Callable, DefaultDict, Dict, Iterable, List, Literal, Mapping,
                     NamedTuple, Optional, OrderedDict, Sequence, Set, Tuple, Union)
 
-<<<<<<< HEAD
-=======
 from attrs.converters import to_bool
->>>>>>> cvat/develop
 import datumaro as dm
 import defusedxml.ElementTree as ET
 import numpy as np
@@ -1957,12 +1954,8 @@ def import_dm_annotations(dm_dataset: dm.Dataset, instance_data: Union[ProjectDa
         'sly_pointcloud',
         'coco',
         'coco_instances',
-<<<<<<< HEAD
-        'coco_person_keypoints'
-=======
         'coco_person_keypoints',
         'voc'
->>>>>>> cvat/develop
     ]
 
     label_cat = dm_dataset.categories()[dm.AnnotationType.label]
@@ -2040,15 +2033,9 @@ def import_dm_annotations(dm_dataset: dm.Dataset, instance_data: Union[ProjectDa
                     # because in some formats return type can be different
                     # from bool / None
                     # https://github.com/openvinotoolkit/datumaro/issues/719
-<<<<<<< HEAD
-                    occluded = dm.util.cast(ann.attributes.pop('occluded', None), bool) is True
-                    keyframe = dm.util.cast(ann.attributes.get('keyframe', None), bool) is True
-                    outside = dm.util.cast(ann.attributes.pop('outside', None), bool) is True
-=======
                     occluded = dm.util.cast(ann.attributes.pop('occluded', None), to_bool) is True
                     keyframe = dm.util.cast(ann.attributes.get('keyframe', None), to_bool) is True
                     outside = dm.util.cast(ann.attributes.pop('outside', None), to_bool) is True
->>>>>>> cvat/develop
 
                     track_id = ann.attributes.pop('track_id', None)
                     source = ann.attributes.pop('source').lower() \
@@ -2095,11 +2082,7 @@ def import_dm_annotations(dm_dataset: dm.Dataset, instance_data: Union[ProjectDa
                         ))
                         continue
 
-<<<<<<< HEAD
-                    if keyframe or outside:
-=======
                     if dm_dataset.format in track_formats:
->>>>>>> cvat/develop
                         if track_id not in tracks:
                             tracks[track_id] = {
                                 'label': label_cat.items[ann.label].name,
@@ -2126,16 +2109,8 @@ def import_dm_annotations(dm_dataset: dm.Dataset, instance_data: Union[ProjectDa
 
                         if ann.type == dm.AnnotationType.skeleton:
                             for element in ann.elements:
-<<<<<<< HEAD
-                                element_keyframe = dm.util.cast(element.attributes.get('keyframe', None), bool, True)
                                 element_occluded = element.visibility[0] == dm.Points.Visibility.hidden
                                 element_outside = element.visibility[0] == dm.Points.Visibility.absent
-                                if not element_keyframe and not element_outside:
-                                    continue
-=======
-                                element_occluded = element.visibility[0] == dm.Points.Visibility.hidden
-                                element_outside = element.visibility[0] == dm.Points.Visibility.absent
->>>>>>> cvat/develop
 
                                 if element.label not in tracks[track_id]['elements']:
                                     tracks[track_id]['elements'][element.label] = instance_data.Track(
@@ -2144,10 +2119,6 @@ def import_dm_annotations(dm_dataset: dm.Dataset, instance_data: Union[ProjectDa
                                         source=source,
                                         shapes=[],
                                     )
-<<<<<<< HEAD
-=======
-
->>>>>>> cvat/develop
                                 element_attributes = [
                                     instance_data.Attribute(name=n, value=str(v))
                                     for n, v in element.attributes.items()
@@ -2179,12 +2150,6 @@ def import_dm_annotations(dm_dataset: dm.Dataset, instance_data: Union[ProjectDa
                 raise CvatImportError("Image {}: can't import annotation "
                     "#{} ({}): {}".format(item.id, idx, ann.type.name, e)) from e
 
-<<<<<<< HEAD
-    for track in tracks.values():
-        track['elements'] = list(track['elements'].values())
-        instance_data.add_track(instance_data.Track(**track))
-
-=======
     def _validate_track_shapes(shapes):
         shapes = sorted(shapes, key=lambda t: t.frame)
         new_shapes = []
@@ -2233,7 +2198,6 @@ def import_dm_annotations(dm_dataset: dm.Dataset, instance_data: Union[ProjectDa
         if track['shapes'] or track['elements']:
             track['elements'] = list(track['elements'].values())
             instance_data.add_track(instance_data.Track(**track))
->>>>>>> cvat/develop
 
 def import_labels_to_project(project_annotation, dataset: dm.Dataset):
     labels = []
