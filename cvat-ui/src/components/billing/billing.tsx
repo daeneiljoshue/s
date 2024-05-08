@@ -4,64 +4,61 @@
 
 import React from 'react';
 
-interface PricingPlanProps {
-    name?: string; // Optional: You can remove this if not needed
-    price?: number; // Optional: You can remove this if not needed
-    description?: string; // Optional: You can remove this if not needed
-    annualPrice?: number; // Optional: You can remove this if not needed
-    solo?: boolean;
-    free?: boolean;
+interface SubscriptionPlan {
+  feature: string;
+  solo: string | number;
+  free: string | number;
 }
 
-const PricingPlan: React.FC<PricingPlanProps> = ({
-    name,
-    price,
-    description,
-    annualPrice,
-    solo,
-    free,
-}) => {
-    return (
-        <div className="pricing-plan">
-            {name && <h2>{name}</h2>}
-            {price && <p>Price: ${price} per month</p>}
-            {description && <p>{description}</p>}
-            {annualPrice && (
-                <p>Annual Price: ${annualPrice} (Save 30%)</p>
-            )}
+const subscriptionPlans: SubscriptionPlan[] = [
+  {
+    feature: 'Automatic annotation on a task',
+    solo: '∞',
+    free: 'X',
+  },
+  {
+    feature: 'Attached cloud storage limit',
+    solo: '∞',
+    free: 1,
+  },
+  // Add more subscription plans here
+];
 
-            {solo !== undefined && free !== undefined && (
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Feature</th>
-                            <th>Solo</th>
-                            <th>Free</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Automatic annotation on a task</td>
-                            <td>{solo ? '∞' : 'X'}</td>
-                            <td>{free ? 'X' : '∞'}</td>
-                        </tr>
-                        {/* Add more features as needed */}
-                    </tbody>
-                </table>
-            )}
-
-            <p>
-                Additional data for the invoice: Include address, phone number, VAT information.
-            </p>
-
-            <div className="contact-sales">
-                <p>
-                    For more information, contact sales via email.
-                </p>
-                {/* Add your email link or button here */}
-            </div>
-        </div>
-    );
+const PricingPlan = () => {
+  return (
+    <div className="pricing-plan">
+      <h2>Choose the best plan for personal usage</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Solo Monthly</th>
+            <th>Solo Annual</th>
+            <th>Free</th>
+          </tr>
+        </thead>
+        <tbody>
+          {subscriptionPlans.map((plan) => (
+            <tr key={plan.feature}>
+              <td>{plan.feature}</td>
+              <td>{plan.solo}</td>
+              <td>${plan.solo} (Save 30%)</td> {/* Assuming annual price is solo price with a 30% discount */}
+              <td>{plan.free}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <button>Get started</button>
+      <div className="comparison">
+        <p>Comparison to Free plan</p>
+        <a href="#">See details</a>
+      </div>
+      <p>
+        <span>&#8595;</span> Got a question? Write us sales@annotationml.com
+      </p>
+    </div>
+  );
 };
 
 export default PricingPlan;
+
