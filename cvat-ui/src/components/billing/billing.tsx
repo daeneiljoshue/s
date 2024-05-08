@@ -28,7 +28,7 @@ const PricingPlan = () => {
   return (
     <div className="pricing-plan">
       <h2>Choose the best plan for personal usage</h2>
-      <table>
+      <table style={{ width: '50%' }}>
         <thead>
           <tr>
             <th>Feature</th>
