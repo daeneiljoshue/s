@@ -4,11 +4,7 @@
 # SPDX-License-Identifier: MIT
 
 from enum import Enum
-<<<<<<< HEAD
-from io import StringIO
-=======
 from io import StringIO, BytesIO
->>>>>>> cvat/develop
 import av
 import json
 import os
@@ -17,20 +13,11 @@ from abc import ABC, abstractmethod, abstractproperty, abstractstaticmethod
 from contextlib import closing
 from PIL import Image
 from json.decoder import JSONDecodeError
-<<<<<<< HEAD
-from io import BytesIO
-
-from .errors import InvalidManifestError, InvalidVideoFrameError
-from .utils import SortingMethod, md5_hash, rotate_image, sort
-
-from typing import Dict, List, Union, Optional
-=======
 
 from .errors import InvalidManifestError, InvalidVideoError
 from .utils import SortingMethod, md5_hash, rotate_image, sort
 
 from typing import Dict, List, Union, Optional, Iterator, Tuple
->>>>>>> cvat/develop
 
 class VideoStreamReader:
     def __init__(self, source_path, chunk_size, force):
@@ -45,11 +32,7 @@ class VideoStreamReader:
                 for frame in packet.decode():
                     # check type of first frame
                     if not frame.pict_type.name == 'I':
-<<<<<<< HEAD
-                        raise InvalidVideoFrameError('First frame is not key frame')
-=======
                         raise InvalidVideoError('The first frame is not a key frame')
->>>>>>> cvat/develop
 
                     # get video resolution
                     if video_stream.metadata.get('rotate'):
@@ -91,42 +74,6 @@ class VideoStreamReader:
                     return False
                 return True
 
-<<<<<<< HEAD
-    def __iter__(self):
-        with closing(av.open(self.source_path, mode='r')) as container:
-            video_stream = self._get_video_stream(container)
-            frame_pts, frame_dts = -1, -1
-            index, key_frame_number = 0, 0
-            for packet in container.demux(video_stream):
-                for frame in packet.decode():
-                    if None not in {frame.pts, frame_pts} and frame.pts <= frame_pts:
-                        raise InvalidVideoFrameError('Invalid pts sequences')
-                    if None not in {frame.dts, frame_dts} and frame.dts <= frame_dts:
-                        raise InvalidVideoFrameError('Invalid dts sequences')
-                    frame_pts, frame_dts = frame.pts, frame.dts
-
-                    if frame.key_frame:
-                        key_frame_number += 1
-                        ratio = (index + 1) // key_frame_number
-
-                        if ratio >= self._upper_bound and not self._force:
-                            raise AssertionError('Too few keyframes')
-
-                        key_frame = {
-                            'index': index,
-                            'pts': frame.pts,
-                            'md5': md5_hash(frame)
-                        }
-
-                        with closing(av.open(self.source_path, mode='r')) as checked_container:
-                            checked_container.seek(offset=key_frame['pts'], stream=video_stream)
-                            isValid = self.validate_key_frame(checked_container, video_stream, key_frame)
-                            if isValid:
-                                yield (index, key_frame['pts'], key_frame['md5'])
-                    else:
-                        yield index
-                    index += 1
-=======
     def __iter__(self) -> Iterator[Union[int, Tuple[int, int, str]]]:
         """
         Iterate over video frames and yield key frames or indexes.
@@ -187,7 +134,6 @@ class VideoStreamReader:
                         raise InvalidVideoError('The number of keyframes is not enough for smooth iteration over the video')
 
             # Update frames number if not already set
->>>>>>> cvat/develop
             if not self._frames_number:
                 self._frames_number = index
 
@@ -396,12 +342,9 @@ class _Index:
     def __len__(self):
         return len(self._index)
 
-<<<<<<< HEAD
-=======
     def is_empty(self) -> bool:
         return not len(self)
 
->>>>>>> cvat/develop
 class _ManifestManager(ABC):
     BASE_INFORMATION = {
         'version' : 1,
@@ -490,19 +433,12 @@ class _ManifestManager(ABC):
         return self._manifest
 
     def __len__(self):
-<<<<<<< HEAD
-        if hasattr(self, '_index'):
-            return len(self._index)
-        else:
-            return None
-=======
         return len(self._index)
 
     def is_empty(self) -> bool:
         if self._index.is_empty():
             self._index.load()
         return self._index.is_empty()
->>>>>>> cvat/develop
 
     def __getitem__(self, item):
         if isinstance(item, slice):
@@ -576,12 +512,9 @@ class VideoManifestManager(_ManifestManager):
 
         self.set_index()
 
-<<<<<<< HEAD
-=======
         if self.is_empty() and not self._reader._force:
             raise InvalidManifestError('Empty manifest file has been created')
 
->>>>>>> cvat/develop
     def partial_update(self, number, properties):
         pass
 

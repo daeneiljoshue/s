@@ -7,11 +7,7 @@ class BasicError(Exception):
     The basic exception type for all exceptions in the library
     """
 
-<<<<<<< HEAD
-class InvalidVideoFrameError(BasicError):
-=======
 class InvalidVideoError(BasicError):
->>>>>>> cvat/develop
     """
     Indicates an invalid video frame
     """
