@@ -28,12 +28,12 @@ const subscriptionPlans: SubscriptionPlan[] = [
   },
   {
     feature: 'Exporting annotations with images for a job',
-    solo: '✔', // Assuming a checkmark icon for Solo availability
+    solo: '∞', // Assuming a checkmark icon for Solo availability
     free: 'X',
   },
   {
     feature: 'Exporting annotations with images for a project',
-    solo: '✔',
+    solo: '∞',
     free: 'X',
   },
   {
@@ -43,22 +43,22 @@ const subscriptionPlans: SubscriptionPlan[] = [
   },
   {
     feature: 'Exporting annotations with images for a task',
-    solo: '✔',
+    solo: '∞',
     free: 'X',
   },
   {
     feature: 'Created tasks limit',
-    solo: 10,
+    solo: '∞',
     free: 'X',
   },
   {
     feature: 'Created tasks in a project limit',
-    solo: 5,
+    solo: '∞',
     free: 'X',
   },
   {
     feature: 'Project webhooks limit',
-    solo: 10,
+    solo: '∞',
     free: 'X',
   },
 ];
