@@ -13,13 +13,9 @@ import Title from 'antd/lib/typography/Title';
 import notification from 'antd/lib/notification';
 import { useIsMounted } from 'utils/hooks';
 import { Project, Task } from 'reducers';
-<<<<<<< HEAD
-import { AnalyticsReport, Job, getCore } from 'cvat-core-wrapper';
-=======
 import {
     AnalyticsReport, Job, RQStatus, getCore,
 } from 'cvat-core-wrapper';
->>>>>>> cvat/develop
 import moment from 'moment';
 import CVATLoadingSpinner from 'components/common/loading-spinner';
 import GoBackButton from 'components/common/go-back-button';
@@ -59,8 +55,6 @@ function handleTimePeriod(interval: DateIntervals): [string, string] {
     }
 }
 
-<<<<<<< HEAD
-=======
 function readInstanceType(location: ReturnType<typeof useLocation>): InstanceType {
     if (location.pathname.includes('projects')) {
         return 'project';
@@ -81,116 +75,19 @@ function readInstanceId(type: InstanceType): number {
     return +useParams<{ tid: string }>().tid;
 }
 
->>>>>>> cvat/develop
 type InstanceType = 'project' | 'task' | 'job';
 
 function AnalyticsPage(): JSX.Element {
     const location = useLocation();
 
-<<<<<<< HEAD
-    const requestedInstanceType: InstanceType = (() => {
-        if (location.pathname.includes('projects')) {
-            return 'project';
-        }
-        if (location.pathname.includes('jobs')) {
-            return 'job';
-        }
-        return 'task';
-    })();
-
-    const requestedInstanceID: number = (() => {
-        if (requestedInstanceType === 'project') {
-            return +useParams<{ pid: string }>().pid;
-        }
-        if (requestedInstanceType === 'job') {
-            return +useParams<{ jid: string }>().jid;
-        }
-        return +useParams<{ tid: string }>().tid;
-    })();
-
-    const [activeTab, setTab] = useState(getTabFromHash());
-
-=======
     const requestedInstanceType: InstanceType = readInstanceType(location);
     const requestedInstanceID = readInstanceId(requestedInstanceType);
 
     const [activeTab, setTab] = useState(getTabFromHash());
->>>>>>> cvat/develop
     const [instanceType, setInstanceType] = useState<InstanceType | null>(null);
     const [instance, setInstance] = useState<Project | Task | Job | null>(null);
     const [analyticsReport, setAnalyticsReport] = useState<AnalyticsReport | null>(null);
     const [timePeriod, setTimePeriod] = useState<DateIntervals>(DateIntervals.LAST_WEEK);
-<<<<<<< HEAD
-    const [fetching, setFetching] = useState(true);
-    const isMounted = useIsMounted();
-
-    const receiveInstance = (type: InstanceType, id: number): Promise<Task[] | Job[] | Project[]> => {
-        if (type === 'project') {
-            return core.projects.get({ id });
-        }
-
-        if (type === 'task') {
-            return core.tasks.get({ id });
-        }
-
-        return core.jobs.get({ jobID: id });
-    };
-
-    const receiveReport = (timeInterval: DateIntervals, type: InstanceType, id: number): Promise<AnalyticsReport> => {
-        const [endDate, startDate] = handleTimePeriod(timeInterval);
-        if (type === 'project') {
-            return core.analytics.performance.reports({
-                projectID: id,
-                endDate,
-                startDate,
-            });
-        }
-
-        if (type === 'task') {
-            return core.analytics.performance.reports({
-                taskID: id,
-                endDate,
-                startDate,
-            });
-        }
-
-        return core.analytics.performance.reports({
-            jobID: id,
-            endDate,
-            startDate,
-        });
-    };
-
-    useEffect(() => {
-        setFetching(true);
-
-        if (Number.isInteger(requestedInstanceID) && ['project', 'task', 'job'].includes(requestedInstanceType)) {
-            Promise.all([
-                receiveInstance(requestedInstanceType, requestedInstanceID),
-                receiveReport(timePeriod, requestedInstanceType, requestedInstanceID),
-            ])
-                .then(([instanceResponse, report]) => {
-                    const receivedInstance: Task | Project | Job = instanceResponse[0];
-                    if (receivedInstance && isMounted()) {
-                        setInstance(receivedInstance);
-                        setInstanceType(requestedInstanceType);
-                    }
-                    if (report && isMounted()) {
-                        setAnalyticsReport(report);
-                    }
-                })
-                .catch((error: Error) => {
-                    notification.error({
-                        message: 'Could not receive requested resources',
-                        description: `${error.toString()}`,
-                    });
-                })
-                .finally(() => {
-                    if (isMounted()) {
-                        setFetching(false);
-                    }
-                });
-=======
     const [reportRefreshingStatus, setReportRefreshingStatus] = useState<string | null>(null);
     const [fetching, setFetching] = useState(true);
     const isMounted = useIsMounted();
@@ -273,7 +170,6 @@ function AnalyticsPage(): JSX.Element {
                     setFetching(false);
                 }
             });
->>>>>>> cvat/develop
         } else {
             notification.error({
                 message: 'Could not load this page',
@@ -289,8 +185,6 @@ function AnalyticsPage(): JSX.Element {
         };
     }, [requestedInstanceType, requestedInstanceID, timePeriod]);
 
-<<<<<<< HEAD
-=======
     useEffect(() => {
         window.addEventListener('hashchange', () => {
             const hash = getTabFromHash();
@@ -327,7 +221,6 @@ function AnalyticsPage(): JSX.Element {
         });
     }, [requestedInstanceType, requestedInstanceID, timePeriod]);
 
->>>>>>> cvat/develop
     const onJobUpdate = useCallback((job: Job): void => {
         setFetching(true);
 
@@ -345,26 +238,9 @@ function AnalyticsPage(): JSX.Element {
             });
     }, []);
 
-<<<<<<< HEAD
-    useEffect(() => {
-        window.addEventListener('hashchange', () => {
-            const hash = getTabFromHash();
-            setTab(hash);
-        });
-    }, []);
-
-    const onTabKeyChange = (key: string): void => {
-        setTab(key as AnalyticsTabs);
-    };
-
-    useEffect(() => {
-        window.location.hash = activeTab;
-    }, [activeTab]);
-=======
     const onTabKeyChange = useCallback((key: string): void => {
         setTab(key as AnalyticsTabs);
     }, []);
->>>>>>> cvat/develop
 
     let backNavigation: JSX.Element | null = null;
     let title: JSX.Element | null = null;
@@ -404,13 +280,9 @@ function AnalyticsPage(): JSX.Element {
                     <AnalyticsOverview
                         report={analyticsReport}
                         timePeriod={timePeriod}
-<<<<<<< HEAD
-                        onTimePeriodChange={setTimePeriod}
-=======
                         reportRefreshingStatus={reportRefreshingStatus}
                         onTimePeriodChange={setTimePeriod}
                         onCreateReport={onCreateReport}
->>>>>>> cvat/develop
                     />
                 </Tabs.TabPane>
                 {instanceType === 'task' && (

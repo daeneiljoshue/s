@@ -222,10 +222,7 @@ function AttributeAnnotationSidebar(props: StateToProps & DispatchToProps): JSX.
         PREVIOUS_OBJECT: keyMap.PREVIOUS_OBJECT,
         SWITCH_LOCK: keyMap.SWITCH_LOCK,
         SWITCH_OCCLUDED: keyMap.SWITCH_OCCLUDED,
-<<<<<<< HEAD
-=======
         SWITCH_PINNED: keyMap.SWITCH_PINNED,
->>>>>>> cvat/develop
         NEXT_KEY_FRAME: keyMap.NEXT_KEY_FRAME,
         PREV_KEY_FRAME: keyMap.PREV_KEY_FRAME,
     };
@@ -261,8 +258,6 @@ function AttributeAnnotationSidebar(props: StateToProps & DispatchToProps): JSX.
                 updateAnnotations([activeObjectState]);
             }
         },
-<<<<<<< HEAD
-=======
         SWITCH_PINNED: (event: KeyboardEvent | undefined) => {
             preventDefault(event);
             if (activeObjectState) {
@@ -270,7 +265,6 @@ function AttributeAnnotationSidebar(props: StateToProps & DispatchToProps): JSX.
                 updateAnnotations([activeObjectState]);
             }
         },
->>>>>>> cvat/develop
         NEXT_KEY_FRAME: (event: KeyboardEvent | undefined) => {
             preventDefault(event);
             if (activeObjectState && activeObjectState.objectType === ObjectType.TRACK) {

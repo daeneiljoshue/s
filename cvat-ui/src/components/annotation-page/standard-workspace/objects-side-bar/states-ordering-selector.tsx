@@ -1,9 +1,5 @@
 // Copyright (C) 2020-2022 Intel Corporation
-<<<<<<< HEAD
-// Copyright (C) 2022 CVAT.ai Corporation
-=======
 // Copyright (C) 2022-2024 CVAT.ai Corporation
->>>>>>> cvat/develop
 //
 // SPDX-License-Identifier: MIT
 
@@ -24,14 +20,9 @@ function StatesOrderingSelectorComponent(props: StatesOrderingSelectorComponentP
 
     return (
         <Col>
-<<<<<<< HEAD
-            <Text strong>Sort by</Text>
-            <Select
-=======
             <Text>Sort by</Text>
             <Select
                 size='small'
->>>>>>> cvat/develop
                 className='cvat-objects-sidebar-ordering-selector'
                 dropdownClassName='cvat-objects-sidebar-ordering-dropdown'
                 value={statesOrdering}

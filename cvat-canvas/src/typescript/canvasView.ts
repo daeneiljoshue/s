@@ -97,11 +97,7 @@ export class CanvasViewImpl implements CanvasView, Listener {
         return this.controller.mode;
     }
 
-<<<<<<< HEAD
-    private onMessage = (messages: CanvasHint[] | null, topic: string) => {
-=======
     private onMessage = (messages: CanvasHint[] | null, topic: string): void => {
->>>>>>> cvat/develop
         this.canvas.dispatchEvent(
             new CustomEvent('canvas.message', {
                 bubbles: false,

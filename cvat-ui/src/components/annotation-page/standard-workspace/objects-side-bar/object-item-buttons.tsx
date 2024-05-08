@@ -1,8 +1,5 @@
 // Copyright (C) 2020-2022 Intel Corporation
-<<<<<<< HEAD
-=======
 // Copyright (C) 2024 CVAT.ai Corporation
->>>>>>> cvat/develop
 //
 // SPDX-License-Identifier: MIT
 
@@ -30,11 +27,7 @@ import {
 
 interface Props {
     readonly: boolean;
-<<<<<<< HEAD
-    parentID: number;
-=======
     parentID: number | null;
->>>>>>> cvat/develop
     objectType: ObjectType;
     shapeType: ShapeType;
     occluded: boolean;
@@ -47,10 +40,7 @@ interface Props {
     hiddenDisabled: boolean;
     keyframeDisabled: boolean;
     switchOccludedShortcut: string;
-<<<<<<< HEAD
-=======
     switchPinnedShortcut: string;
->>>>>>> cvat/develop
     switchOutsideShortcut: string;
     switchLockShortcut: string;
     switchHiddenShortcut: string;
@@ -179,17 +169,11 @@ function SwitchOccluded(props: Props): JSX.Element {
 }
 
 function SwitchPinned(props: Props): JSX.Element {
-<<<<<<< HEAD
-    const { pinned, pin, unpin } = props;
-    return (
-        <CVATTooltip title='Switch pinned property'>
-=======
     const {
         switchPinnedShortcut, pinned, pin, unpin,
     } = props;
     return (
         <CVATTooltip title={`Switch pinned property ${switchPinnedShortcut}`}>
->>>>>>> cvat/develop
             {pinned ? (
                 <PushpinFilled {...classes.pinned.enabled} onClick={unpin} />
             ) : (
@@ -244,15 +228,9 @@ function SwitchKeyframe(props: Props): JSX.Element {
     return (
         <CVATTooltip title={`Switch keyframe property ${switchKeyFrameShortcut}`}>
             {keyframe ? (
-<<<<<<< HEAD
-                <StarFilled {...classes.keyframe.enabled} onClick={unsetKeyframe} style={keyframeStyle} />
-            ) : (
-                <StarOutlined {...classes.keyframe.disabled} onClick={setKeyframe} style={keyframeStyle} />
-=======
                 <StarFilled style={keyframeStyle} onClick={unsetKeyframe} {...classes.keyframe.enabled} />
             ) : (
                 <StarOutlined style={keyframeStyle} onClick={setKeyframe} {...classes.keyframe.disabled} />
->>>>>>> cvat/develop
             )}
         </CVATTooltip>
     );

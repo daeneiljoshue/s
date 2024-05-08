@@ -483,15 +483,6 @@ class CanvasWrapperComponent extends React.PureComponent<Props> {
         if (prevProps.highlightedConflict !== highlightedConflict) {
             const severity: HighlightSeverity | undefined = highlightedConflict
                 ?.severity as unknown as HighlightSeverity;
-<<<<<<< HEAD
-            const highlightedClientIDs = (highlightedConflict?.annotationConflicts || [])
-                .map((conflict: AnnotationConflict) => annotations
-                    .find((state) => state.serverID === conflict.serverID && state.objectType === conflict.type),
-                ).filter((state: ObjectState | undefined) => !!state)
-                .map((state) => state?.clientID) as number[];
-
-            canvasInstance.highlight(highlightedClientIDs, severity || null);
-=======
 
             const highlightedObjects = (highlightedConflict?.annotationConflicts || [])
                 .map((conflict: AnnotationConflict) => annotations
@@ -505,7 +496,6 @@ class CanvasWrapperComponent extends React.PureComponent<Props> {
             } else if (!higlightedTags) {
                 canvasInstance.highlight(highlightedClientIDs, severity || null);
             }
->>>>>>> cvat/develop
         }
 
         if (gridSize !== prevProps.gridSize) {

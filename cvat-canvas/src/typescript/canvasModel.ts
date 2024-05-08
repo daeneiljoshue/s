@@ -554,12 +554,9 @@ export class CanvasModelImpl extends MasterImpl implements CanvasModel {
         }
 
         this.data.imageID = frameData.number;
-<<<<<<< HEAD
-=======
 
         const { zLayer: prevZLayer, objects: prevObjects } = this.data;
 
->>>>>>> cvat/develop
         frameData
             .data((): void => {
                 this.data.image = null;
@@ -567,11 +564,7 @@ export class CanvasModelImpl extends MasterImpl implements CanvasModel {
             })
             .then((data: Image): void => {
                 if (frameData.number !== this.data.imageID) {
-<<<<<<< HEAD
-                    // already another image
-=======
                     // check that request is still relevant after async image data fetching
->>>>>>> cvat/develop
                     return;
                 }
 
@@ -606,10 +599,6 @@ export class CanvasModelImpl extends MasterImpl implements CanvasModel {
                 }
 
                 this.notify(UpdateReasons.IMAGE_CHANGED);
-<<<<<<< HEAD
-                this.data.zLayer = zLayer;
-                this.data.objects = objectStates;
-=======
 
                 if (prevZLayer === this.data.zLayer && prevObjects === this.data.objects) {
                     // check the request is relevant, other setup() may have been called while promise resolving
@@ -617,7 +606,6 @@ export class CanvasModelImpl extends MasterImpl implements CanvasModel {
                     this.data.objects = objectStates;
                 }
 
->>>>>>> cvat/develop
                 this.notify(UpdateReasons.OBJECTS_UPDATED);
             })
             .catch((exception: unknown): void => {

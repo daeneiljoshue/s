@@ -6,11 +6,7 @@
 import serverProxy from './server-proxy';
 import { ArgumentError } from './exceptions';
 import MLModel from './ml-model';
-<<<<<<< HEAD
-import { RQStatus } from './enums';
-=======
 import { RQStatus, ShapeType } from './enums';
->>>>>>> cvat/develop
 
 export interface ModelProvider {
     name: string;
@@ -18,8 +14,6 @@ export interface ModelProvider {
     attributes: Record<string, string>;
 }
 
-<<<<<<< HEAD
-=======
 export interface InteractorResults {
     mask: number[][];
     points?: [number, number][];
@@ -42,7 +36,6 @@ export interface TrackerResults {
     shapes: number[][];
 }
 
->>>>>>> cvat/develop
 class LambdaManager {
     private cachedList: MLModel[];
     private listening: Record<number, {
@@ -72,11 +65,7 @@ class LambdaManager {
         return { models, count: lambdaFunctions.length };
     }
 
-<<<<<<< HEAD
-    async run(taskID: number, model: MLModel, args: any) {
-=======
     async run(taskID: number, model: MLModel, args: any): Promise<string> {
->>>>>>> cvat/develop
         if (!Number.isInteger(taskID) || taskID < 0) {
             throw new ArgumentError(`Argument taskID must be a positive integer. Got "${taskID}"`);
         }
@@ -101,11 +90,7 @@ class LambdaManager {
         return result.id;
     }
 
-<<<<<<< HEAD
-    async call(taskID, model, args) {
-=======
     async call(taskID, model, args): Promise<TrackerResults | InteractorResults | DetectedShape[]> {
->>>>>>> cvat/develop
         if (!Number.isInteger(taskID) || taskID < 0) {
             throw new ArgumentError(`Argument taskID must be a positive integer. Got "${taskID}"`);
         }
@@ -118,11 +103,7 @@ class LambdaManager {
         return result;
     }
 
-<<<<<<< HEAD
-    async requests() {
-=======
     async requests(): Promise<any[]> {
->>>>>>> cvat/develop
         const lambdaRequests = await serverProxy.lambda.requests();
         return lambdaRequests
             .filter((request) => [RQStatus.QUEUED, RQStatus.STARTED].includes(request.status));

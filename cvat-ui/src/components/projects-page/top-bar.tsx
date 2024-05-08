@@ -16,11 +16,7 @@ import { usePrevious } from 'utils/hooks';
 import { ProjectsQuery } from 'reducers';
 import { SortingComponent, ResourceFilterHOC, defaultVisibility } from 'components/resource-sorting-filtering';
 
-<<<<<<< HEAD
 import dimensions from './dimensions';
-=======
-import dimensions from 'utils/dimensions';
->>>>>>> cvat/develop
 import {
     localStorageRecentKeyword, localStorageRecentCapacity, predefinedFilterValues, config,
 } from './projects-filter-configuration';

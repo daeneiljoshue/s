@@ -17,11 +17,7 @@
     "paths": {
       "cvat-canvas.node": ["dist/cvat-canvas3d.node"]
     },
-<<<<<<< HEAD
-    "baseUrl": ""
-=======
     "baseUrl": "."
->>>>>>> cvat/develop
   },
   "include": ["src/typescript/canvas3d.ts"]
 }

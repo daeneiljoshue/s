@@ -1,8 +1,5 @@
 // Copyright (C) 2021-2022 Intel Corporation
-<<<<<<< HEAD
-=======
 // Copyright (C) 2022-2024 CVAT.ai Corporation
->>>>>>> cvat/develop
 //
 // SPDX-License-Identifier: MIT
 
@@ -11,10 +8,7 @@ import Pagination from 'antd/lib/pagination';
 import { Row, Col } from 'antd/lib/grid';
 
 import { CloudStorage } from 'reducers';
-<<<<<<< HEAD
-=======
 import dimensions from 'utils/dimensions';
->>>>>>> cvat/develop
 import CloudStorageItemComponent from './cloud-storage-item';
 
 interface Props {
@@ -44,11 +38,7 @@ export default function StoragesList(props: Props): JSX.Element {
     return (
         <>
             <Row justify='center' align='middle'>
-<<<<<<< HEAD
-                <Col span={24} className='cvat-cloud-storages-list'>
-=======
                 <Col {...dimensions} className='cvat-cloud-storages-list'>
->>>>>>> cvat/develop
                     {groupedStorages.map(
                         (instances: CloudStorage[]): JSX.Element => (
                             <Row key={instances[0].id} gutter={[8, 8]}>

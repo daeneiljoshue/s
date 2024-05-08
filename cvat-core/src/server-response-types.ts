@@ -26,11 +26,7 @@ export interface SerializedAnnotationFormats {
     exporters: SerializedAnnotationExporter[];
 }
 
-<<<<<<< HEAD
 export interface ApiCommonFilterParams {
-=======
-export interface APICommonFilterParams {
->>>>>>> cvat/develop
     page?: number;
     page_size?: number | 'all';
     filter?: string;
@@ -40,11 +36,7 @@ export interface APICommonFilterParams {
     search?: string;
 }
 
-<<<<<<< HEAD
 export interface ProjectsFilter extends ApiCommonFilterParams {
-=======
-export interface ProjectsFilter extends APICommonFilterParams {
->>>>>>> cvat/develop
     id?: number;
 }
 
@@ -241,17 +233,10 @@ export interface SerializedOrganization {
     contact?: SerializedOrganizationContact,
 }
 
-<<<<<<< HEAD
 export interface ApiQualitySettingsFilter extends ApiCommonFilterParams {
     task_id?: number;
 }
 export type QualitySettingsFilter = Camelized<ApiQualitySettingsFilter>;
-=======
-export interface APIQualitySettingsFilter extends APICommonFilterParams {
-    task_id?: number;
-}
-export type QualitySettingsFilter = Camelized<APIQualitySettingsFilter>;
->>>>>>> cvat/develop
 
 export interface SerializedQualitySettingsData {
     id?: number;
@@ -270,17 +255,10 @@ export interface SerializedQualitySettingsData {
     compare_attributes?: boolean;
 }
 
-<<<<<<< HEAD
 export interface ApiQualityConflictsFilter extends ApiCommonFilterParams {
     report_id?: number;
 }
 export type QualityConflictsFilter = Camelized<ApiQualityConflictsFilter>;
-=======
-export interface APIQualityConflictsFilter extends APICommonFilterParams {
-    report_id?: number;
-}
-export type QualityConflictsFilter = Camelized<APIQualityConflictsFilter>;
->>>>>>> cvat/develop
 
 export interface SerializedAnnotationConflictData {
     job_id?: number;
@@ -301,22 +279,14 @@ export interface SerializedQualityConflictData {
     description?: string;
 }
 
-<<<<<<< HEAD
 export interface ApiQualityReportsFilter extends ApiCommonFilterParams {
-=======
-export interface APIQualityReportsFilter extends APICommonFilterParams {
->>>>>>> cvat/develop
     parent_id?: number;
     peoject_id?: number;
     task_id?: number;
     job_id?: number;
     target?: string;
 }
-<<<<<<< HEAD
 export type QualityReportsFilter = Camelized<ApiQualityReportsFilter>;
-=======
-export type QualityReportsFilter = Camelized<APIQualityReportsFilter>;
->>>>>>> cvat/develop
 
 export interface SerializedQualityReportData {
     id?: number;
@@ -375,30 +345,17 @@ export interface SerializedAnalyticsEntry {
     transformations?: SerializedTransformationEntry[];
 }
 
-<<<<<<< HEAD
 export interface ApiAnalyticsReportFilter extends ApiCommonFilterParams {
-=======
-export interface APIAnalyticsReportFilter {
->>>>>>> cvat/develop
     project_id?: number;
     task_id?: number;
     job_id?: number;
     start_date?: string;
     end_date?: string;
 }
-<<<<<<< HEAD
 export type AnalyticsReportFilter = Camelized<ApiAnalyticsReportFilter>;
 
 export interface SerializedAnalyticsReport {
     id?: number;
-=======
-export type AnalyticsReportFilter = Camelized<APIAnalyticsReportFilter>;
-
-export interface SerializedAnalyticsReport {
-    job_id?: number;
-    task_id?: number;
-    project_id?: number;
->>>>>>> cvat/develop
     target?: string;
     created_date?: string;
     statistics?: SerializedAnalyticsEntry[];

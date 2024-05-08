@@ -13,11 +13,7 @@ import {
     RectDrawingMethod, CuboidDrawingMethod, Canvas, CanvasMode as Canvas2DMode,
 } from 'cvat-canvas-wrapper';
 import {
-<<<<<<< HEAD
-    getCore, MLModel, JobType, Job, QualityConflict,
-=======
     getCore, MLModel, JobType, Job, QualityConflict, ObjectState,
->>>>>>> cvat/develop
 } from 'cvat-core-wrapper';
 import logger, { EventScope } from 'cvat-logger';
 import { getCVATStore } from 'cvat-store';
@@ -38,11 +34,7 @@ import { updateJobAsync } from './jobs-actions';
 import { switchToolsBlockerState } from './settings-actions';
 
 interface AnnotationsParameters {
-<<<<<<< HEAD
-    filters: string[];
-=======
     filters: object[];
->>>>>>> cvat/develop
     frame: number;
     showAllInterpolationTracks: boolean;
     showGroundTruth: boolean;
@@ -274,11 +266,7 @@ export function highlightConflict(conflict: QualityConflict | null): AnyAction {
     };
 }
 
-<<<<<<< HEAD
-async function fetchAnnotations(frameNumber?: number): Promise<{
-=======
 async function fetchAnnotations(predefinedFrame?: number): Promise<{
->>>>>>> cvat/develop
     states: CombinedState['annotation']['annotations']['states'];
     history: CombinedState['annotation']['annotations']['history'];
     minZ: number;
@@ -289,12 +277,6 @@ async function fetchAnnotations(predefinedFrame?: number): Promise<{
         jobInstance, showGroundTruth, groundTruthInstance,
     } = receiveAnnotationsParameters();
 
-<<<<<<< HEAD
-    const fetchFrame = typeof frameNumber === 'undefined' ? frame : frameNumber;
-    const states = await jobInstance.annotations.get(fetchFrame, showAllInterpolationTracks, filters);
-    const [minZ, maxZ] = computeZRange(states);
-    if (showGroundTruth && groundTruthInstance) {
-=======
     const fetchFrame = typeof predefinedFrame === 'undefined' ? frame : predefinedFrame;
     let states = await jobInstance.annotations.get(fetchFrame, showAllInterpolationTracks, filters);
     const [minZ, maxZ] = computeZRange(states);
@@ -311,7 +293,6 @@ async function fetchAnnotations(predefinedFrame?: number): Promise<{
             },
         }));
     } else if (showGroundTruth && groundTruthInstance) {
->>>>>>> cvat/develop
         const gtStates = await groundTruthInstance.annotations.get(fetchFrame, showAllInterpolationTracks, filters);
         states.push(...gtStates);
     }
@@ -888,27 +869,19 @@ export function resetCanvas(): AnyAction {
 }
 
 export function closeJob(): ThunkAction {
-<<<<<<< HEAD
-    return async (dispatch: ActionCreator<Dispatch>): Promise<void> => {
-        const { jobInstance } = receiveAnnotationsParameters();
-=======
     return async (dispatch: ActionCreator<Dispatch>, getState): Promise<void> => {
         const state = getState();
         const { instance: canvasInstance } = state.annotation.canvas;
         const { jobInstance } = receiveAnnotationsParameters();
 
->>>>>>> cvat/develop
         if (jobInstance) {
             await jobInstance.close();
         }
 
-<<<<<<< HEAD
-=======
         if (canvasInstance) {
             canvasInstance.destroy();
         }
 
->>>>>>> cvat/develop
         dispatch({
             type: AnnotationActionTypes.CLOSE_JOB,
         });
@@ -980,15 +953,9 @@ export function getJobAsync({
                 )) || job.startFrame;
 
             const frameData = await job.frames.get(frameNumber);
-<<<<<<< HEAD
-            // call first getting of frame data before rendering interface
-            // to load and decode first chunk
-            try {
-=======
             try {
                 // call first getting of frame data before rendering interface
                 // to load and decode first chunk
->>>>>>> cvat/develop
                 await frameData.data();
             } catch (error) {
                 // do nothing, user will be notified when data request is done
@@ -996,10 +963,6 @@ export function getJobAsync({
 
             const states = await job.annotations.get(frameNumber, showAllInterpolationTracks, filters);
             const issues = await job.issues();
-<<<<<<< HEAD
-            const [minZ, maxZ] = computeZRange(states);
-=======
->>>>>>> cvat/develop
             const colors = [...cvat.enums.colors];
 
             let groundTruthJobFramesMeta = null;
@@ -1036,18 +999,10 @@ export function getJobAsync({
                     frameData,
                     colors,
                     filters,
-<<<<<<< HEAD
-                    minZ,
-                    maxZ,
-                },
-            });
-
-=======
                 },
             });
 
             dispatch(fetchAnnotationsAsync());
->>>>>>> cvat/develop
             dispatch(changeFrameAsync(frameNumber, false));
         } catch (error) {
             dispatch({

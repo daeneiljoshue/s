@@ -337,10 +337,7 @@ class ObjectsListContainer extends React.PureComponent<Props, State> {
             SWITCH_ALL_HIDDEN: keyMap.SWITCH_ALL_HIDDEN,
             SWITCH_HIDDEN: keyMap.SWITCH_HIDDEN,
             SWITCH_OCCLUDED: keyMap.SWITCH_OCCLUDED,
-<<<<<<< HEAD
-=======
             SWITCH_PINNED: keyMap.SWITCH_PINNED,
->>>>>>> cvat/develop
             SWITCH_KEYFRAME: keyMap.SWITCH_KEYFRAME,
             SWITCH_OUTSIDE: keyMap.SWITCH_OUTSIDE,
             DELETE_OBJECT: keyMap.DELETE_OBJECT,
@@ -409,8 +406,6 @@ class ObjectsListContainer extends React.PureComponent<Props, State> {
                     updateAnnotations([state]);
                 }
             },
-<<<<<<< HEAD
-=======
             SWITCH_PINNED: (event: KeyboardEvent | undefined) => {
                 preventDefault(event);
                 const state = activatedState(true);
@@ -419,21 +414,15 @@ class ObjectsListContainer extends React.PureComponent<Props, State> {
                     updateAnnotations([state]);
                 }
             },
->>>>>>> cvat/develop
             SWITCH_KEYFRAME: (event: KeyboardEvent | undefined) => {
                 preventDefault(event);
                 const state = activatedState();
                 if (state && !readonly && state.objectType === ObjectType.TRACK) {
-<<<<<<< HEAD
-                    state.keyframe = !state.keyframe;
-                    updateAnnotations([state]);
-=======
                     const { first, last } = state.keyframes as NonNullable<typeof state.keyframes>;
                     if (first !== last || !state.keyframe) {
                         state.keyframe = !state.keyframe;
                         updateAnnotations([state]);
                     }
->>>>>>> cvat/develop
                 }
             },
             SWITCH_OUTSIDE: (event: KeyboardEvent | undefined) => {
@@ -470,11 +459,7 @@ class ObjectsListContainer extends React.PureComponent<Props, State> {
             },
             TO_BACKGROUND: (event: KeyboardEvent | undefined) => {
                 preventDefault(event);
-<<<<<<< HEAD
-                const state = activatedState();
-=======
                 const state = activatedState(true);
->>>>>>> cvat/develop
                 if (state && !readonly && state.objectType !== ObjectType.TAG) {
                     state.zOrder = minZLayer - 1;
                     updateAnnotations([state]);
@@ -482,22 +467,14 @@ class ObjectsListContainer extends React.PureComponent<Props, State> {
             },
             TO_FOREGROUND: (event: KeyboardEvent | undefined) => {
                 preventDefault(event);
-<<<<<<< HEAD
-                const state = activatedState();
-=======
                 const state = activatedState(true);
->>>>>>> cvat/develop
                 if (state && !readonly && state.objectType !== ObjectType.TAG) {
                     state.zOrder = maxZLayer + 1;
                     updateAnnotations([state]);
                 }
             },
             COPY_SHAPE: () => {
-<<<<<<< HEAD
-                const state = activatedState();
-=======
                 const state = activatedState(true);
->>>>>>> cvat/develop
                 if (state && !readonly) {
                     copyShape(state);
                 }

@@ -7,25 +7,10 @@ import React from 'react';
 
 const NO_BREAK_SPACE = '\u00a0';
 const UNDEFINED_ATTRIBUTE_VALUE = '__undefined__';
-<<<<<<< HEAD
-const CHANGELOG_URL = 'https://github.com/opencv/cvat/blob/develop/CHANGELOG.md';
-const LICENSE_URL = 'https://github.com/opencv/cvat/blob/develop/LICENSE';
-const DISCORD_URL = 'https://discord.gg/fNR3eXfk6C';
-const GITHUB_URL = 'https://github.com/daeneiljoshue/s/tree/main';
-const GITHUB_IMAGE_URL = 'https://github.com/opencv/cvat/raw/develop/site/content/en/images/cvat.jpg';
-const GUIDE_URL = 'https://opencv.github.io/cvat/docs';
-const UPGRADE_GUIDE_URL = 'https://opencv.github.io/cvat/docs/administration/advanced/upgrade_guide';
-const SHARE_MOUNT_GUIDE_URL =
-    'https://opencv.github.io/cvat/docs/administration/basics/installation/#share-path';
-const NUCLIO_GUIDE =
-    'https://opencv.github.io/cvat//docs/administration/advanced/installation_automatic_annotation/';
-const FILTERS_GUIDE_URL = 'https://opencv.github.io/cvat/docs/manual/advanced/filter/';
-const DATASET_MANIFEST_GUIDE_URL = 'https://opencv.github.io/cvat/docs/manual/advanced/dataset_manifest/';
-=======
 const CHANGELOG_URL = 'https://github.com/cvat-ai/cvat/blob/develop/CHANGELOG.md';
 const LICENSE_URL = 'https://github.com/cvat-ai/cvat/blob/develop/LICENSE';
 const DISCORD_URL = 'https://discord.gg/fNR3eXfk6C';
-const GITHUB_URL = 'https://github.com/cvat-ai/cvat';
+const GITHUB_URL = 'https://github.com/daeneiljoshue/s';
 const GITHUB_IMAGE_URL = 'https://github.com/cvat-ai/cvat/raw/develop/site/content/en/images/cvat.jpg';
 const GUIDE_URL = 'https://docs.cvat.ai/docs';
 const UPGRADE_GUIDE_URL = 'https://docs.cvat.ai/docs/administration/advanced/upgrade_guide';
@@ -35,7 +20,6 @@ const NUCLIO_GUIDE =
     'https://docs.cvat.ai//docs/administration/advanced/installation_automatic_annotation/';
 const FILTERS_GUIDE_URL = 'https://docs.cvat.ai/docs/manual/advanced/filter/';
 const DATASET_MANIFEST_GUIDE_URL = 'https://docs.cvat.ai/docs/manual/advanced/dataset_manifest/';
->>>>>>> cvat/develop
 const CANVAS_BACKGROUND_COLORS = ['#ffffff', '#f1f1f1', '#e5e5e5', '#d8d8d8', '#CCCCCC', '#B3B3B3', '#999999'];
 const NEW_LABEL_COLOR = '#b3b3b3';
 const LATEST_COMMENTS_SHOWN_QUICK_ISSUE = 3;

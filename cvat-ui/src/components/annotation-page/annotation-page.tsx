@@ -4,10 +4,7 @@
 // SPDX-License-Identifier: MIT
 
 import React, { useEffect } from 'react';
-<<<<<<< HEAD
 import { useHistory } from 'react-router';
-=======
->>>>>>> cvat/develop
 import Layout from 'antd/lib/layout';
 import Result from 'antd/lib/result';
 import Spin from 'antd/lib/spin';
@@ -31,10 +28,7 @@ import { readLatestFrame } from 'utils/remember-latest-frame';
 interface Props {
     job: any | null | undefined;
     fetching: boolean;
-<<<<<<< HEAD
-=======
     annotationsInitialized: boolean;
->>>>>>> cvat/develop
     frameNumber: number;
     workspace: Workspace;
     getJob(): void;
@@ -45,19 +39,11 @@ interface Props {
 
 export default function AnnotationPageComponent(props: Props): JSX.Element {
     const {
-<<<<<<< HEAD
-        job, fetching, workspace, frameNumber, getJob, closeJob, saveLogs, changeFrame,
-=======
         job, fetching, annotationsInitialized, workspace, frameNumber, getJob, closeJob, saveLogs, changeFrame,
->>>>>>> cvat/develop
     } = props;
     const prevJob = usePrevious(job);
     const prevFetching = usePrevious(fetching);
 
-<<<<<<< HEAD
-    const history = useHistory();
-=======
->>>>>>> cvat/develop
     useEffect(() => {
         saveLogs();
         const root = window.document.getElementById('root');
@@ -67,21 +53,11 @@ export default function AnnotationPageComponent(props: Props): JSX.Element {
 
         return () => {
             saveLogs();
-<<<<<<< HEAD
-            if (root) {
-                root.style.minHeight = '';
-            }
-
-            if (!history.location.pathname.includes('/jobs')) {
-                closeJob();
-            }
-=======
             closeJob();
 
             if (root) {
                 root.style.minHeight = '';
             }
->>>>>>> cvat/develop
         };
     }, []);
 
@@ -146,11 +122,7 @@ export default function AnnotationPageComponent(props: Props): JSX.Element {
         }
     }, [job, fetching, prevJob, prevFetching]);
 
-<<<<<<< HEAD
-    if (job === null) {
-=======
     if (job === null || !annotationsInitialized) {
->>>>>>> cvat/develop
         return <Spin size='large' className='cvat-spinner' />;
     }
 

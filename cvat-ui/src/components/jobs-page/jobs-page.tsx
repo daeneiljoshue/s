@@ -1,9 +1,5 @@
 // Copyright (C) 2022 Intel Corporation
-<<<<<<< HEAD
-// Copyright (C) 2023-2024 CVAT.ai Corporation
-=======
 // Copyright (C) 2022-2024 CVAT.ai Corporation
->>>>>>> cvat/develop
 //
 // SPDX-License-Identifier: MIT
 
@@ -14,7 +10,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import Spin from 'antd/lib/spin';
 import { Col, Row } from 'antd/lib/grid';
 import Pagination from 'antd/lib/pagination';
-<<<<<<< HEAD
 import Empty from 'antd/lib/empty';
 import Text from 'antd/lib/typography/Text';
 
@@ -25,18 +20,6 @@ import { getJobsAsync, updateJobAsync } from 'actions/jobs-actions';
 
 import TopBarComponent from './top-bar';
 import JobsContentComponent from './jobs-content';
-=======
-
-import { Job } from 'cvat-core-wrapper';
-import { updateHistoryFromQuery } from 'components/resource-sorting-filtering';
-import { CombinedState, Indexable, JobsQuery } from 'reducers';
-import { getJobsAsync, updateJobAsync } from 'actions/jobs-actions';
-import { anySearch } from 'utils/any-search';
-
-import TopBarComponent from './top-bar';
-import JobsContentComponent from './jobs-content';
-import EmptyListComponent from './empty-list';
->>>>>>> cvat/develop
 
 function JobsPageComponent(): JSX.Element {
     const dispatch = useDispatch();
@@ -71,11 +54,6 @@ function JobsPageComponent(): JSX.Element {
         }
     }, [query]);
 
-<<<<<<< HEAD
-=======
-    const isAnySearch = anySearch<JobsQuery>(query);
-
->>>>>>> cvat/develop
     const content = count ? (
         <>
             <JobsContentComponent onJobUpdate={onJobUpdate} />
@@ -99,7 +77,6 @@ function JobsPageComponent(): JSX.Element {
             </Row>
         </>
     ) : (
-<<<<<<< HEAD
         <div className='cvat-empty-jobs-list'>
             <Empty description={(
                 <Row justify='center' align='middle'>
@@ -110,9 +87,6 @@ function JobsPageComponent(): JSX.Element {
             )}
             />
         </div>
-=======
-        <EmptyListComponent notFound={isAnySearch} />
->>>>>>> cvat/develop
     );
 
     return (

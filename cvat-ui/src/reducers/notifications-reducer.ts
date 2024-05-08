@@ -5,11 +5,7 @@
 
 import { AnyAction } from 'redux';
 
-<<<<<<< HEAD
-import { ServerError } from 'cvat-core-wrapper';
-=======
 import { Project, ServerError, Task } from 'cvat-core-wrapper';
->>>>>>> cvat/develop
 import { AuthActionTypes } from 'actions/auth-actions';
 import { FormatsActionTypes } from 'actions/formats-actions';
 import { ModelsActionTypes } from 'actions/models-actions';
@@ -35,11 +31,7 @@ import { NotificationsState } from '.';
 const defaultState: NotificationsState = {
     errors: {
         auth: {
-<<<<<<< HEAD
-            authorized: null,
-=======
             authenticated: null,
->>>>>>> cvat/develop
             login: null,
             logout: null,
             register: null,
@@ -220,24 +212,15 @@ const defaultState: NotificationsState = {
 
 export default function (state = defaultState, action: AnyAction): NotificationsState {
     switch (action.type) {
-<<<<<<< HEAD
-        case AuthActionTypes.AUTHORIZED_FAILED: {
-=======
         case AuthActionTypes.AUTHENTICATED_FAILED: {
->>>>>>> cvat/develop
             return {
                 ...state,
                 errors: {
                     ...state.errors,
                     auth: {
                         ...state.errors.auth,
-<<<<<<< HEAD
-                        authorized: {
-                            message: 'Could not check authorization on the server',
-=======
                         authenticated: {
                             message: 'Could not check authentication on the server',
->>>>>>> cvat/develop
                             reason: action.payload.error,
                             shouldLog: !(action.payload.error instanceof ServerError),
                         },
@@ -584,12 +567,6 @@ export default function (state = defaultState, action: AnyAction): Notifications
         }
         case ImportActionTypes.IMPORT_DATASET_SUCCESS: {
             const { instance, resource } = action.payload;
-<<<<<<< HEAD
-            const message = resource === 'annotation' ?
-                'Annotations have been loaded to the ' +
-                `[task ${instance.taskId || instance.id}](/tasks/${instance.taskId || instance.id}) ` :
-                `Dataset was imported to the [project ${instance.id}](/projects/${instance.id})`;
-=======
             let message = resource === 'annotation' ?
                 'Annotations have been loaded to the ' :
                 'Dataset was imported to the ';
@@ -601,7 +578,6 @@ export default function (state = defaultState, action: AnyAction): Notifications
                 message += `[Job ${instance.id}](/jobs/${instance.id})`;
             }
 
->>>>>>> cvat/develop
             return {
                 ...state,
                 messages: {

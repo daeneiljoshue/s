@@ -91,11 +91,7 @@ export class ObjectSelectorImpl implements ObjectSelector {
         return filtered;
     }
 
-<<<<<<< HEAD
-    private onMouseDown = (event: MouseEvent) => {
-=======
     private onMouseDown = (event: MouseEvent): void => {
->>>>>>> cvat/develop
         const point = translateToSVG((this.canvas.node as any) as SVGSVGElement, [event.clientX, event.clientY]);
         this.mouseDownPosition = { x: point[0], y: point[1] };
         this.selectionRect = this.canvas.rect().addClass('cvat_canvas_selection_box');
@@ -103,11 +99,7 @@ export class ObjectSelectorImpl implements ObjectSelector {
         this.selectionRect.attr({ ...this.mouseDownPosition });
     };
 
-<<<<<<< HEAD
-    private onMouseUp = (event: MouseEvent) => {
-=======
     private onMouseUp = (event: MouseEvent): void => {
->>>>>>> cvat/develop
         if (this.selectionRect) {
             this.selectionRect.remove();
             this.selectionRect = null;
@@ -146,11 +138,7 @@ export class ObjectSelectorImpl implements ObjectSelector {
         }
     };
 
-<<<<<<< HEAD
-    private onMouseMove = (event: MouseEvent) => {
-=======
     private onMouseMove = (event: MouseEvent): void => {
->>>>>>> cvat/develop
         if (this.selectionRect) {
             const box = this.getSelectionBox(event);
             this.selectionRect.attr({

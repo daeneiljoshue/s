@@ -81,15 +81,12 @@ const defaultKeyMap = ({
         sequences: ['q', '/'],
         action: 'keydown',
     },
-<<<<<<< HEAD
-=======
     SWITCH_PINNED: {
         name: 'Switch pinned property',
         description: 'Change pinned property for an active object',
         sequences: ['p'],
         action: 'keydown',
     },
->>>>>>> cvat/develop
     SWITCH_KEYFRAME: {
         name: 'Switch keyframe',
         description: 'Change keyframe property for an active track',

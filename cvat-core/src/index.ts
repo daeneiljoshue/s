@@ -66,11 +66,7 @@ export default interface CVATCore {
         changePassword: any;
         requestPasswordReset: any;
         resetPassword: any;
-<<<<<<< HEAD
-        authorized: any;
-=======
         authenticated: any;
->>>>>>> cvat/develop
         healthCheck: any;
         request: any;
         setAuthData: any;
@@ -109,19 +105,11 @@ export default interface CVATCore {
     projects: {
         get: (
             filter: {
-<<<<<<< HEAD
-                id: number;
-                page: number;
-                search: string;
-                sort: string;
-                filter: string;
-=======
                 id?: number;
                 page?: number;
                 search?: string;
                 sort?: string;
                 filter?: string;
->>>>>>> cvat/develop
             }
         ) => Promise<PaginatedResource<Project>>;
         searchNames: any;
@@ -153,13 +141,10 @@ export default interface CVATCore {
         };
         performance: {
             reports: (filter: AnalyticsReportFilter) => Promise<AnalyticsReport>;
-<<<<<<< HEAD
-=======
             calculate: (
                 body: { jobID?: number; taskID?: number; projectID?: number; },
                 onUpdate: (status: enums.RQStatus, progress: number, message: string) => void,
             ) => Promise<void>;
->>>>>>> cvat/develop
         };
     };
     frames: {

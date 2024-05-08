@@ -438,11 +438,7 @@ export interface ErrorState {
 export interface NotificationsState {
     errors: {
         auth: {
-<<<<<<< HEAD
-            authorized: null | ErrorState;
-=======
             authenticated: null | ErrorState;
->>>>>>> cvat/develop
             login: null | ErrorState;
             logout: null | ErrorState;
             register: null | ErrorState;
@@ -764,10 +760,7 @@ export interface AnnotationState {
         states: any[];
         filters: object[];
         resetGroupFlag: boolean;
-<<<<<<< HEAD
-=======
         initialized: boolean;
->>>>>>> cvat/develop
         history: {
             undo: [string, number][];
             redo: [string, number][];

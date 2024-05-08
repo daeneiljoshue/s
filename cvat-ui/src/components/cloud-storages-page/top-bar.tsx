@@ -1,8 +1,5 @@
 // Copyright (C) 2021-2022 Intel Corporation
-<<<<<<< HEAD
-=======
 // Copyright (C) 2022-2024 CVAT.ai Corporation
->>>>>>> cvat/develop
 //
 // SPDX-License-Identifier: MIT
 
@@ -16,11 +13,8 @@ import { CloudStoragesQuery } from 'reducers';
 import Input from 'antd/lib/input';
 import { SortingComponent, ResourceFilterHOC, defaultVisibility } from 'components/resource-sorting-filtering';
 
-<<<<<<< HEAD
-=======
 import dimensions from 'utils/dimensions';
 
->>>>>>> cvat/develop
 import {
     localStorageRecentKeyword, localStorageRecentCapacity,
     predefinedFilterValues, config,
@@ -45,13 +39,8 @@ export default function StoragesTopBar(props: Props): JSX.Element {
     const [visibility, setVisibility] = useState(defaultVisibility);
 
     return (
-<<<<<<< HEAD
-        <Row justify='space-between' align='middle' className='cvat-cloud-storages-list-top-bar'>
-            <Col span={24}>
-=======
         <Row justify='center' align='middle' className='cvat-cloud-storages-list-top-bar'>
             <Col {...dimensions}>
->>>>>>> cvat/develop
                 <div className='cvat-cloudstorages-page-filters-wrapper'>
                     <Input.Search
                         enterButton

@@ -197,11 +197,7 @@ export default function (state: ReviewState = defaultState, action: any): Review
         }
         case AnnotationActionTypes.CLOSE_JOB:
         case AuthActionTypes.LOGOUT_SUCCESS: {
-<<<<<<< HEAD
-            return { ...defaultState };
-=======
             return defaultState;
->>>>>>> cvat/develop
         }
         default:
             return state;

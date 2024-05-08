@@ -9,11 +9,7 @@ import { connect, Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
 import { getAboutAsync } from 'actions/about-actions';
-<<<<<<< HEAD
 import { authorizedAsync } from 'actions/auth-actions';
-=======
-import { authenticatedAsync } from 'actions/auth-actions';
->>>>>>> cvat/develop
 import { getFormatsAsync } from 'actions/formats-actions';
 import { getModelsAsync } from 'actions/models-actions';
 import { getPluginsAsync } from 'actions/plugins-actions';
@@ -63,11 +59,7 @@ interface StateToProps {
 
 interface DispatchToProps {
     loadFormats: () => void;
-<<<<<<< HEAD
     verifyAuthorized: () => void;
-=======
-    verifyAuthenticated: () => void;
->>>>>>> cvat/develop
     loadAbout: () => void;
     initModels: () => void;
     initPlugins: () => void;
@@ -115,11 +107,7 @@ function mapStateToProps(state: CombinedState): StateToProps {
 function mapDispatchToProps(dispatch: any): DispatchToProps {
     return {
         loadFormats: (): void => dispatch(getFormatsAsync()),
-<<<<<<< HEAD
         verifyAuthorized: (): void => dispatch(authorizedAsync()),
-=======
-        verifyAuthenticated: (): void => dispatch(authenticatedAsync()),
->>>>>>> cvat/develop
         loadUserAgreements: (): void => dispatch(getUserAgreementsAsync()),
         initPlugins: (): void => dispatch(getPluginsAsync()),
         initModels: (): void => dispatch(getModelsAsync()),

@@ -5,13 +5,9 @@
 
 import { createAction, ActionUnion, ThunkAction } from 'utils/redux';
 import { CombinedState } from 'reducers';
-<<<<<<< HEAD
-import { getCore, Storage } from 'cvat-core-wrapper';
-=======
 import {
     getCore, Storage, Job, Task, Project,
 } from 'cvat-core-wrapper';
->>>>>>> cvat/develop
 import { EventScope } from 'cvat-logger';
 import { getProjectsAsync } from './projects-actions';
 import { AnnotationActionTypes, fetchAnnotationsAsync } from './annotation-actions';
@@ -42,17 +38,10 @@ export const importActions = {
     importDataset: (instance: any, format: string) => (
         createAction(ImportActionTypes.IMPORT_DATASET, { instance, format })
     ),
-<<<<<<< HEAD
-    importDatasetSuccess: (instance: any, resource: 'dataset' | 'annotation') => (
-        createAction(ImportActionTypes.IMPORT_DATASET_SUCCESS, { instance, resource })
-    ),
-    importDatasetFailed: (instance: any, resource: 'dataset' | 'annotation', error: any) => (
-=======
     importDatasetSuccess: (instance: Job | Task | Project, resource: 'dataset' | 'annotation') => (
         createAction(ImportActionTypes.IMPORT_DATASET_SUCCESS, { instance, resource })
     ),
     importDatasetFailed: (instance: Job | Task | Project, resource: 'dataset' | 'annotation', error: any) => (
->>>>>>> cvat/develop
         createAction(ImportActionTypes.IMPORT_DATASET_FAILED, {
             instance,
             resource,
@@ -125,27 +114,10 @@ export const importDatasetAsync = (
                 await instance.logger.log(EventScope.uploadAnnotations);
                 await instance.annotations.clear(true);
                 await instance.actions.clear();
-<<<<<<< HEAD
-                const history = await instance.actions.get();
-=======
->>>>>>> cvat/develop
 
                 // first set empty objects list
                 // to escape some problems in canvas when shape with the same
                 // clientID has different type (polygon, rectangle) for example
-<<<<<<< HEAD
-                dispatch({
-                    type: AnnotationActionTypes.UPLOAD_JOB_ANNOTATIONS_SUCCESS,
-                    payload: {
-                        states: [],
-                        history,
-                    },
-                });
-
-                setTimeout(() => {
-                    dispatch(fetchAnnotationsAsync());
-                });
-=======
                 dispatch({ type: AnnotationActionTypes.UPLOAD_JOB_ANNOTATIONS_SUCCESS });
 
                 const relevantInstance = getState().annotation.job.instance;
@@ -154,7 +126,6 @@ export const importDatasetAsync = (
                         dispatch(fetchAnnotationsAsync());
                     });
                 }
->>>>>>> cvat/develop
             }
         } catch (error) {
             dispatch(importActions.importDatasetFailed(instance, resource, error));
