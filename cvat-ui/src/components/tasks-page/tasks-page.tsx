@@ -58,11 +58,8 @@ function TasksPageComponent(props: Props): JSX.Element {
         }
     }, [query]);
 
-<<<<<<< HEAD
-=======
     const isAnySearch = anySearch<TasksQuery>(query);
 
->>>>>>> cvat/develop
     const content = count ? (
         <>
             <TaskListContainer />
@@ -86,11 +83,7 @@ function TasksPageComponent(props: Props): JSX.Element {
             </Row>
         </>
     ) : (
-<<<<<<< HEAD
-        <EmptyListComponent query={query} />
-=======
         <EmptyListComponent notFound={isAnySearch} />
->>>>>>> cvat/develop
     );
 
     return (

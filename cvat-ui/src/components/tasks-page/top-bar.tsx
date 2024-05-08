@@ -17,20 +17,13 @@ import { SortingComponent, ResourceFilterHOC, defaultVisibility } from 'componen
 import { TasksQuery } from 'reducers';
 import { usePrevious } from 'utils/hooks';
 import { MultiPlusIcon } from 'icons';
-<<<<<<< HEAD
-=======
-import dimensions from 'utils/dimensions';
->>>>>>> cvat/develop
 import CvatDropdownMenuPaper from 'components/common/cvat-dropdown-menu-paper';
 import {
     localStorageRecentKeyword, localStorageRecentCapacity, predefinedFilterValues, config,
 } from './tasks-filter-configuration';
 
-<<<<<<< HEAD
 import dimensions from '../projects-page/dimensions';
 
-=======
->>>>>>> cvat/develop
 const FilteringComponent = ResourceFilterHOC(
     config, localStorageRecentKeyword, localStorageRecentCapacity, predefinedFilterValues,
 );

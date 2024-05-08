@@ -31,11 +31,7 @@ const CANVAS_WORKSPACE_COLS = 12;
 const CANVAS_WORKSPACE_MARGIN = 8;
 const CANVAS_WORKSPACE_DEFAULT_CONTEXT_HEIGHT = 4;
 const CANVAS_WORKSPACE_PADDING = CANVAS_WORKSPACE_MARGIN / 2;
-<<<<<<< HEAD
-const OUTSIDE_PIC_URL = 'https://opencv.github.io/cvat/images/image019.jpg';
-=======
 const OUTSIDE_PIC_URL = 'https://docs.cvat.ai/images/image019.jpg';
->>>>>>> cvat/develop
 const DEFAULT_AWS_S3_REGIONS: string[][] = [
     ['us-east-1', 'US East (N. Virginia)'],
     ['us-east-2', 'US East (Ohio)'],

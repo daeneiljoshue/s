@@ -9,7 +9,7 @@ import { connect, Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 
 import { getAboutAsync } from 'actions/about-actions';
-import { authorizedAsync } from 'actions/auth-actions';
+import { authenticatedAsync } from 'actions/auth-actions';
 import { getFormatsAsync } from 'actions/formats-actions';
 import { getModelsAsync } from 'actions/models-actions';
 import { getPluginsAsync } from 'actions/plugins-actions';
