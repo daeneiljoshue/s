@@ -8,11 +8,8 @@
 -r development.txt
 -r production.txt
 -r testing.txt
-<<<<<<< HEAD
-=======
 --no-binary lxml
 --no-binary xmlsec
 
->>>>>>> cvat/develop
 
 # The following packages are considered to be unsafe in a requirements file:
